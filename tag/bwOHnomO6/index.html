@@ -7,7 +7,7 @@
 <meta name="description" content="#include&#34;testlib.h&#34;">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="shortcut icon" href="https://registerGen.github.io/favicon.ico?v=1585720816703">
+<link rel="shortcut icon" href="https://registerGen.github.io/favicon.ico?v=1585722246079">
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 <link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
@@ -83,12 +83,57 @@
           
   <article class="article">
     <h2 class="article-title">
-      <a href="https://registerGen.github.io/post/solution-luogu-p3835/">题解 luogu P3835 【【模板】可持久化平衡树】</a>
+      <a href="https://registerGen.github.io/post/Miller-Rabin/">Miller-Rabin 素数测试学习笔记</a>
     </h2>
     <p class="article-meta">
       2020-04-01
       
         <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge ">
+          题解
+        </a>
+      
+        <a href="https://registerGen.github.io/tag/gwNO9dMpr/" class="badge ">
+          学习笔记
+        </a>
+      
+    </p>
+    <p class="text-lead">
+      <p>众所周知，判断一个数是否是素数有一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msqrt><mi>n</mi></msqrt><mo>)</mo></mrow><annotation encoding="application/x-tex">O(\sqrt{n})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.05028em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8002800000000001em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord mathdefault">n</span></span></span><span style="top:-2.76028em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,
+-10,-9.5,-14c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54c44.2,-33.3,65.8,
+-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10s173,378,173,378c0.7,0,
+35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429c69,-144,104.5,-217.7,106.5,
+-221c5.3,-9.3,12,-14,20,-14H400000v40H845.2724s-225.272,467,-225.272,467
+s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
+s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 的算法：</p>
+<pre><code class="language-cpp">inline bool isPrime(ll n)
+{
+	if(n&lt;=1)return false;
+	for(int i=2;i&lt;=sqrt(n);i++)
+		if(n%i==0)return false;
+	return true;
+}
+</code></pre>
+<p>那么，有没有什么更快的算法呢？</p>
+<p>那就是 Miller-Rabin 素数测试！</p>
+
+    </p>
+    <div class="row">
+      <a href="https://registerGen.github.io/post/Miller-Rabin/" class="readmore-link">
+        <button>
+          Read More
+        </button>
+      </a>
+    </div>
+  </article>
+
+  <article class="article">
+    <h2 class="article-title">
+      <a href="https://registerGen.github.io/post/solution-luogu-p3835/">题解 luogu P3835 【【模板】可持久化平衡树】</a>
+    </h2>
+    <p class="article-meta">
+      2020-04-01
+      
+        <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge warning">
           题解
         </a>
       
@@ -119,7 +164,7 @@
       </div>
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
-    <img src="https://registerGen.github.io/images/avatar.png?v=1585720816703" class="no-responsive avatar">
+    <img src="https://registerGen.github.io/images/avatar.png?v=1585722246079" class="no-responsive avatar">
     <div class="text-muted">#include"testlib.h"</div>
     <div class="social-container">
       
@@ -141,6 +186,12 @@
     </div>
     <div class="row">
       <ul>
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/Miller-Rabin/">Miller-Rabin 素数测试学习笔记</a>
+            </li>
+          
         
           
             <li>
@@ -181,15 +232,15 @@
     </div>
     <div class="row">
       
+        <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge success">
+          题解
+        </a>
+      
         <a href="https://registerGen.github.io/tag/gwNO9dMpr/" class="badge success">
           学习笔记
         </a>
       
-        <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge ">
-          题解
-        </a>
-      
-        <a href="https://registerGen.github.io/tag/4Yw2Fade3/" class="badge secondary">
+        <a href="https://registerGen.github.io/tag/4Yw2Fade3/" class="badge success">
           游记
         </a>
       
