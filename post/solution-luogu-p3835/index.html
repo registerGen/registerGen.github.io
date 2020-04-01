@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
+
+<title>题解 luogu P3835 【【模板】可持久化平衡树】 | registerGen&#39;s blog</title>
+<meta name="description" content="#include&#34;testlib.h&#34;">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://registerGen.github.io/favicon.ico?v=1585720425951">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://registerGen.github.io/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://registerGen.github.io">registerGen&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>题解 luogu P3835 【【模板】可持久化平衡树】</h1>
+            <p class="article-meta">
+              2020-04-01
+              
+                <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge secondary">
+                  题解
+                </a>
+              
+                <a href="https://registerGen.github.io/tag/gwNO9dMpr/" class="badge secondary">
+                  学习笔记
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>首先感谢 @wangrx 大佬帮我卡常！！</p>
+<hr>
+<p>看到题解里没有指针实现的 fhq-Treap，那我就来一发吧。</p>
+<p>可持久化 fhq-Treap 的核心是它的两个基层操作——分裂和合并。</p>
+<p>其它的操作按照不可持久的 fhq-Treap 写就行了。</p>
+<p>可持久化<strong>数据结构</strong>的核心思想是：尽可能新建更少的结点记录新版本的信息，同时保留住历史版本的结点信息。可持久化 fhq-Treap 也不例外。</p>
+<p>fhq-Treap 的可持久化：</p>
+<p>已知有:</p>
+<pre><code class="language-cpp">typedef std::pair&lt;Node*,Node*&gt; droot;
+</code></pre>
+<p>对于分裂操作:</p>
+<pre><code class="language-cpp">droot split(Node* x,int k)
+{
+	if(!x)return droot(NULL,NULL);
+	droot res;
+	if(siz(x-&gt;ls)&gt;=k)
+	{
+		res=split(x-&gt;ls,k);
+		// 我们新建一个结点，并将 x 的信息复制到它身上。
+		Node* p=new Node;
+		copy(p,x);
+		// 下面是对 p 进行 fhq-Treap 的正常操作
+		p-&gt;ls=res.second;
+		p-&gt;pushup();
+		res.second=p;
+	}
+	else
+	{
+		res=split(x-&gt;rs,k-siz(x-&gt;ls)-1);
+		// 同理
+		Node* p=new Node;
+		copy(p,x);
+		p-&gt;rs=res.first;
+		p-&gt;pushup();
+		res.first=p;
+	}
+	return res;
+}
+</code></pre>
+<p>对于合并操作：</p>
+<pre><code class="language-cpp">Node* merge(Node* x,Node* y)
+{
+	if(!x)return y;
+	if(!y)return x;
+	if(x-&gt;w&lt;y-&gt;w)
+	{
+		Node* p=new Node;
+		// 我们新建一个结点，并将 x 的信息复制到它身上。
+		copy(p,x);
+		// 下面是对 p 进行 fhq-Treap 的正常操作
+		p-&gt;rs=merge(p-&gt;rs,y);
+		p-&gt;pushup();
+		return p;
+	}
+	else
+	{
+		Node* p=new Node;
+		// 同理
+		copy(p,y);
+		p-&gt;ls=merge(x,p-&gt;ls);
+		p-&gt;pushup();
+		return p;
+	}
+}
+</code></pre>
+<p>由此可见，对于可持久化 fhq-Treap 的基层操作，每更改一个结点就要分值一个新的结点出来，<strong>否则你修改的就是历史版本上的结点！！！</strong></p>
+<hr>
+<p>核心部分就讲到这里，下面给出完整代码。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，常数较大。</p>
+<p>写代码时要注意一些 C++ 语言上的细节（因为用的是指针）。</p>
+<p>无注释的代码看<a href="https://www.luogu.com.cn/paste/r6mtf9k5">这里</a>。</p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstdlib&gt;
+
+const int N=5e5;
+const int LOGN=20;
+const int INF=2147483647;
+
+struct Node
+{
+	int v,w;
+	Node *ls,*rs;
+	int siz;
+	
+	Node(){}
+	
+	Node(int _v):v(_v),w(rand()),ls(NULL),rs(NULL),siz(1){}
+	
+	inline void pushup()
+	{
+		siz=(ls?ls-&gt;siz:0)+(rs?rs-&gt;siz:0)+1;
+	}
+};
+
+typedef std::pair&lt;Node*,Node*&gt; droot;
+
+Node* root[N+10];
+int n;
+
+// 以下为卡常部分
+
+#define SIZ 1000000
+
+inline char gc()
+{
+	static char buf[SIZ],*p1,*p2;
+	return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,SIZ,stdin),p1==p2)?EOF:*p1++;
+}
+
+#undef SIZ
+
+inline void read(int&amp; x)
+{
+	x=0;int f=0;char c=gc();
+	while(c&lt;'0'||c&gt;'9')f|=(c=='-'),c=gc();
+	while(c&gt;='0'&amp;&amp;c&lt;='9')x=(x&lt;&lt;3)+(x&lt;&lt;1)+(c^48),c=gc();
+	if(f)x=-x;
+}
+
+// @wangrx 大佬教我的卡常技巧：重载 new 运算符
+// 下面的话引自 @wangrx
+// new 是系统在给你分配内存，速度肯定不敢恭维
+// 这么写相当于手动分配内存，但是 delete 就用不了了
+// 亲测有用
+
+char pool[1&lt;&lt;30],*ptop=pool+(1&lt;&lt;30);
+
+void* operator new(size_t size)
+{
+	return ptop-=size;
+}
+
+// 以上为卡常部分
+// 以下为 fhq-Treap 部分
+
+inline int siz(Node* x)
+{
+	return x?x-&gt;siz:0;
+}
+
+inline void copy(Node*&amp; p,Node* x) // 不能直接赋值，而且要引用，否则就和没改一样
+{
+	p-&gt;v=x-&gt;v;
+	p-&gt;w=x-&gt;w;
+	p-&gt;ls=x-&gt;ls;
+	p-&gt;rs=x-&gt;rs;
+	p-&gt;siz=x-&gt;siz;
+}
+
+droot split(Node* x,int k)
+{
+	if(!x)return droot(NULL,NULL);
+	droot res;
+	if(siz(x-&gt;ls)&gt;=k)
+	{
+		res=split(x-&gt;ls,k);
+		Node* p=new Node;
+		copy(p,x);
+		p-&gt;ls=res.second;
+		p-&gt;pushup();
+		res.second=p;
+	}
+	else
+	{
+		res=split(x-&gt;rs,k-siz(x-&gt;ls)-1);
+		Node* p=new Node;
+		copy(p,x);
+		p-&gt;rs=res.first;
+		p-&gt;pushup();
+		res.first=p;
+	}
+	return res;
+}
+
+Node* merge(Node* x,Node* y)
+{
+	if(!x)return y;
+	if(!y)return x;
+	if(x-&gt;w&lt;y-&gt;w)
+	{
+		Node* p=new Node;
+		copy(p,x);
+		p-&gt;rs=merge(p-&gt;rs,y);
+		p-&gt;pushup();
+		return p;
+	}
+	else
+	{
+		Node* p=new Node;
+		copy(p,y);
+		p-&gt;ls=merge(x,p-&gt;ls);
+		p-&gt;pushup();
+		return p;
+	}
+}
+
+int queryrk(Node*&amp; rt,int k)
+{
+	if(!rt)return 0;
+	return k&lt;=rt-&gt;v?queryrk(rt-&gt;ls,k):queryrk(rt-&gt;rs,k)+siz(rt-&gt;ls)+1;
+}
+
+int querykth(Node*&amp; rt,int k) // 要加引用，才能真正修改 rt，以下同理
+{
+	droot x=split(rt,k-1);
+	droot y=split(x.second,1);
+	Node* res=y.first;
+	rt=merge(merge(x.first,y.first),y.second);
+	return res-&gt;v;
+}
+
+void insert(Node*&amp; rt,int v)
+{
+	int k=queryrk(rt,v);
+	droot x=split(rt,k);
+	Node* now=new Node(v);
+	rt=merge(merge(x.first,now),x.second);
+}
+
+void erase(Node*&amp; rt,int v)
+{
+	int k=queryrk(rt,v);
+	droot x=split(rt,k);
+	droot y=split(x.second,1);
+	if(y.first-&gt;v!=v)return;
+	rt=merge(x.first,y.second);
+}
+
+int querypre(Node*&amp; rt,int v)
+{
+	int k=queryrk(rt,v);
+	droot x=split(rt,k-1);
+	droot y=split(x.second,1);
+	Node* res=y.first;
+	rt=merge(merge(x.first,y.first),y.second);
+	return res-&gt;v;
+}
+
+int querysuc(Node*&amp; rt,int v)
+{
+	int k=queryrk(rt,v+1);
+	droot x=split(rt,k);
+	droot y=split(x.second,1);
+	Node* res=y.first;
+	rt=merge(merge(x.first,y.first),y.second);
+	return res-&gt;v;
+}
+
+// 以上为 fhq-Treap 部分，没有什么奇奇怪怪的操作对吧
+
+int main()
+{
+#ifndef ONLINE_JUDGE
+	freopen(&quot;data.in&quot;,&quot;r&quot;,stdin);
+	freopen(&quot;data.out&quot;,&quot;w&quot;,stdout);
+#endif 
+	srand(20070414U);
+	read(n);
+	insert(root[0],INF);
+	insert(root[0],-INF);
+	for(int q=1;q&lt;=n;q++)
+	{
+		int ver,opt,x;
+		read(ver),read(opt),read(x);
+		root[q]=root[ver]; // 可持久化基本操作
+		if(opt==1)insert(root[q],x);
+		if(opt==2)erase(root[q],x);
+		if(opt==3)printf(&quot;%d\n&quot;,queryrk(root[q],x)); // 其实是 queryrk(root[q],x)+1-1，注意 +1，-1 的细节问题
+		if(opt==4)printf(&quot;%d\n&quot;,querykth(root[q],x+1)); // 注意 +1，-1 的细节问题
+		if(opt==5)printf(&quot;%d\n&quot;,querypre(root[q],x));
+		if(opt==6)printf(&quot;%d\n&quot;,querysuc(root[q],x));
+	}
+	return 0;
+}
+</code></pre>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://registerGen.github.io/post/self-introduction/">
+                <h3 class="post-title">
+                  自我介绍
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
+
+          
+        
+      </div>
+
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://registerGen.github.io/images/avatar.png?v=1585720425951" class="no-responsive avatar">
+    <div class="text-muted">#include"testlib.h"</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/solution-luogu-p3835/">题解 luogu P3835 【【模板】可持久化平衡树】</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/self-introduction/">自我介绍</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/NOI-Online-2020/">NOI Online 2020 游记</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge warning">
+          题解
+        </a>
+      
+        <a href="https://registerGen.github.io/tag/gwNO9dMpr/" class="badge secondary">
+          学习笔记
+        </a>
+      
+        <a href="https://registerGen.github.io/tag/4Yw2Fade3/" class="badge secondary">
+          游记
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://registerGen.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
+
+
+    </div>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
+<script type="application/javascript">
+
+AOS.init();
+
+hljs.initHighlightingOnLoad()
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
