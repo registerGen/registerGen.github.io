@@ -1,827 +1,104 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://registerGen.github.io</id>
-    <title>registerGen&apos;s blog</title>
-    <updated>2020-04-01T06:01:10.811Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://registerGen.github.io"/>
-    <link rel="self" href="https://registerGen.github.io/atom.xml"/>
-    <subtitle>#include&quot;testlib.h&quot;</subtitle>
-    <logo>https://registerGen.github.io/images/avatar.png</logo>
-    <icon>https://registerGen.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, registerGen&apos;s blog</rights>
-    <entry>
-        <title type="html"><![CDATA[树链剖分学习笔记]]></title>
-        <id>https://registerGen.github.io/post/tree-chain/</id>
-        <link href="https://registerGen.github.io/post/tree-chain/">
-        </link>
-        <updated>2020-04-01T05:59:35.000Z</updated>
-        <content type="html"><![CDATA[<p><strong>前置知识：<a href="https://www.cnblogs.com/jason2003/p/9676729.html">线段树</a></strong></p>
-<p><s>线段树这么好你都不会233</s></p>
-<hr>
-<blockquote>
-<h1 id="目录">目录</h1>
-<blockquote>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>. <strong>前言</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. <strong>何为树链剖分</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. <strong>相关概念 &amp; 变量声明</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>. <strong>剖分过程</strong></p>
-<blockquote>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. <strong>第一次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span></strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. <strong>第二次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span></strong></p>
-</blockquote>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>. <strong>关于线段树</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>. <strong>树链剖分怎么用</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>. <strong>树链剖分的时间复杂度</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>. <strong>例题</strong></p>
-<blockquote>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">7-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. <strong>【模板】重链剖分</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">7-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. <strong>[NOI2015]软件包管理器</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn><mo>−</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">7-3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">7</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>. <strong>Qtree1</strong></p>
-</blockquote>
-</blockquote>
-</blockquote>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>. <strong>前言</strong></p>
-<p>先来看看四个问题：</p>
-<ul>
-<li>将树从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 的最短路径上的每个结点权值加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span></li>
-</ul>
-<p>不难想到，树上差分能以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>q</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span> 的优秀复杂度解决这个问题。</p>
-<ul>
-<li>求出树从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 的最短路径上的每个结点权值之和</li>
-</ul>
-<p>很水的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>LCA</mtext></mrow><annotation encoding="application/x-tex">\text{LCA}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">LCA</span></span></span></span></span> 模板题，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi><mi>n</mi><mi>s</mi><mo>=</mo><mi>d</mi><mi>i</mi><msub><mi>s</mi><mrow><mn>1</mn><mo separator="true">,</mo><mi>u</mi></mrow></msub><mo>+</mo><mi>d</mi><mi>i</mi><msub><mi>s</mi><mrow><mn>1</mn><mo separator="true">,</mo><mi>v</mi></mrow></msub><mo>−</mo><mn>2</mn><mi>d</mi><mi>i</mi><msub><mi>s</mi><mrow><mn>1</mn><mo separator="true">,</mo><mtext>LCA</mtext><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">ans=dis_{1,u}+dis_{1,v}-2dis_{1,\text{LCA}(u,v)}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">u</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.04964em;vertical-align:-0.3551999999999999em;"></span><span class="mord">2</span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mpunct mtight">,</span><span class="mord text mtight"><span class="mord mtight">LCA</span></span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">u</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span></span></span></span></p>
-<ul>
-<li>将树中以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 为根的子树每个结点的权值加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span></li>
-</ul>
-<p>暴力即可，复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>q</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nq)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span></p>
-<ul>
-<li>求出树中以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 为根的子树每个结点的权值之和</li>
-</ul>
-<p>预处理每个子树的权值和，再 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span> 询问，总复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>q</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n+q)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">q</span><span class="mclose">)</span></span></span></span></p>
-<p><strong>要是把这四个问题合并在一起呢？</strong></p>
-<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mtext>树链剖分华丽登场！</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\text{树链剖分华丽登场！}
-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text" style="color:red;"><span class="mord cjk_fallback" style="color:red;">树链剖分华丽登场！</span></span></span></span></span></span></p>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. <strong>何为树链剖分</strong></p>
-<p><s>树链剖分是一种能让你的代码量增加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><menclose notation="horizontalstrike"><mrow><mn>1</mn><mtext>k</mtext></mrow></menclose></mrow><annotation encoding="application/x-tex">\sout{1\text{k}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.69444em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span><span class="mord text"><span class="mord">k</span></span></span></span><span style="top:-3.2155em;"><span class="pstrut" style="height:3em;"></span><span class="stretchy sout"></span></span></span></span></span></span></span></span></span>的算法</s></p>
-<p>树链剖分是将一棵树拆成若干条链，再用数据结构维护它们</p>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. <strong>相关概念 &amp; 变量声明</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">重儿子</td>
-<td style="text-align:center">父亲结点的儿子中子树结点数目最多的结点</td>
-</tr>
-<tr>
-<td style="text-align:center">轻儿子</td>
-<td style="text-align:center">父亲结点的儿子中不是重儿子的 <strong>所有</strong> 结点</td>
-</tr>
-<tr>
-<td style="text-align:center">重边</td>
-<td style="text-align:center">连结父亲结点和重儿子的边</td>
-</tr>
-<tr>
-<td style="text-align:center">轻边</td>
-<td style="text-align:center">连结父亲结点和轻儿子的边</td>
-</tr>
-<tr>
-<td style="text-align:center">重链</td>
-<td style="text-align:center">重边连成的路径</td>
-</tr>
-</tbody>
-</table>
-<p>变量声明：（以下均以<a href="https://www.luogu.com.cn/problem/P3384">模板题</a>为例）</p>
-<pre><code class="language-cpp">const int N=1e5;
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" >
 
-struct Edge
-{
-	int To;
-	int Next;
-};
+<title>树状数组学习笔记 | registerGen&#39;s blog</title>
+<meta name="description" content="#include&#34;testlib.h&#34;">
 
-struct Node
-{
-	int v;
-	int lt;
-};
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="shortcut icon" href="https://registerGen.github.io/favicon.ico?v=1585720816703">
 
-Edge e[(N&lt;&lt;1)+10];
-int head[N+10],ptr;
-int n,m,r,P,w[N+10];
-int fa[N+10],d[N+10],siz[N+10],son[N+10];
-int c,rk[N+10],id[N+10],top[N+10];
-Node t[(N&lt;&lt;2)+10];
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="stylesheet" href="https://unpkg.com/papercss@1.6.1/dist/paper.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://registerGen.github.io/styles/main.css">
 
-</code></pre>
-<table>
-<thead>
-<tr>
-<th style="text-align:center"></th>
-<th style="text-align:center"></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center"><code>e[]</code>，<code>head[]</code>，<code>ptr</code></td>
-<td style="text-align:center">存图</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>n</code>，<code>m</code>，<code>r</code>，<code>P</code></td>
-<td style="text-align:center">如题意所述</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>w[]</code></td>
-<td style="text-align:center">每个点的初始点权</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>fa[]</code></td>
-<td style="text-align:center">每个结点的父亲结点</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>d[]</code></td>
-<td style="text-align:center">每个结点的深度</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>siz[]</code></td>
-<td style="text-align:center">以每个结点为根的子树大小</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>son[]</code></td>
-<td style="text-align:center">每个结点的重儿子</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>c</code></td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span> 序计数器</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>rk[]</code></td>
-<td style="text-align:center"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span> 序为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span> 的结点编号</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>id[]</code></td>
-<td style="text-align:center">每个结点的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span> 序</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>top[]</code></td>
-<td style="text-align:center">每个结点所在链的最顶端结点</td>
-</tr>
-<tr>
-<td style="text-align:center"><code>t[]</code></td>
-<td style="text-align:center">线段树</td>
-</tr>
-</tbody>
-</table>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>. <strong>剖分过程</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">3-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. <strong>第一次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span></strong></p>
-<p>第一次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span>，我们要处理：</p>
-<pre><code class="language-cpp">int fa[N+10],d[N+10],siz[N+10],son[N+10];
-</code></pre>
-<p>没什么难度。</p>
-<pre><code class="language-cpp">void DFS1(int u,int _fa)
-{
-	fa[u]=_fa;
-	d[u]=d[_fa]+1;
-	siz[u]=1;
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa)continue;
-		DFS1(v,u);
-		siz[u]+=siz[v];
-		if(siz[v]&gt;siz[son[u]])
-			son[u]=v;
-	}
-}
-</code></pre>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>−</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">3-2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">3</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. <strong>第二次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span></strong></p>
-<p>第二次 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span>，我们要处理：</p>
-<pre><code class="language-cpp">int c,rk[N+10],id[N+10],top[N+10];
-</code></pre>
-<p>这时，为了用数据结构维护重链，我们要保证重链上的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span> 序连续。</p>
-<p>递归时，我们可以优先进入重儿子，再进入轻儿子，这样就保证了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span> 序的连续。</p>
-<pre><code class="language-cpp">void DFS2(int u,int _fa,int _top)
-{
-	top[u]=_top;
-	id[u]=++c;
-	rk[c]=u;
-	// 一个点和它的重儿子处于同一条重链，所以重儿子所在重链的顶端还是 _top
-	if(son[u])DFS2(son[u],u,_top);
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa||v==son[u])continue;
-		DFS2(v,u,v); // 新的一条重链，顶端为 v
-	}
-}
-</code></pre>
-<p>为了让大家更好理解，我在这里放两张自己做的图：</p>
-<figure data-type="image" tabindex="1"><img src="https://cdn.luogu.com.cn/upload/image_hosting/3n4fpc9q.png?x-oss-process=image/resize,m_lfit,h_600,w_600" alt="" loading="lazy"></figure>
-<p>如上图，红边和红色结点为重链。</p>
-<figure data-type="image" tabindex="2"><img src="https://cdn.luogu.com.cn/upload/image_hosting/bn8w29xt.png?x-oss-process=image/resize,m_lfit,h_600,w_600" alt="" loading="lazy"></figure>
-<p>如上图，新的每个结点的标号即 <code>id[i]</code></p>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>4</mn></mrow><annotation encoding="application/x-tex">4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span>. <strong>关于线段树</strong></p>
-<p>线段树由 <code>w[rk[i]]</code> 建立（即看 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>DFS</mtext></mrow><annotation encoding="application/x-tex">\text{DFS}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">DFS</span></span></span></span></span> 序）。</p>
-<p>其它的依题意写代码即可。</p>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>. <strong>树链剖分怎么用</strong></p>
-<p>回顾前言的那个题目，修改和查询操作原理是类似的，以查询操作为例，其实就是个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>LCA</mtext></mrow><annotation encoding="application/x-tex">\text{LCA}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord text"><span class="mord">LCA</span></span></span></span></span>，不过这里使用了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>top</mtext></mrow><annotation encoding="application/x-tex">\text{top}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">top</span></span></span></span></span> 来进行加速，因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>top</mtext></mrow><annotation encoding="application/x-tex">\text{top}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">top</span></span></span></span></span> 可以直接跳转到该重链的起始结点。需要注意的是，每次循环只能跳一次，并且让结点深的那个来跳到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>top</mtext></mrow><annotation encoding="application/x-tex">\text{top}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.19444em;"></span><span class="mord text"><span class="mord">top</span></span></span></span></span> 的位置，避免两个一起跳从而擦肩而过。最后当两个结点跳到一条链上时，还要算一下这两个点之间的路径对答案的影响。</p>
-<p>（转载于<a href="https://www.cnblogs.com/ivanovcraft/p/9019090.html">https://www.cnblogs.com/ivanovcraft/p/9019090.html</a>）</p>
-<pre><code class="language-cpp">int query(int u,int v)
-{
-	int ans=0;
-	while(top[u]!=top[v])
-	{
-		if(d[top[u]]&lt;d[top[v]])u^=v^=u^=v; // swap(u,v)
-		ans=(ans+__query(1,1,n,id[top[u]],id[u]))%P;
-		u=fa[top[u]];
-	}
-	if(id[u]&gt;id[v])u^=v^=u^=v;
-	ans=(ans+__query(1,1,n,id[u],id[v]))%P;
-	return ans;
-}
-</code></pre>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>6</mn></mrow><annotation encoding="application/x-tex">6</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span></span></span></span>. <strong>树链剖分的时间复杂度</strong></p>
-<p>树链剖分的两个性质：</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. 如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>(</mo><mi>u</mi><mo separator="true">,</mo><mi>v</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">(u,v)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">u</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span><span class="mclose">)</span></span></span></span> 是一条轻边，则 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mi>i</mi><msub><mi>z</mi><mi>v</mi></msub><mo>&lt;</mo><mfrac><mrow><mi>s</mi><mi>i</mi><msub><mi>z</mi><mi>u</mi></msub></mrow><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">siz_v&lt;\dfrac{siz_u}{2}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80952em;vertical-align:-0.15em;"></span><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.03588em;">v</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.02252em;vertical-align:-0.686em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3365200000000002em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">2</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">s</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.04398em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. 从根结点到任意结点的路所经过的重链的个数必定都小于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>log</mi><mo>⁡</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">\log n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span></span></span></span></p>
-<p>可以证明，树链剖分的复杂度为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log ^2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>7</mn></mrow><annotation encoding="application/x-tex">7</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">7</span></span></span></span>. <strong>例题</strong></p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>. <a href="https://www.luogu.com.cn/problem/P3384">【模板】重链剖分</a></p>
-<p>就是刚才讲的</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
 
-const int N=1e5;
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
 
-struct Edge
-{
-	int To;
-	int Next;
-};
+  
 
-struct Node
-{
-	int v;
-	int lt;
-};
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
-Edge e[(N&lt;&lt;1)+10];
-int head[N+10],ptr;
-int n,m,r,P,w[N+10];
-int fa[N+10],d[N+10],siz[N+10],son[N+10];
-int c,rk[N+10],top[N+10],id[N+10];
-Node t[(N&lt;&lt;2)+10];
 
-inline void addedge(int u,int v)
-{
-	ptr++;
-	e[ptr].To=v;
-	e[ptr].Next=head[u];
-	head[u]=ptr;
-}
+<link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
 
-void DFS1(int u,int _fa)
-{
-	fa[u]=_fa;
-	d[u]=d[_fa]+1;
-	siz[u]=1;
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa)continue;
-		DFS1(v,u);
-		siz[u]+=siz[v];
-		if(siz[v]&gt;siz[son[u]])
-			son[u]=v;
-	}
-}
 
-void DFS2(int u,int _fa,int _top)
-{
-	top[u]=_top;
-	id[u]=++c;
-	rk[c]=u;
-	if(son[u])DFS2(son[u],u,_top);
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa||v==son[u])continue;
-		DFS2(v,u,v);
-	}
-}
+  </head>
+  <body>
+  
+    <nav class="navbar border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="https://registerGen.github.io">registerGen&#39;s blog</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <button>
+      <label for="collapsible1">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+      </label>
+    </button>
+    <div class="collapsible-body">
+      <ul class="inline">
+        
+          <li>
+            
+              <a href="/" class="menu">
+                首页
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/archives" class="menu">
+                归档
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/tags" class="menu">
+                标签
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/post/about" class="menu">
+                关于
+              </a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-//--------------- Segment Tree
-
-#define ls(x) (x&lt;&lt;1)
-#define rs(x) (x&lt;&lt;1|1)
-
-inline void pushup(int i)
-{
-	t[i].v=(t[ls(i)].v+t[rs(i)].v)%P;
-}
-
-inline void pushdown(int i,int l,int r)
-{
-	int mid=(l+r)&gt;&gt;1;
-	t[ls(i)].lt=(t[ls(i)].lt+t[i].lt)%P;
-	t[rs(i)].lt=(t[rs(i)].lt+t[i].lt)%P;
-	t[ls(i)].v=(t[ls(i)].v+(mid-l+1)*t[i].lt)%P;
-	t[rs(i)].v=(t[rs(i)].v+(r-mid)*t[i].lt)%P;
-	t[i].lt=0;
-}
-
-void build(int i,int l,int r)
-{
-	if(l==r)
-	{
-		t[i].v=w[rk[l]]%P;
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1;
-	build(ls(i),l,mid);
-	build(rs(i),mid+1,r);
-	pushup(i);
-}
-
-void __modify(int i,int l,int r,int ml,int mr,int x)
-{
-	x%=P;
-	if(ml&lt;=l&amp;&amp;r&lt;=mr)
-	{
-		t[i].v=(t[i].v+(r-l+1)*x)%P;
-		t[i].lt=(t[i].lt+x)%P;
-		return;
-	}
-	if(t[i].lt)pushdown(i,l,r);
-	int mid=(l+r)&gt;&gt;1;
-	if(mid&gt;=ml)__modify(ls(i),l,mid,ml,mr,x);
-	if(mid&lt;mr) __modify(rs(i),mid+1,r,ml,mr,x);
-	pushup(i);
-}
-
-int __query(int i,int l,int r,int ql,int qr)
-{
-	if(ql&lt;=l&amp;&amp;r&lt;=qr)return t[i].v%P;
-	if(t[i].lt)pushdown(i,l,r);
-	int mid=(l+r)&gt;&gt;1;
-	int ans=0;
-	if(mid&gt;=ql)ans=(ans+__query(ls(i),l,mid,ql,qr))%P;
-	if(mid&lt;qr) ans=(ans+__query(rs(i),mid+1,r,ql,qr))%P;
-	return ans;
-}
-
-#undef ls
-#undef rs
-
-void modify(int u,int v,int x)
-{
-	while(top[u]!=top[v])
-	{
-		if(d[top[u]]&lt;d[top[v]])u^=v^=u^=v;
-		__modify(1,1,n,id[top[u]],id[u],x);
-		u=fa[top[u]];
-	}
-	if(id[u]&gt;id[v])u^=v^=u^=v;
-	__modify(1,1,n,id[u],id[v],x);
-}
-
-int query(int u,int v)
-{
-	int ans=0;
-	while(top[u]!=top[v])
-	{
-		if(d[top[u]]&lt;d[top[v]])u^=v^=u^=v;
-		ans=(ans+__query(1,1,n,id[top[u]],id[u]))%P;
-		u=fa[top[u]];
-	}
-	if(id[u]&gt;id[v])u^=v^=u^=v;
-	ans=(ans+__query(1,1,n,id[u],id[v]))%P;
-	return ans;
-}
-
-int main()
-{
-	scanf(&quot;%d%d%d%d&quot;,&amp;n,&amp;m,&amp;r,&amp;P);
-	for(int i=1;i&lt;=n;i++)
-		scanf(&quot;%d&quot;,w+i);
-	for(int i=1;i&lt;n;i++)
-	{
-		int u,v;
-		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-		addedge(u,v);
-		addedge(v,u);
-	}
-	DFS1(r,0);
-	DFS2(r,0,r);
-	build(1,1,n);
-	while(m--)
-	{
-		int opt;
-		scanf(&quot;%d&quot;,&amp;opt);
-		if(opt==1)
-		{
-			int u,v,x;
-			scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;x);
-			modify(u,v,x);
-		}
-		else if(opt==2)
-		{
-			int u,v;
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-			printf(&quot;%d\n&quot;,query(u,v)%P);
-		}
-		else if(opt==3)
-		{
-			int u,x;
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;x);
-			__modify(1,1,n,id[u],id[u]+siz[u]-1,x);
-		}
-		else
-		{
-			int u;
-			scanf(&quot;%d&quot;,&amp;u);
-			printf(&quot;%d\n&quot;,__query(1,1,n,id[u],id[u]+siz[u]-1)%P);
-		}
-	}
-	return 0;
-}
-</code></pre>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span>. <a href="https://www.luogu.com.cn/problem/P2146">[NOI2015]软件包管理器</a></p>
-<p><strong>注意，结点必须从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 开始编号！！</strong></p>
-<p>用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 代表一个软件现在是卸掉的</p>
-<p>用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 代表一个软件现在是装上的</p>
-<p>安装软件即把从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 路径上的所有结点变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
-<p>卸载软件即把以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 为根的子树的所有结点变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></p>
-<p>(不保证没吸氧能过，本地上 #<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 运行了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mtext>s</mtext></mrow><annotation encoding="application/x-tex">3\text{s}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord text"><span class="mord">s</span></span></span></span></span>)</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;iostream&gt;
-#include&lt;string&gt;
-#include&lt;cmath&gt;
-
-const int N=1e5;
-
-struct Edge
-{
-	int To;
-	int Next;
-};
-
-struct Node
-{
-	int v;
-	int lt;
-};
-
-Edge e[(N&lt;&lt;1)+10];
-int head[N+10],ptr;
-int n;
-int fa[N+10],d[N+10],son[N+10],siz[N+10];
-int c,top[N+10],id[N+10],rk[N+10];
-Node t[(N&lt;&lt;2)+10];
-
-inline void addedge(int u,int v)
-{
-	ptr++;
-	e[ptr].To=v;
-	e[ptr].Next=head[u];
-	head[u]=ptr;
-}
-
-void DFS1(int u,int _fa)
-{
-	fa[u]=_fa;
-	d[u]=d[_fa]+1;
-	siz[u]=1;
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa)continue;
-		DFS1(v,u);
-		siz[u]+=siz[v];
-		if(siz[v]&gt;siz[son[u]])
-			son[u]=v;
-	}
-}
-
-void DFS2(int u,int _fa,int _top)
-{
-	top[u]=_top;
-	id[u]=++c;
-	rk[c]=u;
-	if(son[u])DFS2(son[u],u,_top);
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa||v==son[u])continue;
-		DFS2(v,u,v);
-	}
-}
-
-#define ls(x) (x&lt;&lt;1)
-#define rs(x) (x&lt;&lt;1|1)
-
-inline void pushup(int i)
-{
-	t[i].v=t[ls(i)].v+t[rs(i)].v;
-}
-
-inline void pushdown(int i,int l,int r)
-{
-	int mid=(l+r)&gt;&gt;1;
-	t[ls(i)].lt=t[i].lt;
-	t[rs(i)].lt=t[i].lt;
-	t[ls(i)].v=t[i].lt*(mid-l+1);
-	t[rs(i)].v=t[i].lt*(r-mid);
-	t[i].lt=-1;
-}
-
-void build(int i,int l,int r)
-{
-	t[i].lt=-1;
-	if(l==r)return;
-	int mid=(l+r)&gt;&gt;1;
-	build(ls(i),l,mid);
-	build(rs(i),mid+1,r);
-	pushup(i);
-}
-
-void __modify(int i,int l,int r,int ml,int mr,int x)
-{
-	if(ml&lt;=l&amp;&amp;r&lt;=mr)
-	{
-		t[i].v=x*(r-l+1);
-		t[i].lt=x;
-		return;
-	}
-	if(t[i].lt!=-1)pushdown(i,l,r);
-	int mid=(l+r)&gt;&gt;1;
-	if(mid&gt;=ml)__modify(ls(i),l,mid,ml,mr,x);
-	if(mid&lt;mr) __modify(rs(i),mid+1,r,ml,mr,x);
-	pushup(i);
-}
-
-#undef ls
-#undef rs
-
-void modify(int u,int v,int x)
-{
-	while(top[u]!=top[v])
-	{
-		if(d[top[u]]&lt;d[top[v]])u^=v^=u^=v;
-		__modify(1,1,n,id[top[u]],id[u],x);
-		u=fa[top[u]];
-	}
-	if(id[u]&gt;id[v])u^=v^=u^=v;
-	__modify(1,1,n,id[u],id[v],x);
-}
-
-int main()
-{
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=2;i&lt;=n;i++)
-	{
-		int v;
-		scanf(&quot;%d&quot;,&amp;v);
-		addedge(i,++v);
-		addedge(v,i);
-	}
-	DFS1(1,0);
-	DFS2(1,0,1);
-	build(1,1,n);
-	int T;
-	scanf(&quot;%d&quot;,&amp;T);
-	while(T--)
-	{
-		std::string opt;
-		std::cin&gt;&gt;opt;
-		int t1=t[1].v;
-		if(opt==&quot;install&quot;)
-		{
-			int u;
-			scanf(&quot;%d&quot;,&amp;u);
-			modify(1,++u,1);
-			int t2=t[1].v;
-			printf(&quot;%d\n&quot;,abs(t1-t2));
-		}
-		else
-		{
-			int u;
-			scanf(&quot;%d&quot;,&amp;u);
-			u++;
-			__modify(1,1,n,id[u],id[u]+siz[u]-1,0);
-			int t2=t[1].v;
-			printf(&quot;%d\n&quot;,abs(t1-t2));
-		}
-	}
-	return 0;
-}
-</code></pre>
-<hr>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>. <a href="https://www.luogu.com.cn/problem/P4114">Qtree1</a></p>
-<p>关键是边权如何处理。</p>
-<p>可以把边权放到边连结的两个点中深度较大的那个。</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;iostream&gt;
-#include&lt;string&gt;
-
-const int N=1e5;
-
-struct Edge
-{
-	int To;
-	int Next;
-	int w;
-};
-
-struct _Edge
-{
-	int u;
-	int v;
-	int w;
-	_Edge(){}
-	_Edge(int _u,int _v,int _w):u(_u),v(_v),w(_w){}
-};
-
-struct Node
-{
-	int v;
-	int lt;
-};
-
-Edge e[(N&lt;&lt;1)+10];
-int head[N+10],ptr;
-int n;
-_Edge _e[N+10];
-int fa[N+10],siz[N+10],d[N+10],son[N+10];
-int c,id[N+10],rk[N+10],top[N+10];
-int a[N+10];
-Node t[(N&lt;&lt;2)+10];
-
-inline void addedge(int u,int v,int w)
-{
-	ptr++;
-	e[ptr].To=v;
-	e[ptr].w=w;
-	e[ptr].Next=head[u];
-	head[u]=ptr;
-}
-
-void DFS1(int u,int _fa)
-{
-	d[u]=d[_fa]+1;
-	fa[u]=_fa;
-	siz[u]=1;
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa)continue;
-		DFS1(v,u);
-		a[v]=e[i].w;
-		siz[u]+=siz[v];
-		if(siz[v]&gt;siz[son[u]])
-			son[u]=v;
-	}
-}
-
-void DFS2(int u,int _fa,int _top)
-{
-	id[u]=++c;
-	rk[c]=u;
-	top[u]=_top;
-	if(son[u])DFS2(son[u],u,_top);
-	for(int i=head[u];i;i=e[i].Next)
-	{
-		int v=e[i].To;
-		if(v==_fa||v==son[u])continue;
-		DFS2(v,u,v);
-	}
-}
-
-#define ls(x) (x&lt;&lt;1)
-#define rs(x) (x&lt;&lt;1|1)
-
-template&lt;typename T&gt;
-inline T max(const T&amp; a,const T&amp; b)
-{
-	return a&gt;b?a:b;
-}
-
-inline void pushup(int i)
-{
-	t[i].v=max(t[ls(i)].v,t[rs(i)].v);
-}
-
-void build(int i,int l,int r)
-{
-	if(l==r)
-	{
-		t[i].v=a[rk[l]];
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1;
-	build(ls(i),l,mid);
-	build(rs(i),mid+1,r);
-	pushup(i);
-}
-
-void __modify(int i,int l,int r,int m,int x)
-{
-	if(l==r)
-	{
-		t[i].v=x;
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1;
-	if(mid&gt;=m)__modify(ls(i),l,mid,m,x);
-	if(mid&lt;m) __modify(rs(i),mid+1,r,m,x);
-	pushup(i);
-}
-
-int __query(int i,int l,int r,int ql,int qr)
-{
-	if(ql&lt;=l&amp;&amp;r&lt;=qr)return t[i].v;
-	int mid=(l+r)&gt;&gt;1;
-	int ans=-1;
-	if(mid&gt;=ql)ans=max(ans,__query(ls(i),l,mid,ql,qr));
-	if(mid&lt;qr) ans=max(ans,__query(rs(i),mid+1,r,ql,qr));
-	return ans;
-}
-
-#undef ls
-#undef rs
-
-int query(int u,int v)
-{
-	int ans=-1;
-	while(top[u]!=top[v])
-	{
-		if(d[top[u]]&lt;d[top[v]])u^=v^=u^=v;
-		ans=max(ans,__query(1,1,n,id[top[u]],id[u]));
-		u=fa[top[u]];
-	}
-	if(id[u]&gt;id[v])u^=v^=u^=v;
-	ans=max(ans,__query(1,1,n,id[u]+1,id[v])); // 注意一定要 +1，否则要多算一条边
-	return ans;
-}
-
-int main()
-{
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=1;i&lt;n;i++)
-	{
-		int u,v,w;
-		scanf(&quot;%d%d%d&quot;,&amp;u,&amp;v,&amp;w);
-		addedge(u,v,w);
-		addedge(v,u,w);
-		_e[i]=_Edge(u,v,w);
-	}
-	DFS1(1,0);
-	DFS2(1,0,1);
-	build(1,1,n);
-	std::string opt;
-	while(std::cin&gt;&gt;opt&amp;&amp;opt!=&quot;DONE&quot;)
-	{
-		if(opt==&quot;CHANGE&quot;)
-		{
-			int i,x;
-			scanf(&quot;%d%d&quot;,&amp;i,&amp;x);
-			int u=_e[i].u,v=_e[i].v;
-			if(fa[v]==u)u^=v^=u^=v;
-			__modify(1,1,n,id[u],x);
-		}
-		else
-		{
-			int u,v;
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-			printf(&quot;%d\n&quot;,u==v?0:query(u,v));
-		}
-	}
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[树状数组学习笔记]]></title>
-        <id>https://registerGen.github.io/post/Fenwick-tree/</id>
-        <link href="https://registerGen.github.io/post/Fenwick-tree/">
-        </link>
-        <updated>2020-04-01T05:56:24.000Z</updated>
-        <content type="html"><![CDATA[<p>树状数组一种能在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>O</mtext><mo>(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\text{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 时间内完成区间修改，区间和询问两种操作的数据结构。</p>
+    <div id="top" class="row site">
+      <div class="sm-12 md-8 col">
+        <div class="paper">
+          <article class="article">
+            <h1>树状数组学习笔记</h1>
+            <p class="article-meta">
+              2020-04-01
+              
+                <a href="https://registerGen.github.io/tag/gwNO9dMpr/" class="badge success">
+                  学习笔记
+                </a>
+              
+            </p>
+            
+            <div class="post-content">
+              <p>树状数组一种能在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mtext>O</mtext><mo>(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\text{O}(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord text"><span class="mord">O</span></span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 时间内完成区间修改，区间和询问两种操作的数据结构。</p>
 <p>它长这样：<br>
 <img src="https://img2018.cnblogs.com/blog/1448672/201810/1448672-20181003121604644-268531484.png" alt="" loading="lazy"><br>
 图 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
@@ -1127,357 +404,156 @@ int main()
 	return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 luogu P3835 【【模板】可持久化平衡树】]]></title>
-        <id>https://registerGen.github.io/post/solution-luogu-p3835/</id>
-        <link href="https://registerGen.github.io/post/solution-luogu-p3835/">
-        </link>
-        <updated>2020-04-01T05:52:09.000Z</updated>
-        <content type="html"><![CDATA[<p>首先感谢 @wangrx 大佬帮我卡常！！</p>
-<hr>
-<p>看到题解里没有指针实现的 fhq-Treap，那我就来一发吧。</p>
-<p>可持久化 fhq-Treap 的核心是它的两个基层操作——分裂和合并。</p>
-<p>其它的操作按照不可持久的 fhq-Treap 写就行了。</p>
-<p>可持久化<strong>数据结构</strong>的核心思想是：尽可能新建更少的结点记录新版本的信息，同时保留住历史版本的结点信息。可持久化 fhq-Treap 也不例外。</p>
-<p>fhq-Treap 的可持久化：</p>
-<p>已知有:</p>
-<pre><code class="language-cpp">typedef std::pair&lt;Node*,Node*&gt; droot;
-</code></pre>
-<p>对于分裂操作:</p>
-<pre><code class="language-cpp">droot split(Node* x,int k)
-{
-	if(!x)return droot(NULL,NULL);
-	droot res;
-	if(siz(x-&gt;ls)&gt;=k)
-	{
-		res=split(x-&gt;ls,k);
-		// 我们新建一个结点，并将 x 的信息复制到它身上。
-		Node* p=new Node;
-		copy(p,x);
-		// 下面是对 p 进行 fhq-Treap 的正常操作
-		p-&gt;ls=res.second;
-		p-&gt;pushup();
-		res.second=p;
-	}
-	else
-	{
-		res=split(x-&gt;rs,k-siz(x-&gt;ls)-1);
-		// 同理
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;rs=res.first;
-		p-&gt;pushup();
-		res.first=p;
-	}
-	return res;
-}
-</code></pre>
-<p>对于合并操作：</p>
-<pre><code class="language-cpp">Node* merge(Node* x,Node* y)
-{
-	if(!x)return y;
-	if(!y)return x;
-	if(x-&gt;w&lt;y-&gt;w)
-	{
-		Node* p=new Node;
-		// 我们新建一个结点，并将 x 的信息复制到它身上。
-		copy(p,x);
-		// 下面是对 p 进行 fhq-Treap 的正常操作
-		p-&gt;rs=merge(p-&gt;rs,y);
-		p-&gt;pushup();
-		return p;
-	}
-	else
-	{
-		Node* p=new Node;
-		// 同理
-		copy(p,y);
-		p-&gt;ls=merge(x,p-&gt;ls);
-		p-&gt;pushup();
-		return p;
-	}
-}
-</code></pre>
-<p>由此可见，对于可持久化 fhq-Treap 的基层操作，每更改一个结点就要分值一个新的结点出来，<strong>否则你修改的就是历史版本上的结点！！！</strong></p>
-<hr>
-<p>核心部分就讲到这里，下面给出完整代码。</p>
-<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，常数较大。</p>
-<p>写代码时要注意一些 C++ 语言上的细节（因为用的是指针）。</p>
-<p>无注释的代码看<a href="https://www.luogu.com.cn/paste/r6mtf9k5">这里</a>。</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;cstdlib&gt;
 
-const int N=5e5;
-const int LOGN=20;
-const int INF=2147483647;
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
+          
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://registerGen.github.io/post/solution-luogu-p3835/">
+                <h3 class="post-title">
+                  题解 luogu P3835 【【模板】可持久化平衡树】
+                </h3>
+              </a>
+            </div>
+          
+        </div>
+        
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
 
-struct Node
-{
-	int v,w;
-	Node *ls,*rs;
-	int siz;
-	
-	Node(){}
-	
-	Node(int _v):v(_v),w(rand()),ls(NULL),rs(NULL),siz(1){}
-	
-	inline void pushup()
-	{
-		siz=(ls?ls-&gt;siz:0)+(rs?rs-&gt;siz:0)+1;
-	}
-};
+          
+        
+      </div>
 
-typedef std::pair&lt;Node*,Node*&gt; droot;
+      <div class="sm-12 md-4 col sidebar">
+  <div class="paper info-container">
+    <img src="https://registerGen.github.io/images/avatar.png?v=1585720816703" class="no-responsive avatar">
+    <div class="text-muted">#include"testlib.h"</div>
+    <div class="social-container">
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      最新文章
+    </div>
+    <div class="row">
+      <ul>
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/tree-chain/">树链剖分学习笔记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/Fenwick-tree/">树状数组学习笔记</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/solution-luogu-p3835/">题解 luogu P3835 【【模板】可持久化平衡树】</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/self-introduction/">自我介绍</a>
+            </li>
+          
+        
+          
+            <li>
+              <a href="https://registerGen.github.io/post/NOI-Online-2020/">NOI Online 2020 游记</a>
+            </li>
+          
+        
+      </ul>
+    </div>
+  </div>
+  <div class="paper">
+    <div class="sidebar-title">
+      标签列表
+    </div>
+    <div class="row">
+      
+        <a href="https://registerGen.github.io/tag/gwNO9dMpr/" class="badge warning">
+          学习笔记
+        </a>
+      
+        <a href="https://registerGen.github.io/tag/bwOHnomO6/" class="badge success">
+          题解
+        </a>
+      
+        <a href="https://registerGen.github.io/tag/4Yw2Fade3/" class="badge secondary">
+          游记
+        </a>
+      
+    </div>
+  </div>
+  <div class="paper">
+    Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://registerGen.github.io/atom.xml" target="_blank">RSS</a>
+  </div>
+</div>
 
-Node* root[N+10];
-int n;
 
-// 以下为卡常部分
+    </div>
 
-#define SIZ 1000000
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
-inline char gc()
-{
-	static char buf[SIZ],*p1,*p2;
-	return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,SIZ,stdin),p1==p2)?EOF:*p1++;
-}
+<script type="application/javascript">
 
-#undef SIZ
+AOS.init();
 
-inline void read(int&amp; x)
-{
-	x=0;int f=0;char c=gc();
-	while(c&lt;'0'||c&gt;'9')f|=(c=='-'),c=gc();
-	while(c&gt;='0'&amp;&amp;c&lt;='9')x=(x&lt;&lt;3)+(x&lt;&lt;1)+(c^48),c=gc();
-	if(f)x=-x;
-}
+hljs.initHighlightingOnLoad()
 
-// @wangrx 大佬教我的卡常技巧：重载 new 运算符
-// 下面的话引自 @wangrx
-// new 是系统在给你分配内存，速度肯定不敢恭维
-// 这么写相当于手动分配内存，但是 delete 就用不了了
-// 亲测有用
+</script>
 
-char pool[1&lt;&lt;30],*ptop=pool+(1&lt;&lt;30);
 
-void* operator new(size_t size)
-{
-	return ptop-=size;
-}
 
-// 以上为卡常部分
-// 以下为 fhq-Treap 部分
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
 
-inline int siz(Node* x)
-{
-	return x?x-&gt;siz:0;
-}
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
 
-inline void copy(Node*&amp; p,Node* x) // 不能直接赋值，而且要引用，否则就和没改一样
-{
-	p-&gt;v=x-&gt;v;
-	p-&gt;w=x-&gt;w;
-	p-&gt;ls=x-&gt;ls;
-	p-&gt;rs=x-&gt;rs;
-	p-&gt;siz=x-&gt;siz;
-}
+      gitalk.render('gitalk-container')
 
-droot split(Node* x,int k)
-{
-	if(!x)return droot(NULL,NULL);
-	droot res;
-	if(siz(x-&gt;ls)&gt;=k)
-	{
-		res=split(x-&gt;ls,k);
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;ls=res.second;
-		p-&gt;pushup();
-		res.second=p;
-	}
-	else
-	{
-		res=split(x-&gt;rs,k-siz(x-&gt;ls)-1);
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;rs=res.first;
-		p-&gt;pushup();
-		res.first=p;
-	}
-	return res;
-}
+    </script>
+  
 
-Node* merge(Node* x,Node* y)
-{
-	if(!x)return y;
-	if(!y)return x;
-	if(x-&gt;w&lt;y-&gt;w)
-	{
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;rs=merge(p-&gt;rs,y);
-		p-&gt;pushup();
-		return p;
-	}
-	else
-	{
-		Node* p=new Node;
-		copy(p,y);
-		p-&gt;ls=merge(x,p-&gt;ls);
-		p-&gt;pushup();
-		return p;
-	}
-}
+  
 
-int queryrk(Node*&amp; rt,int k)
-{
-	if(!rt)return 0;
-	return k&lt;=rt-&gt;v?queryrk(rt-&gt;ls,k):queryrk(rt-&gt;rs,k)+siz(rt-&gt;ls)+1;
-}
 
-int querykth(Node*&amp; rt,int k) // 要加引用，才能真正修改 rt，以下同理
-{
-	droot x=split(rt,k-1);
-	droot y=split(x.second,1);
-	Node* res=y.first;
-	rt=merge(merge(x.first,y.first),y.second);
-	return res-&gt;v;
-}
 
-void insert(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v);
-	droot x=split(rt,k);
-	Node* now=new Node(v);
-	rt=merge(merge(x.first,now),x.second);
-}
 
-void erase(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v);
-	droot x=split(rt,k);
-	droot y=split(x.second,1);
-	if(y.first-&gt;v!=v)return;
-	rt=merge(x.first,y.second);
-}
-
-int querypre(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v);
-	droot x=split(rt,k-1);
-	droot y=split(x.second,1);
-	Node* res=y.first;
-	rt=merge(merge(x.first,y.first),y.second);
-	return res-&gt;v;
-}
-
-int querysuc(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v+1);
-	droot x=split(rt,k);
-	droot y=split(x.second,1);
-	Node* res=y.first;
-	rt=merge(merge(x.first,y.first),y.second);
-	return res-&gt;v;
-}
-
-// 以上为 fhq-Treap 部分，没有什么奇奇怪怪的操作对吧
-
-int main()
-{
-#ifndef ONLINE_JUDGE
-	freopen(&quot;data.in&quot;,&quot;r&quot;,stdin);
-	freopen(&quot;data.out&quot;,&quot;w&quot;,stdout);
-#endif 
-	srand(20070414U);
-	read(n);
-	insert(root[0],INF);
-	insert(root[0],-INF);
-	for(int q=1;q&lt;=n;q++)
-	{
-		int ver,opt,x;
-		read(ver),read(opt),read(x);
-		root[q]=root[ver]; // 可持久化基本操作
-		if(opt==1)insert(root[q],x);
-		if(opt==2)erase(root[q],x);
-		if(opt==3)printf(&quot;%d\n&quot;,queryrk(root[q],x)); // 其实是 queryrk(root[q],x)+1-1，注意 +1，-1 的细节问题
-		if(opt==4)printf(&quot;%d\n&quot;,querykth(root[q],x+1)); // 注意 +1，-1 的细节问题
-		if(opt==5)printf(&quot;%d\n&quot;,querypre(root[q],x));
-		if(opt==6)printf(&quot;%d\n&quot;,querysuc(root[q],x));
-	}
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[自我介绍]]></title>
-        <id>https://registerGen.github.io/post/self-introduction/</id>
-        <link href="https://registerGen.github.io/post/self-introduction/">
-        </link>
-        <updated>2020-04-01T05:12:27.000Z</updated>
-        <content type="html"><![CDATA[<p>大家好，我是坐标 BJ 弱校的初一菜鸡 registerGen。</p>
-<p>什么都不会，只会输样例。</p>
-<p>洛谷账号：<a href="https://www.luogu.com.cn/user/242702">xcs112358</a></p>
-<p>CF 账号：<a href="https://codeforces.com/profile/xcs112358">xcs112358</a></p>
-<p>友链：（排名不分先后）</p>
-<ol>
-<li><a href="https://ac-automation27.github.io/"><img src="https://ac-automation27.github.io/images/avatar.png?v=1585718346647" alt="" loading="lazy"></a></li>
-<li><a href="https://www.henrytb.ml/"><img src="https://www.henrytb.ml/images/avatar.png" alt="" loading="lazy"></a></li>
-<li><a href="https://www.ak-ioi.cf/"><img src="https://www.ak-ioi.cf/images/avatar.png" alt="" loading="lazy"></a></li>
-</ol>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[NOI Online 2020 游记]]></title>
-        <id>https://registerGen.github.io/post/NOI-Online-2020/</id>
-        <link href="https://registerGen.github.io/post/NOI-Online-2020/">
-        </link>
-        <updated>2020-04-01T04:59:15.000Z</updated>
-        <content type="html"><![CDATA[<p>咕了好久了，补一下。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="1.2em"><mrow><mi>D</mi><mi>a</mi><mi>y</mi><mtext> </mtext><mo>×</mo><mo>×</mo></mrow></mstyle></mrow><annotation encoding="application/x-tex">\large{Day\ \times\times}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.053324em;vertical-align:-0.23332799999999998em;"></span><span class="mord sizing reset-size6 size7"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mspace"> </span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mord">×</span></span></span></span></span></p>
-<p>看到机房里许多大佬报的是 tg，我就跟着报了。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="1.2em"><mrow><mi>D</mi><mi>a</mi><mi>y</mi><mtext> </mtext><mn>0</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\large{Day\ 0}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.053324em;vertical-align:-0.23332799999999998em;"></span><span class="mord sizing reset-size6 size7"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mord">0</span></span></span></span></span></p>
-<p>肝作业 + 水群，立了个女装 flag。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="1.2em"><mrow><mi>D</mi><mi>a</mi><mi>y</mi><mtext> </mtext><mn>1</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\large{Day\ 1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.053324em;vertical-align:-0.23332799999999998em;"></span><span class="mord sizing reset-size6 size7"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mord">1</span></span></span></span></span></p>
-<p>早上吃了个饼。</p>
-<p>首先打了个线段树板子，交一发 AC。</p>
-<p>考试开始。</p>
-<p>首先看题：</p>
-<p>T1：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>60</mn></mrow><annotation encoding="application/x-tex">60</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mord">0</span></span></span></span> 分？不会正解。</p>
-<p>T2：暴力滚粗。</p>
-<p>T3：暴力滚粗。</p>
-<p>完了完了，这特么莫非就是 <strong>NOI</strong> Online？</p>
-<p>T1 玩了玩 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">n=2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 的情况，然后走人。</p>
-<p>T2 打了个暴力，走人。</p>
-<p>T3 打了个暴力，走人。</p>
-<p>此时已是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn><mo>:</mo><mn>00</mn></mrow><annotation encoding="application/x-tex">10:00</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">0</span></span></span></span>，我还是太菜了。</p>
-<p>考后估分：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>60</mn><mo>+</mo><mn>20</mn><mo>+</mo><mn>10</mn><mo>=</mo><mn>90</mn></mrow><annotation encoding="application/x-tex">60+20+10=90</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">9</span><span class="mord">0</span></span></span></span>。</p>
-<p>然后去水群，hjy 大佬也是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>60</mn><mo>+</mo><mn>20</mn><mo>+</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">60+20+10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">6</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span>，smy 神犇是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>80</mn><mo>+</mo><mn>20</mn><mo>+</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">80+20+40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">8</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span></span></span></span>，tql。</p>
-<p>下午看一下，pj 比 tg 还难？不过 T1 是个大水题。</p>
-<p>（下午忘了去测民间数据了）</p>
-<p>晚上测民间数据，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn><mo>+</mo><mn>20</mn><mo>+</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">50+20+0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，听说 smy T3 忘开 <code>long long</code> 然后 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>40</mn><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">40\rightarrow 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>？可惜可惜；hjy T3 居然有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>10</mn></mrow><annotation encoding="application/x-tex">10</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span></span></span></span> 分，我人傻常数大啊qwq。</p>
-<p>T3 能不能得分就看 CCF 的老爷机怎么样了。</p>
-<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathsize="1.2em"><mrow><mi>D</mi><mi>a</mi><mi>y</mi><mtext> 懒得算</mtext></mrow></mstyle></mrow><annotation encoding="application/x-tex">\large{Day\ \text{懒得算}}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.053324em;vertical-align:-0.23332799999999998em;"></span><span class="mord sizing reset-size6 size7"><span class="mord mathdefault" style="margin-right:0.02778em;">D</span><span class="mord mathdefault">a</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mspace"> </span><span class="mord text"><span class="mord cjk_fallback">懒得算</span></span></span></span></span></span></p>
-<p>查分。<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn><mo>+</mo><mn>40</mn><mo>+</mo><mn>10</mn><mo>=</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">50+40+10=100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span> 是 smg 啊！</p>
-<p>拿了个弱校 rk1 是 smg 啊！</p>
-<p>T2 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>40</mn></mrow><annotation encoding="application/x-tex">40</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span></span></span></span> 分是 smg 啊！CCF 什么时候这么良心啦？</p>
-<p>smy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>75</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">75+0+0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">7</span><span class="mord">5</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 是 smg 啊！T2 暴力都能写挂，<s>您是在逼我女装吗？</s></p>
-<p>cqy 爆零是 smg 啊！</p>
-<p>看了下 T2 的代码，发现我写了句：</p>
-<pre><code class="language-cpp">const int N=2000;
-</code></pre>
-<p>再一想，如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>c</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">c_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">c</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 随机，那么我的代码的复杂度就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>m</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(nm\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 的啦？</p>
-<p>我是什么时候胆子这么大，竟敢把数组开大？</p>
-<p>所以这次比赛的教训只有一句：</p>
-<blockquote>
-<p>不怕不会，怕不敢。</p>
-</blockquote>
-<p>混了个前 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>25</mn><mi mathvariant="normal">%</mi></mrow><annotation encoding="application/x-tex">25\%</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.80556em;vertical-align:-0.05556em;"></span><span class="mord">2</span><span class="mord">5</span><span class="mord">%</span></span></span></span>，算是对我这种刚学 OI 半年的坐标 BJ 弱校初一菜鸡的安慰吧。</p>
-<p><s>滚回文化课去了，A.F.O.</s></p>
-]]></content>
-    </entry>
-</feed>
+  </body>
+</html>
