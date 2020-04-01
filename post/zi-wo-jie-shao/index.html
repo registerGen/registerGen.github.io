@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" >
 
-<title>registerGen&#39;s blog</title>
+<title>自我介绍 | registerGen&#39;s blog</title>
 <meta name="description" content="#include&#34;testlib.h&#34;">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="https://registerGen.github.io/styles/main.css">
 
 
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
 
 
@@ -23,6 +29,7 @@
 
   </head>
   <body>
+  
     <nav class="navbar border fixed split-nav">
   <div class="nav-brand">
     <h3><a href="https://registerGen.github.io">registerGen&#39;s blog</a></h3>
@@ -76,61 +83,56 @@
   </div>
 </nav>
 
-
     <div id="top" class="row site">
       <div class="sm-12 md-8 col">
         <div class="paper">
+          <article class="article">
+            <h1>自我介绍</h1>
+            <p class="article-meta">
+              2020-04-01
+              
+            </p>
+            
+            <div class="post-content">
+              <p>大家好，我是坐标 BJ 弱校的初一菜鸡 registerGen。</p>
+<p>什么都不会，只会输样例。</p>
+<p>洛谷账号：<a href="https://www.luogu.com.cn/user/242702">xcs112358</a></p>
+<p>CF 账号：<a href="https://codeforces.com/profile/xcs112358">xcs112358</a></p>
+<p>友链：（排名不分先后）</p>
+<ol>
+<li><a href="https://ac-automation27.github.io/"><img src="https://ac-automation27.github.io/images/avatar.png?v=1585718346647" alt="" loading="lazy"></a></li>
+<li><a href="https://www.henrytb.ml/"><img src="https://www.henrytb.ml/images/avatar.png" alt="" loading="lazy"></a></li>
+<li><a href="https://www.ak-ioi.cf/"><img src="https://www.ak-ioi.cf/images/avatar.png" alt="" loading="lazy"></a></li>
+</ol>
+
+            </div>
+          </article>
+        </div>
+        <div class="paper" data-aos="fade-in">
           
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://registerGen.github.io/post/zi-wo-jie-shao/">自我介绍</a>
-    </h2>
-    <p class="article-meta">
-      2020-04-01
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://registerGen.github.io/post/zi-wo-jie-shao/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-  <article class="article">
-    <h2 class="article-title">
-      <a href="https://registerGen.github.io/post/noi-online-2020-you-ji/">NOI Online 2020 游记</a>
-    </h2>
-    <p class="article-meta">
-      2020-04-01
-      
-    </p>
-    <p class="text-lead">
-      
-    </p>
-    <div class="row">
-      <a href="https://registerGen.github.io/post/noi-online-2020-you-ji/" class="readmore-link">
-        <button>
-          Read More
-        </button>
-      </a>
-    </div>
-  </article>
-
-
+            <div class="next-post">
+              <div class="next">
+                下一篇
+              </div>
+              <a href="https://registerGen.github.io/post/noi-online-2020-you-ji/">
+                <h3 class="post-title">
+                  NOI Online 2020 游记
+                </h3>
+              </a>
+            </div>
+          
         </div>
         
-        <div class="row flex-edges">
-  
-  
-</div>
+          
+            <div class="paper" data-aos="fade-in">
+              <div id="gitalk-container"></div>
+            </div>
+          
 
+          
+        
       </div>
-      
+
       <div class="sm-12 md-4 col sidebar">
   <div class="paper info-container">
     <img src="https://registerGen.github.io/images/avatar.png?v=1585719254636" class="no-responsive avatar">
@@ -184,7 +186,9 @@
   </div>
 </div>
 
+
     </div>
+
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
 
 <script type="application/javascript">
@@ -194,6 +198,29 @@ AOS.init();
 hljs.initHighlightingOnLoad()
 
 </script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '',
+        clientSecret: '',
+        repo: '',
+        owner: '',
+        admin: [''],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
 
 
 
