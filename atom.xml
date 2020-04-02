@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen</title>
-    <updated>2020-04-02T01:26:06.831Z</updated>
+    <updated>2020-04-02T02:37:18.505Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -49,7 +49,7 @@ int main()
 {
 	while(1)
 	{
-        // 一定记得初始化
+		// 一定记得初始化
 		memset(s,0,sizeof(s));
 		memset(f,0,sizeof(f));
 		scanf(&quot;%s&quot;,s+1);
@@ -58,13 +58,13 @@ int main()
 		for(int len=1;len&lt;=n;len++) // 枚举长度
 			for(int i=1,j=len+1;j&lt;=n;i++,j++) // 枚举区间左右端点
 			{
-                // 转移
+				// 转移
 				if((s[i]=='('&amp;&amp;s[j]==')')||(s[i]=='['&amp;&amp;s[j]==']'))
-                    f[i][j]=std::max(f[i][j],f[i+1][j-1]+2);
+					f[i][j]=std::max(f[i][j],f[i+1][j-1]+2);
 				for(int k=i;k&lt;j;k++)
 					f[i][j]=std::max(f[i][j],f[i][k]+f[k+1][j]);
 			}
-        // 答案即为 f[1][n]
+		// 答案即为 f[1][n]
 		printf(&quot;%d\n&quot;,f[1][n]);
 	}
 	return 0;
@@ -89,8 +89,8 @@ int main()
 	memset(f,0x3f,sizeof(f));
 	for(int i=1;i&lt;=n;i++)
 		f[i][i]=1;
-    for(int i=1;i&lt;n;i++)
-        f[i][i+1]=1+(a[i]!=a[i+1]);
+	for(int i=1;i&lt;n;i++)
+		f[i][i+1]=1+(a[i]!=a[i+1]);
 	for(int len=2;len&lt;=n;len++)
 		for(int i=1,j=len+1;j&lt;=n;i++,j++)
 		{
