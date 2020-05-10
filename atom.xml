@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen</title>
-    <updated>2020-05-10T05:02:27.889Z</updated>
+    <updated>2020-05-10T05:06:22.189Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2020, registerGen</rights>
     <entry>
         <title type="html"><![CDATA[题解 CF1352F 【Binary String Reconstruction】]]></title>
-        <id>https://registerGen.github.io/post/ti-jie-cf1352f-binary-string-reconstruction/</id>
-        <link href="https://registerGen.github.io/post/ti-jie-cf1352f-binary-string-reconstruction/">
+        <id>https://registerGen.github.io/post/solution-cf1352f/</id>
+        <link href="https://registerGen.github.io/post/solution-cf1352f/">
         </link>
         <updated>2020-05-10T04:55:16.000Z</updated>
         <summary type="html"><![CDATA[<p>小清新构造题。</p>
