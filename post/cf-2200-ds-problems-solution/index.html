@@ -8,7 +8,7 @@
 <meta name="description" content="#include&#34;testlib.h&#34;">
 <meta name="theme-color" content="#000">
 <title>CF 2200 左右的 DS 题单 简要题解 | registerGen</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1589697119393">
+<link rel="shortcut icon" href="/favicon.ico?v=1589707257009">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -233,6 +233,18 @@
 <ul>
 <li><a href="#solution-2">Solution</a></li>
 <li><a href="#code-2">Code</a></li>
+</ul>
+</li>
+<li><a href="#cf1045g-ai-robots">CF1045G AI robots</a>
+<ul>
+<li><a href="#solution-3">Solution</a></li>
+<li><a href="#code-3">Code</a></li>
+</ul>
+</li>
+<li><a href="#cf165d-beard-graph">CF165D Beard Graph</a>
+<ul>
+<li><a href="#solution-4">Solution</a></li>
+<li><a href="#code-4">Code</a></li>
 </ul>
 </li>
 </ul>
@@ -530,35 +542,38 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>340<span class="pc-show">字数</span></span>
+      <span>582<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>题单地址：<a href="https://www.luogu.com.cn/training/1574">https://www.luogu.com.cn/training/1574</a></p>
+                <p><strong>在我做完这 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn></mrow><annotation encoding="application/x-tex">50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span></span></span></span> 道题之前，本文将会持续更新。</strong></p>
+<p>题单地址：<a href="https://www.luogu.com.cn/training/1574">https://www.luogu.com.cn/training/1574</a></p>
 <p><strong>注意：我的做题顺序和题单上的题的顺序可能不同。</strong></p>
 <!--more-->
 <h1 id="cf52c-circular-rmq">CF52C Circular RMQ</h1>
 <p><a href="https://www.luogu.com.cn/problem/CF52C">https://www.luogu.com.cn/problem/CF52C</a></p>
 <h2 id="solution">Solution</h2>
-<p>傻逼题。</p>
+<p>线段树傻逼题。</p>
 <p>首先强行把下标变成从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 开始。</p>
 <p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo>≤</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l\le r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83041em;vertical-align:-0.13597em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>，就是基本的线段树。</p>
 <p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mo>&gt;</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">l&gt;r</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span></span></span></span>，则在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>n</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,n]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">]</span></span></span></span> 上搞一搞，再在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mn>1</mn><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[1,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord">1</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 上搞一搞就行了。</p>
 <p>唯一有点 tricky 的地方就是判断是哪个操作（</p>
 <p>在输进去 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 个数后，我们 <code>getchar</code> 一下，如果是空格，就是修改，否则就是 RMQ。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
 <h2 id="code">Code</h2>
 <p><a href="https://paste.ubuntu.com/p/myrYTnHMyC/">https://paste.ubuntu.com/p/myrYTnHMyC/</a></p>
 <h1 id="cf413e-maze-2d">CF413E Maze 2D</h1>
 <p><a href="https://www.luogu.com.cn/problem/CF413E">https://www.luogu.com.cn/problem/CF413E</a></p>
 <p>翻译是我给的（逃</p>
 <h2 id="solution-2">Solution</h2>
+<p>线段树。</p>
 <p><a href="https://www.luogu.com.cn/problem/P4246">这题</a> 的简化版。</p>
 <p>线段树内维护四个值：每段区间左上到右上，左上到右下，左下到右上，左下到右下的最短路：</p>
 <pre><code class="language-cpp">struct Node
@@ -581,8 +596,29 @@ inline Node pushUp(CN&amp; x,CN&amp; y)
 }
 </code></pre>
 <p>查询的时候分类讨论判一判就行了。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
 <h2 id="code-2">Code</h2>
 <p><a href="https://paste.ubuntu.com/p/cNMQH4cnqy/">https://paste.ubuntu.com/p/cNMQH4cnqy/</a></p>
+<h1 id="cf1045g-ai-robots">CF1045G AI robots</h1>
+<p><a href="https://www.luogu.com.cn/problem/CF1045G">https://www.luogu.com.cn/problem/CF1045G</a></p>
+<h2 id="solution-3">Solution</h2>
+<p>CDQ 分治。</p>
+<p>首先按视野从小到大排序，这样只要右边能看见左边就可以保证互相看见。</p>
+<p>CDQ 内按智商排序，因为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 固定，所以可以用莫队，莫队内套树状数组。</p>
+<p>注意要离散化。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log^2 n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="code-3">Code</h2>
+<p><a href="https://paste.ubuntu.com/p/tQK9G6qjbG/">https://paste.ubuntu.com/p/tQK9G6qjbG/</a></p>
+<h1 id="cf165d-beard-graph">CF165D Beard Graph</h1>
+<p><a href="https://www.luogu.com.cn/problem/CF165D">https://www.luogu.com.cn/problem/CF165D</a></p>
+<h2 id="solution-4">Solution</h2>
+<p>树剖。</p>
+<p>令白边边权为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，黑边边权为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</p>
+<p>线段树维护边权和。</p>
+<p>修改就是线段树基本操作。</p>
+<p>查询时，若边权不为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，则输出 <code>-1</code>，否则就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 之间的边的条数。利用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>e</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dep</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span></span></span></span> 数组和 LCA 计算即可。</p>
+<h2 id="code-4">Code</h2>
+<p><a href="https://paste.ubuntu.com/p/Ttqy9T3g5x/">https://paste.ubuntu.com/p/Ttqy9T3g5x/</a></p>
 
               </div>
               <div class="post-footer">
