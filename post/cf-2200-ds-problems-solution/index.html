@@ -8,7 +8,7 @@
 <meta name="description" content="#include&#34;testlib.h&#34;">
 <meta name="theme-color" content="#000">
 <title>CF 2200 左右的 DS 题单 简要题解 | registerGen</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1589707257009">
+<link rel="shortcut icon" href="/favicon.ico?v=1590037407039">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
 
@@ -245,6 +245,12 @@
 <ul>
 <li><a href="#solution-4">Solution</a></li>
 <li><a href="#code-4">Code</a></li>
+</ul>
+</li>
+<li><a href="#cf474f-ant-colony">CF474F Ant colony</a>
+<ul>
+<li><a href="#solution-5">Solution</a></li>
+<li><a href="#code-5">Code</a></li>
 </ul>
 </li>
 </ul>
@@ -542,18 +548,18 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3分钟</span>
+      <span>4分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>582<span class="pc-show">字数</span></span>
+      <span>739<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p><strong>在我做完这 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn></mrow><annotation encoding="application/x-tex">50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span></span></span></span> 道题之前，本文将会持续更新。</strong></p>
+                <p><strong>在我做完这 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn></mrow><annotation encoding="application/x-tex">50</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span></span></span></span> 道题中我会的题之前，本文将会持续更新。</strong></p>
 <p>题单地址：<a href="https://www.luogu.com.cn/training/1574">https://www.luogu.com.cn/training/1574</a></p>
 <p><strong>注意：我的做题顺序和题单上的题的顺序可能不同。</strong></p>
 <!--more-->
@@ -617,8 +623,23 @@ inline Node pushUp(CN&amp; x,CN&amp; y)
 <p>线段树维护边权和。</p>
 <p>修改就是线段树基本操作。</p>
 <p>查询时，若边权不为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，则输出 <code>-1</code>，否则就是 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>v</mi></mrow><annotation encoding="application/x-tex">v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 之间的边的条数。利用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>e</mi><mi>p</mi></mrow><annotation encoding="application/x-tex">dep</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">e</span><span class="mord mathdefault">p</span></span></span></span> 数组和 LCA 计算即可。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log^2n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
 <h2 id="code-4">Code</h2>
 <p><a href="https://paste.ubuntu.com/p/Ttqy9T3g5x/">https://paste.ubuntu.com/p/Ttqy9T3g5x/</a></p>
+<h1 id="cf474f-ant-colony">CF474F Ant colony</h1>
+<p><a href="https://www.luogu.com.cn/problem/CF474F">https://www.luogu.com.cn/problem/CF474F</a></p>
+<h2 id="solution-5">Solution</h2>
+<p>稍微分析一下可知，本题就是求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 中不等于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle scriptlevel="0" displaystyle="true"><munderover><mi>gcd</mi><mo>⁡</mo><mrow><mi>i</mi><mo>=</mo><mi>l</mi></mrow><mi>r</mi></munderover><msub><mi>a</mi><mi>i</mi></msub></mstyle></mrow><annotation encoding="application/x-tex">\displaystyle \gcd_{i=l}^r a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:2.24238em;vertical-align:-0.946548em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.2958319999999999em;"><span style="top:-1.8534520000000003em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mathdefault mtight" style="margin-right:0.01968em;">l</span></span></span></span><span style="top:-2.7em;"><span class="pstrut" style="height:2.7em;"></span><span><span class="mop"><span style="margin-right:0.01389em;">g</span>cd</span></span></span><span style="top:-3.59444em;margin-left:0em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">r</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.946548em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的数的个数。</p>
+<p>区间 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>gcd</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\gcd</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mop"><span style="margin-right:0.01389em;">g</span>cd</span></span></span></span> 和区间个数都有可加性，直接线段树就好了。</p>
+<pre><code class="language-cpp">inline void pushUp(int i)
+{
+	t[i].gcd=gcd(t[ls(i)].gcd,t[rs(i)].gcd);
+	t[i].sum=(t[i].gcd==t[ls(i)].gcd?t[ls(i)].sum:0)+(t[i].gcd==t[rs(i)].gcd?t[rs(i)].sum:0);
+}
+</code></pre>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log^2 n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="code-5">Code</h2>
+<p><a href="https://paste.ubuntu.com/p/YvtrMxcXZw/">https://paste.ubuntu.com/p/YvtrMxcXZw/</a></p>
 
               </div>
               <div class="post-footer">
