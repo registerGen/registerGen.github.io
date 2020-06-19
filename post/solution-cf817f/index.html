@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="解析几何大法吼！">
 <meta name="theme-color" content="#000">
-<title>题解 luogu P3835 【【模板】可持久化平衡树】 | registerGen</title>
+<title>题解 CF817F 【MEX Queries】 | registerGen</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1592530611368">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="题解 luogu P3835 【【模板】可持久化平衡树】" />
-    <meta name="keywords" content="DS,题解,学习笔记" />
+    <meta name="description" content="题解 CF817F 【MEX Queries】" />
+    <meta name="keywords" content="DS,题解" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -141,7 +141,8 @@
       <div class="sidebar-body gemini" id="sidebar_body">
         
           
-            
+            <div class="post-side-meta" id="post_side_meta">
+              
 <div class="sidebar-wrapper box-shadow-wrapper bg-color">
   <div class="sidebar-item">
     <img class="site-author-image right-motion" src="/images/avatar.png"/>
@@ -206,6 +207,187 @@
 
 
 </div>
+            </div>
+            <div class="post-toc sidebar-body-active" id="post_toc" style="opacity: 1;">
+              <div class="toc-box right-motion">
+  <div class="toc-wrapper auto-number auto" id="toc_wrapper">
+    <ul class="markdownIt-TOC">
+<li><a href="#solution">Solution</a></li>
+<li><a href="#code">Code</a></li>
+</ul>
+
+  </div>
+</div>
+
+<script>
+
+let lastTop = 0, lList = [], hList = [], postBody, lastIndex = -1; 
+let active = 'active-show', activeClass = 'active-current';
+let tocWrapper = document.querySelector('#toc_wrapper');
+let tocContent = tocWrapper.children[0];
+let autoNumber = tocWrapper&&tocWrapper.classList.contains('auto-number');
+
+function addTocNumber(elem, deep) {
+  if (!elem) {
+    return;
+  }
+  let prop = elem.__proto__;
+
+  if (prop === HTMLUListElement.prototype) {
+    for (let i = 0; i < elem.children.length; i++) {
+      addTocNumber(elem.children[i], deep + (i + 1) + '.');
+    }
+  } else if (prop === HTMLLIElement.prototype) {
+    // 保存li元素
+    if (elem.children[0].__proto__ === HTMLAnchorElement.prototype) {
+      lList.push(elem);
+    }
+    for (let i = 0; i < elem.children.length; i++) {
+      let cur = elem.children[i];
+      if (cur.__proto__ === HTMLAnchorElement.prototype) {
+        if (autoNumber) {
+          cur.text =  deep + ' ' + cur.text;
+        }
+      } else if (cur.__proto__ === HTMLUListElement.prototype) {
+        addTocNumber(cur, deep);
+      }
+    }
+  }
+}
+
+function removeParentActiveClass() {
+  let parents = tocContent.querySelectorAll('.'+active)
+  parents.forEach(function(elem) {
+    elem.classList.remove(active);
+  });
+}
+
+function addActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.add(activeClass);
+  }
+}
+
+function removeActiveClass(index) {
+  if (index >= 0 && index < hList.length) {
+    lList[index].classList.remove(activeClass);
+  }
+}
+
+function addActiveLiElemment(elem, parent) {
+  if (!elem || elem === parent) {
+    return;
+  } else {
+    if (elem.__proto__ === HTMLLIElement.prototype) {
+      elem.classList.add(active);
+    }
+    addActiveLiElemment(elem.parentElement, parent);
+  }
+}
+
+function showToc() {
+  if (tocWrapper) {
+    postBody = document.querySelector('#post_body');
+    for (let i = 0; i < postBody.children.length; i++) {
+      if (postBody.children[i].__proto__ === HTMLHeadingElement.prototype) {
+        hList.push(postBody.children[i]);
+      }
+    }
+    if (tocWrapper.classList.contains('compress')) {
+        tocContent.classList.add('closed');
+    } else if (tocWrapper.classList.contains('no_compress')){
+      tocContent.classList.add('expanded');
+    } else {
+      if (hList.length > 10) {
+        active = 'active-hidden'
+        tocContent.classList.add('closed');
+      } else {
+        tocContent.classList.add('expanded');
+      }
+    }
+  }
+}
+
+(function() {
+  // 处理不是从#一级标题开始目录
+  if (tocContent.children.length === 1 && tocContent.children[0].__proto__ === HTMLLIElement.prototype) {
+    let con = tocContent.children[0].children[0];
+    tocContent.innerHTML = con.innerHTML;
+  }
+  addTocNumber(tocContent, '');
+})();
+
+document.addEventListener('scroll', function(e) {
+  if (lList.length <= 0) {
+    return;
+  }
+  let scrollTop = document.scrollingElement.scrollTop + 10;
+  let dir;
+
+  if (lastTop - scrollTop > 0) {
+    dir = 'up';
+  } else {
+    dir = 'down';
+  }
+
+  lastTop = scrollTop;
+  if (scrollTop <= 0) {
+    if (lastIndex >= 0 && lastIndex < hList.length) {
+      lList[lastIndex].classList.remove(activeClass);
+    }
+    return;
+  }
+
+  let current = 0, hasFind = false;
+  for (let i = 0; i < hList.length; i++) {
+    if (hList[i].offsetTop > scrollTop) {
+      current = i;
+      hasFind = true;
+      break;
+    }
+  }
+  if (!hasFind && scrollTop > lList[lList.length - 1].offsetTop) {
+    current = hList.length - 1;
+  } else {
+    current--;
+  }
+  if (dir === 'down') {
+    if (current > lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex) 
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  } else {
+    if (current < lastIndex) {
+      addActiveClass(current);
+      removeActiveClass(lastIndex);
+      lastIndex = current;
+      removeParentActiveClass();
+      lList[current] && addActiveLiElemment(lList[current].parentElement,tocContent);
+    }
+  }
+});
+
+window.addEventListener('load', function() {
+  showToc();
+  document.querySelector('#sidebar').style='display: block;';
+  tocWrapper.classList.add('toc-active');
+  setTimeout(function() {
+    if ("createEvent" in document) {
+      let evt = document.createEvent("HTMLEvents");
+      evt.initEvent("scroll", false, true);
+      document.dispatchEvent(evt);
+    }
+    else {
+      document.fireEvent("scroll");
+    }
+  }, 500)
+})
+
+</script>
+            </div>
           
         
       </div>
@@ -293,8 +475,8 @@
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://registerGen.github.io/post/solution-luogu-p3835/">
-      题解 luogu P3835 【【模板】可持久化平衡树】
+    <a class="post-title-link" href="https://registerGen.github.io/post/solution-cf817f/">
+      题解 CF817F 【MEX Queries】
     </a>
   </h1>
   <div class="post-meta">
@@ -302,7 +484,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-04-01</span>
+      <span>2020-06-17</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -319,12 +501,6 @@
           
             <a href="https://registerGen.github.io/tag/bwOHnomO6/">
               <span>题解</span>
-            </a>、
-          
-        
-          
-            <a href="https://registerGen.github.io/tag/gwNO9dMpr/">
-              <span>学习笔记</span>
             </a>
           
         
@@ -333,289 +509,127 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>8分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>1386<span class="pc-show">字数</span></span>
+      <span>512<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>首先感谢 @wangrx 大佬帮我卡常！！</p>
-<hr>
-<p>看到题解里没有指针实现的 fhq-Treap，那我就来一发吧。</p>
-<p>可持久化 fhq-Treap 的核心是它的两个基层操作——分裂和合并。</p>
-<p>其它的操作按照不可持久的 fhq-Treap 写就行了。</p>
-<p>可持久化<strong>数据结构</strong>的核心思想是：尽可能新建更少的结点记录新版本的信息，同时保留住历史版本的结点信息。可持久化 fhq-Treap 也不例外。</p>
-<p>fhq-Treap 的可持久化：</p>
-<p>已知有:</p>
-<pre><code class="language-cpp">typedef std::pair&lt;Node*,Node*&gt; droot;
-</code></pre>
-<p>对于分裂操作:</p>
-<pre><code class="language-cpp">droot split(Node* x,int k)
+                <h1 id="solution">Solution</h1>
+<p>首先要想到的是这个题的一个等价题面：</p>
+<blockquote>
+<p>维护一个长为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">10^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>01</mn></mrow><annotation encoding="application/x-tex">01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">1</span></span></span></span> 序列，初始值均为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</p>
+<p>三种操作：</p>
+<ol>
+<li>把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</li>
+<li>把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</li>
+<li>把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 中的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 变 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 变 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</li>
+</ol>
+<p>每次操作后输出序列的最左边的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 的位置。</p>
+<p>操作数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">\le 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>。</p>
+</blockquote>
+<p>然后看到区间赋值，就想到可爱的 Chtholly 啦！</p>
+<p>操作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，操作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 不用多说。</p>
+<p>神奇的是，区间反转（操作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>）和查询的代码真的可以这样暴力：</p>
+<pre><code class="language-cpp">inline void reverse(ll l,ll r)
 {
-	if(!x)return droot(NULL,NULL);
-	droot res;
-	if(siz(x-&gt;ls)&gt;=k)
-	{
-		res=split(x-&gt;ls,k);
-		// 我们新建一个结点，并将 x 的信息复制到它身上。
-		Node* p=new Node;
-		copy(p,x);
-		// 下面是对 p 进行 fhq-Treap 的正常操作
-		p-&gt;ls=res.second;
-		p-&gt;pushup();
-		res.second=p;
-	}
-	else
-	{
-		res=split(x-&gt;rs,k-siz(x-&gt;ls)-1);
-		// 同理
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;rs=res.first;
-		p-&gt;pushup();
-		res.first=p;
-	}
-	return res;
+	Iter itr=split(r+1),itl=split(l);
+	for(Iter it=itl;it!=itr;it++)
+		it-&gt;v^=1;
+}
+
+inline ll query()
+{
+	for(Iter it=s.begin();it!=s.end();it++)
+		if(it-&gt;v==0)return it-&gt;l;
+	return -1;
 }
 </code></pre>
-<p>对于合并操作：</p>
-<pre><code class="language-cpp">Node* merge(Node* x,Node* y)
-{
-	if(!x)return y;
-	if(!y)return x;
-	if(x-&gt;w&lt;y-&gt;w)
-	{
-		Node* p=new Node;
-		// 我们新建一个结点，并将 x 的信息复制到它身上。
-		copy(p,x);
-		// 下面是对 p 进行 fhq-Treap 的正常操作
-		p-&gt;rs=merge(p-&gt;rs,y);
-		p-&gt;pushup();
-		return p;
-	}
-	else
-	{
-		Node* p=new Node;
-		// 同理
-		copy(p,y);
-		p-&gt;ls=merge(x,p-&gt;ls);
-		p-&gt;pushup();
-		return p;
-	}
-}
-</code></pre>
-<p>由此可见，对于可持久化 fhq-Treap 的基层操作，每更改一个结点就要分值一个新的结点出来，<strong>否则你修改的就是历史版本上的结点！！！</strong></p>
-<hr>
-<p>核心部分就讲到这里，下面给出完整代码。</p>
-<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，空间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，常数较大。</p>
-<p>写代码时要注意一些 C++ 语言上的细节（因为用的是指针）。</p>
-<p>无注释的代码看<a href="https://www.luogu.com.cn/paste/r6mtf9k5">这里</a>。</p>
+<p>注意开 <code>long long</code>。</p>
+<h1 id="code">Code</h1>
 <pre><code class="language-cpp">#include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
-#include&lt;cstdlib&gt;
+#include&lt;set&gt;
 
-const int N=5e5;
-const int LOGN=20;
-const int INF=2147483647;
+#define Iter std::set&lt;Node&gt;::iterator
+
+typedef long long ll;
+
+const int N=1e5;
 
 struct Node
 {
-	int v,w;
-	Node *ls,*rs;
-	int siz;
-	
-	Node(){}
-	
-	Node(int _v):v(_v),w(rand()),ls(NULL),rs(NULL),siz(1){}
-	
-	inline void pushup()
-	{
-		siz=(ls?ls-&gt;siz:0)+(rs?rs-&gt;siz:0)+1;
-	}
+	ll l,r;
+	mutable bool v;
+
+	Node(ll _l,ll _r=0,bool _v=0):l(_l),r(_r),v(_v){}
 };
 
-typedef std::pair&lt;Node*,Node*&gt; droot;
-
-Node* root[N+10];
-int n;
-
-// 以下为卡常部分
-
-#define SIZ 1000000
-
-inline char gc()
+inline bool operator&lt;(const Node&amp; x,const Node&amp; y)
 {
-	static char buf[SIZ],*p1,*p2;
-	return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,SIZ,stdin),p1==p2)?EOF:*p1++;
+	return x.l&lt;y.l;
 }
 
-#undef SIZ
+std::set&lt;Node&gt; s;
+ll n;
 
-inline void read(int&amp; x)
+inline void read(ll&amp; x)
 {
-	x=0;int f=0;char c=gc();
-	while(c&lt;'0'||c&gt;'9')f|=(c=='-'),c=gc();
-	while(c&gt;='0'&amp;&amp;c&lt;='9')x=(x&lt;&lt;3)+(x&lt;&lt;1)+(c^48),c=gc();
-	if(f)x=-x;
+	x=0;char c=getchar();
+	while(c&lt;'0'||c&gt;'9')c=getchar();
+	while(c&gt;='0'&amp;&amp;c&lt;='9')x=x*10+c-48,c=getchar();
 }
 
-// @wangrx 大佬教我的卡常技巧：重载 new 运算符
-// 下面的话引自 @wangrx
-// new 是系统在给你分配内存，速度肯定不敢恭维
-// 这么写相当于手动分配内存，但是 delete 就用不了了
-// 亲测有用
-
-char pool[1&lt;&lt;30],*ptop=pool+(1&lt;&lt;30);
-
-void* operator new(size_t size)
+inline Iter split(ll pos)
 {
-	return ptop-=size;
+	Iter it=s.lower_bound(Node(pos));
+	if(it-&gt;l==pos&amp;&amp;it!=s.end())return it;
+	it--;
+	ll l=it-&gt;l,r=it-&gt;r;
+	bool v=it-&gt;v;
+	s.erase(it);
+	s.insert(Node(l,pos-1,v));
+	return s.insert(Node(pos,r,v)).first;
 }
 
-// 以上为卡常部分
-// 以下为 fhq-Treap 部分
-
-inline int siz(Node* x)
+inline void assign(ll l,ll r,bool v)
 {
-	return x?x-&gt;siz:0;
+	Iter itr=split(r+1),itl=split(l);
+	s.erase(itl,itr);
+	s.insert(Node(l,r,v));
 }
 
-inline void copy(Node*&amp; p,Node* x) // 不能直接赋值，而且要引用，否则就和没改一样
+inline void reverse(ll l,ll r)
 {
-	p-&gt;v=x-&gt;v;
-	p-&gt;w=x-&gt;w;
-	p-&gt;ls=x-&gt;ls;
-	p-&gt;rs=x-&gt;rs;
-	p-&gt;siz=x-&gt;siz;
+	Iter itr=split(r+1),itl=split(l);
+	for(Iter it=itl;it!=itr;it++)
+		it-&gt;v^=1;
 }
 
-droot split(Node* x,int k)
+inline ll query()
 {
-	if(!x)return droot(NULL,NULL);
-	droot res;
-	if(siz(x-&gt;ls)&gt;=k)
-	{
-		res=split(x-&gt;ls,k);
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;ls=res.second;
-		p-&gt;pushup();
-		res.second=p;
-	}
-	else
-	{
-		res=split(x-&gt;rs,k-siz(x-&gt;ls)-1);
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;rs=res.first;
-		p-&gt;pushup();
-		res.first=p;
-	}
-	return res;
+	for(Iter it=s.begin();it!=s.end();it++)
+		if(it-&gt;v==0)return it-&gt;l;
+	return -1;
 }
-
-Node* merge(Node* x,Node* y)
-{
-	if(!x)return y;
-	if(!y)return x;
-	if(x-&gt;w&lt;y-&gt;w)
-	{
-		Node* p=new Node;
-		copy(p,x);
-		p-&gt;rs=merge(p-&gt;rs,y);
-		p-&gt;pushup();
-		return p;
-	}
-	else
-	{
-		Node* p=new Node;
-		copy(p,y);
-		p-&gt;ls=merge(x,p-&gt;ls);
-		p-&gt;pushup();
-		return p;
-	}
-}
-
-int queryrk(Node*&amp; rt,int k)
-{
-	if(!rt)return 0;
-	return k&lt;=rt-&gt;v?queryrk(rt-&gt;ls,k):queryrk(rt-&gt;rs,k)+siz(rt-&gt;ls)+1;
-}
-
-int querykth(Node*&amp; rt,int k) // 要加引用，才能真正修改 rt，以下同理
-{
-	droot x=split(rt,k-1);
-	droot y=split(x.second,1);
-	Node* res=y.first;
-	rt=merge(merge(x.first,y.first),y.second);
-	return res-&gt;v;
-}
-
-void insert(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v);
-	droot x=split(rt,k);
-	Node* now=new Node(v);
-	rt=merge(merge(x.first,now),x.second);
-}
-
-void erase(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v);
-	droot x=split(rt,k);
-	droot y=split(x.second,1);
-	if(y.first-&gt;v!=v)return;
-	rt=merge(x.first,y.second);
-}
-
-int querypre(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v);
-	droot x=split(rt,k-1);
-	droot y=split(x.second,1);
-	Node* res=y.first;
-	rt=merge(merge(x.first,y.first),y.second);
-	return res-&gt;v;
-}
-
-int querysuc(Node*&amp; rt,int v)
-{
-	int k=queryrk(rt,v+1);
-	droot x=split(rt,k);
-	droot y=split(x.second,1);
-	Node* res=y.first;
-	rt=merge(merge(x.first,y.first),y.second);
-	return res-&gt;v;
-}
-
-// 以上为 fhq-Treap 部分，没有什么奇奇怪怪的操作对吧
 
 int main()
 {
-#ifndef ONLINE_JUDGE
-	freopen(&quot;data.in&quot;,&quot;r&quot;,stdin);
-	freopen(&quot;data.out&quot;,&quot;w&quot;,stdout);
-#endif 
-	srand(20070414U);
 	read(n);
-	insert(root[0],INF);
-	insert(root[0],-INF);
-	for(int q=1;q&lt;=n;q++)
+	s.insert(Node(1,1e18,0)); // 先插入一个 1e18 的区间
+	while(n--)
 	{
-		int ver,opt,x;
-		read(ver),read(opt),read(x);
-		root[q]=root[ver]; // 可持久化基本操作
-		if(opt==1)insert(root[q],x);
-		if(opt==2)erase(root[q],x);
-		if(opt==3)printf(&quot;%d\n&quot;,queryrk(root[q],x)); // 其实是 queryrk(root[q],x)+1-1，注意 +1，-1 的细节问题
-		if(opt==4)printf(&quot;%d\n&quot;,querykth(root[q],x+1)); // 注意 +1，-1 的细节问题
-		if(opt==5)printf(&quot;%d\n&quot;,querypre(root[q],x));
-		if(opt==6)printf(&quot;%d\n&quot;,querysuc(root[q],x));
+		ll opt,l,r;
+		read(opt),read(l),read(r);
+		if(opt==1)assign(l,r,1);
+		if(opt==2)assign(l,r,0);
+		if(opt==3)reverse(l,r);
+		printf(&quot;%lld\n&quot;,query());
 	}
 	return 0;
 }
@@ -630,7 +644,7 @@ int main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://registerGen.github.io/post/solution-luogu-p3835/" title="题解 luogu P3835 【【模板】可持久化平衡树】">题解 luogu P3835 【【模板】可持久化平衡树】</a>
+      <a href="https://registerGen.github.io/post/solution-cf817f/" title="题解 CF817F 【MEX Queries】">题解 CF817F 【MEX Queries】</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -643,21 +657,15 @@ int main()
     
       <a href="https://registerGen.github.io/tag/bwOHnomO6/"># 题解</a>
     
-      <a href="https://registerGen.github.io/tag/gwNO9dMpr/"># 学习笔记</a>
-    
   </div>
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="树状数组学习笔记" href="https://registerGen.github.io/post/Fenwick-tree/">树状数组学习笔记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="树状数组学习笔记" href="https://registerGen.github.io/post/Fenwick-tree/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="NOI Online 2020 游记" href="https://registerGen.github.io/post/NOI-Online-2020/">NOI Online 2020 游记</a>
-        <a class="nav-mobile-next" title="NOI Online 2020 游记" href="https://registerGen.github.io/post/NOI-Online-2020/">下一篇</a>
+        <a class="nav-pc-next" title="CF 2200 左右的 DS 题单 简要题解" href="https://registerGen.github.io/post/cf-2200-ds-problems-solution/">CF 2200 左右的 DS 题单 简要题解</a>
+        <a class="nav-mobile-next" title="CF 2200 左右的 DS 题单 简要题解" href="https://registerGen.github.io/post/cf-2200-ds-problems-solution/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
