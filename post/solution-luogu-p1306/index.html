@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="解析几何大法吼！">
 <meta name="theme-color" content="#000">
-<title>题解 luogu P3950 【部落冲突】 | registerGen</title>
+<title>题解 luogu P1306 【斐波那契公约数】 | registerGen</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593757601632">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="题解 luogu P3950 【部落冲突】" />
-    <meta name="keywords" content="LCT,DS,题解" />
+    <meta name="description" content="题解 luogu P1306 【斐波那契公约数】" />
+    <meta name="keywords" content="数学/数论,题解" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -475,8 +475,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://registerGen.github.io/post/solution-luogu-p3950/">
-      题解 luogu P3950 【部落冲突】
+    <a class="post-title-link" href="https://registerGen.github.io/post/solution-luogu-p1306/">
+      题解 luogu P1306 【斐波那契公约数】
     </a>
   </h1>
   <div class="post-meta">
@@ -484,7 +484,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-06-21</span>
+      <span>2020-07-03</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -493,14 +493,8 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://registerGen.github.io/tag/f2X4yPa-8/">
-              <span>LCT</span>
-            </a>、
-          
-        
-          
-            <a href="https://registerGen.github.io/tag/uN23CaFuw/">
-              <span>DS</span>
+            <a href="https://registerGen.github.io/tag/cVYTtyxiX/">
+              <span>数学/数论</span>
             </a>、
           
         
@@ -515,171 +509,78 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3分钟</span>
+      <span>2分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>452<span class="pc-show">字数</span></span>
+      <span>215<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>LCT。</p>
-<!--more-->
-<h1 id="solution">Solution</h1>
-<p>板子题。</p>
-<p>战争开始就 <code>cut</code>，结束就 <code>link</code>，询问就判连通性。</p>
+                <h1 id="solution">Solution</h1>
+<p>（默认进来的人会矩阵快速幂）</p>
+<p>斐波那契有一个性质：</p>
+<p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>gcd</mi><mo>⁡</mo><mo>(</mo><msub><mi>f</mi><mi>n</mi></msub><mo separator="true">,</mo><msub><mi>f</mi><mi>m</mi></msub><mo>)</mo><mo>=</mo><msub><mi>f</mi><mrow><mi>gcd</mi><mo>⁡</mo><mo>(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo>)</mo></mrow></msub></mrow><annotation encoding="application/x-tex">\gcd(f_n,f_m)=f_{\gcd(n,m)}
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mop"><span style="margin-right:0.01389em;">g</span>cd</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">m</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.04964em;vertical-align:-0.3551999999999999em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.34480000000000005em;"><span style="top:-2.5198em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mop mtight"><span style="margin-right:0.01389em;">g</span>cd</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">n</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight">m</span><span class="mclose mtight">)</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.3551999999999999em;"><span></span></span></span></span></span></span></span></span></span></span></p>
+<p>做完了？做完了。</p>
 <h1 id="code">Code</h1>
 <pre><code class="language-cpp">#include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
+#include&lt;cstring&gt;
 
-const int N=3e5;
+typedef long long ll;
 
-struct Node
+const ll P=1e8;
+
+struct matrix
 {
-	int ch[2],fa;
-	int rev;
+	ll a[5][5];
+	
+	matrix()
+	{
+		memset(a,0,sizeof(a));
+	}
+	
+	ll* operator[](int i)
+	{
+		return a[i];
+	}
 };
 
-Node t[N+10];
-int n,m,U[N+10],V[N+10],tot;
-
-#define fa(x) (t[x].fa)
-#define ls(x) (t[x].ch[0])
-#define rs(x) (t[x].ch[1])
-
-inline bool isRoot(int x)
+matrix operator*(matrix&amp; a,matrix&amp; b)
 {
-	return ls(fa(x))!=x&amp;&amp;rs(fa(x))!=x;
+	matrix res;
+	for(int i=1;i&lt;=2;i++)
+		for(int j=1;j&lt;=2;j++)
+			for(int k=1;k&lt;=2;k++)
+				res[i][j]=(res[i][j]+(a[i][k]*b[k][j])%P)%P;
+	return res;
 }
 
-inline int son(int x)
+matrix qpow(matrix&amp; x,ll y)
 {
-	return rs(fa(x))==x;
-}
-
-inline void pushR(int x)
-{
-	std::swap(ls(x),rs(x));
-	t[x].rev^=1;
-}
-
-inline void pushDown(int i)
-{
-	if(t[i].rev)
+	matrix res;
+	res[0][0]=res[1][1]=1LL;
+	while(y)
 	{
-		if(ls(i))pushR(ls(i));
-		if(rs(i))pushR(rs(i));
-		t[i].rev=0;
+		if(y&amp;1)res=res*x;
+		x=x*x;
+		y&gt;&gt;=1;
 	}
-}
-
-void clearTag(int i)
-{
-	if(isRoot(i))
-	{
-		pushDown(i);
-		return;
-	}
-	clearTag(fa(i));
-	pushDown(i);
-}
-
-inline void rotate(int x)
-{
-	int y=fa(x),z=fa(y),b=son(x),c=son(y),a=t[x].ch[!b];
-	if(!isRoot(y))t[z].ch[c]=x;fa(x)=z;
-	if(a)fa(a)=y;t[y].ch[b]=a;
-	t[x].ch[!b]=y,fa(y)=x;
-}
-
-inline void splay(int x)
-{
-	clearTag(x);
-	while(!isRoot(x))
-	{
-		int y=fa(x);
-		if(isRoot(y))rotate(x);
-		else if(son(x)==son(y))rotate(y),rotate(x);
-		else rotate(x),rotate(x);
-	}
-}
-
-inline void access(int x)
-{
-	int y=0,tmp=x;
-	while(x)
-	{
-		splay(x);
-		rs(x)=y;
-		y=x;
-		x=fa(x);
-	}
-	splay(tmp);
-}
-
-inline void makeRoot(int x)
-{
-	access(x);
-	pushR(x);
-}
-
-inline int findRoot(int x)
-{
-	access(x);
-	while(ls(x))pushDown(x),x=ls(x);
-	splay(x);
-	return x;
-}
-
-inline void link(int u,int v)
-{
-	makeRoot(u);
-	if(findRoot(v)!=u)fa(u)=v;
-}
-
-inline void cut(int u,int v)
-{
-	makeRoot(u);
-	if(findRoot(v)==u&amp;&amp;fa(v)==u&amp;&amp;!ls(v))
-		fa(v)=rs(u)=0;
+	return res;
 }
 
 int main()
 {
-	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-	for(int i=1;i&lt;n;i++)
-	{
-		int u,v;
-		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-		link(u,v);
-	}
-	while(m--)
-	{
-		char opt[5];
-		int u,v;
-		scanf(&quot;%s&quot;,opt);
-		if(opt[0]=='Q')
-		{
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-			if(findRoot(u)==findRoot(v))puts(&quot;Yes&quot;);
-			else puts(&quot;No&quot;);
-		}
-		if(opt[0]=='C')
-		{
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-			U[++tot]=u;
-			V[tot]=v;
-			cut(u,v);
-		}
-		if(opt[0]=='U')
-		{
-			scanf(&quot;%d&quot;,&amp;u);
-			link(U[u],V[u]);
-		}
-	}
+	ll n,m;
+	scanf(&quot;%lld%lld&quot;,&amp;n,&amp;m);
+	n=std::__gcd(n,m);
+	matrix base;
+	base[1][1]=base[1][2]=base[2][1]=1LL;
+	printf(&quot;%lld\n&quot;,qpow(base,n-1)[1][1]);
 	return 0;
 }
 </code></pre>
@@ -693,7 +594,7 @@ int main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://registerGen.github.io/post/solution-luogu-p3950/" title="题解 luogu P3950 【部落冲突】">题解 luogu P3950 【部落冲突】</a>
+      <a href="https://registerGen.github.io/post/solution-luogu-p1306/" title="题解 luogu P1306 【斐波那契公约数】">题解 luogu P1306 【斐波那契公约数】</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -702,9 +603,7 @@ int main()
   </ul>
   <div class="tags">
     
-      <a href="https://registerGen.github.io/tag/f2X4yPa-8/"># LCT</a>
-    
-      <a href="https://registerGen.github.io/tag/uN23CaFuw/"># DS</a>
+      <a href="https://registerGen.github.io/tag/cVYTtyxiX/"># 数学/数论</a>
     
       <a href="https://registerGen.github.io/tag/bwOHnomO6/"># 题解</a>
     
@@ -712,15 +611,11 @@ int main()
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="题解 UVA10214 【树林里的树 Trees in a Wood.】" href="https://registerGen.github.io/post/solution-uva10214/">题解 UVA10214 【树林里的树 Trees in a Wood.】</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="题解 UVA10214 【树林里的树 Trees in a Wood.】" href="https://registerGen.github.io/post/solution-uva10214/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 luogu P2161 【[SHOI2009]会场预约】" href="https://registerGen.github.io/post/solution-luogu-p2161/">题解 luogu P2161 【[SHOI2009]会场预约】</a>
-        <a class="nav-mobile-next" title="题解 luogu P2161 【[SHOI2009]会场预约】" href="https://registerGen.github.io/post/solution-luogu-p2161/">下一篇</a>
+        <a class="nav-pc-next" title="两道 CF 上的与 Fibonacci 有关的 DS 题" href="https://registerGen.github.io/post/two-ds-problem-with-fibonacci/">两道 CF 上的与 Fibonacci 有关的 DS 题</a>
+        <a class="nav-mobile-next" title="两道 CF 上的与 Fibonacci 有关的 DS 题" href="https://registerGen.github.io/post/two-ds-problem-with-fibonacci/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
