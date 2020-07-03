@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen</title>
-    <updated>2020-07-03T06:27:08.215Z</updated>
+    <updated>2020-07-03T07:49:56.657Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -10,6 +10,113 @@
     <logo>https://registerGen.github.io/images/avatar.png</logo>
     <icon>https://registerGen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, registerGen</rights>
+    <entry>
+        <title type="html"><![CDATA[题解 CF323C 【Two permutations】]]></title>
+        <id>https://registerGen.github.io/post/solution-cf323c/</id>
+        <link href="https://registerGen.github.io/post/solution-cf323c/">
+        </link>
+        <updated>2020-07-03T07:37:54.000Z</updated>
+        <summary type="html"><![CDATA[<p>半年没敲主席树却一遍写对，祭之。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>半年没敲主席树却一遍写对，祭之。</p>
+<!--more-->
+<h1 id="solution">Solution</h1>
+<p>同时出现的数的 <strong>个数</strong>？主席树！</p>
+<p>转化是比较巧妙的。</p>
+<p>可以记录 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中出现的位置，用主席树维护这个数组。</p>
+<p>那么询问就是求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>l</mi><mn>2</mn></msub><mo>∼</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_2\sim r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 内有多少个数的值在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msub><mi>l</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>r</mi><mn>1</mn></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">[l_1,r_1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> 之间。</p>
+<p><s>强制在线真鬼畜。</s> 注意 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">lstans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span> 在询问后一定要加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。。。</p>
+<h1 id="code">Code</h1>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+
+const int N=1e6;
+
+struct Node
+{
+	int v,ls,rs;
+};
+
+Node t[N&lt;&lt;5];
+int a[N+10],b[N+10],rt[N+10],cnt;
+int n,m,lstans;
+
+#define SIZ 1000000
+
+inline char gc()
+{
+#ifndef ONLINE_JUDGE
+	return char(getchar());
+#else
+	static char buf[SIZ],*p1=buf,*p2=buf;
+	return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,SIZ,stdin),p1==p2)?EOF:*p1++;
+#endif
+}
+
+#undef SIZ
+
+inline int read()
+{
+	int x=0,f=0;char c=gc();
+	while(c&lt;'0'||c&gt;'9')f|=c=='-',c=gc();
+	while(c&gt;='0'&amp;&amp;c&lt;='9')x=x*10+c-48,c=gc();
+	return f?-x:x;
+}
+
+inline int f(int x)
+{
+	return (x-1+lstans)%n+1;
+}
+
+#define ls(x) (t[x].ls)
+#define rs(x) (t[x].rs)
+
+void modify(int&amp; i,int j,int l,int r,int pos)
+{
+	i=++cnt;
+	ls(i)=ls(j),rs(i)=rs(j),t[i].v=t[j].v+1;
+	if(l==r)return;
+	int mid=(l+r)&gt;&gt;1;
+	if(pos&lt;=mid)modify(ls(i),ls(j),l,mid,pos);
+	else modify(rs(i),rs(j),mid+1,r,pos);
+}
+
+int query(int i,int l,int r,int ql,int qr)
+{
+	if(ql&lt;=l&amp;&amp;r&lt;=qr)return t[i].v;
+	int mid=(l+r)&gt;&gt;1;
+	int res=0;
+	if(ql&lt;=mid)res+=query(ls(i),l,mid,ql,qr);
+	if(qr&gt;mid) res+=query(rs(i),mid+1,r,ql,qr);
+	return res;
+}
+
+#undef ls
+#undef rs
+
+int main()
+{
+	n=read();
+	for(int i=1;i&lt;=n;i++)
+		b[read()]=i;
+	for(int i=1;i&lt;=n;i++)
+		a[i]=b[read()];
+	for(int i=1;i&lt;=n;i++)
+		modify(rt[i],rt[i-1],1,n,a[i]);
+	m=read();
+	while(m--)
+	{
+		int l1=f(read()),r1=f(read()),l2=f(read()),r2=f(read());
+		if(l1&gt;r1)std::swap(l1,r1);
+		if(l2&gt;r2)std::swap(l2,r2);
+		printf(&quot;%d\n&quot;,lstans=query(rt[r2],1,n,l1,r1)-query(rt[l2-1],1,n,l1,r1));
+		lstans++;
+	}
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 luogu P1306 【斐波那契公约数】]]></title>
         <id>https://registerGen.github.io/post/solution-luogu-p1306/</id>
@@ -1100,132 +1207,6 @@ int main()
 			printf(&quot;%d\n&quot;,ans);
 		}
 		else printf(&quot;%d\n&quot;,int(s.size()));
-	}
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 CF817F 【MEX Queries】]]></title>
-        <id>https://registerGen.github.io/post/solution-cf817f/</id>
-        <link href="https://registerGen.github.io/post/solution-cf817f/">
-        </link>
-        <updated>2020-06-17T10:58:36.000Z</updated>
-        <summary type="html"><![CDATA[<p>Chtholly Tree。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>Chtholly Tree。</p>
-<!--more-->
-<h1 id="solution">Solution</h1>
-<p>首先要想到的是这个题的一个等价题面：</p>
-<blockquote>
-<p>维护一个长为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><msup><mn>0</mn><mn>18</mn></msup></mrow><annotation encoding="application/x-tex">10^{18}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">1</span><span class="mord mtight">8</span></span></span></span></span></span></span></span></span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>01</mn></mrow><annotation encoding="application/x-tex">01</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mord">1</span></span></span></span> 序列，初始值均为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</p>
-<p>三种操作：</p>
-<ol>
-<li>把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。</li>
-<li>把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 变成 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</li>
-<li>把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 中的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 变 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 变 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</li>
-</ol>
-<p>每次操作后输出序列的最左边的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 的位置。</p>
-<p>操作数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≤</mo><mn>1</mn><msup><mn>0</mn><mn>5</mn></msup></mrow><annotation encoding="application/x-tex">\le 10^5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord"><span class="mord">0</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">5</span></span></span></span></span></span></span></span></span></span></span>。</p>
-</blockquote>
-<p>然后看到区间赋值，就想到可爱的 Chtholly 啦！</p>
-<p>操作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，操作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 不用多说。</p>
-<p>神奇的是，区间反转（操作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>）和查询的代码真的可以这样暴力：</p>
-<pre><code class="language-cpp">inline void reverse(ll l,ll r)
-{
-	Iter itr=split(r+1),itl=split(l);
-	for(Iter it=itl;it!=itr;it++)
-		it-&gt;v^=1;
-}
-
-inline ll query()
-{
-	for(Iter it=s.begin();it!=s.end();it++)
-		if(it-&gt;v==0)return it-&gt;l;
-	return -1;
-}
-</code></pre>
-<p>注意开 <code>long long</code>。</p>
-<h1 id="code">Code</h1>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;set&gt;
-
-#define Iter std::set&lt;Node&gt;::iterator
-
-typedef long long ll;
-
-const int N=1e5;
-
-struct Node
-{
-	ll l,r;
-	mutable bool v;
-
-	Node(ll _l,ll _r=0,bool _v=0):l(_l),r(_r),v(_v){}
-};
-
-inline bool operator&lt;(const Node&amp; x,const Node&amp; y)
-{
-	return x.l&lt;y.l;
-}
-
-std::set&lt;Node&gt; s;
-ll n;
-
-inline void read(ll&amp; x)
-{
-	x=0;char c=getchar();
-	while(c&lt;'0'||c&gt;'9')c=getchar();
-	while(c&gt;='0'&amp;&amp;c&lt;='9')x=x*10+c-48,c=getchar();
-}
-
-inline Iter split(ll pos)
-{
-	Iter it=s.lower_bound(Node(pos));
-	if(it-&gt;l==pos&amp;&amp;it!=s.end())return it;
-	it--;
-	ll l=it-&gt;l,r=it-&gt;r;
-	bool v=it-&gt;v;
-	s.erase(it);
-	s.insert(Node(l,pos-1,v));
-	return s.insert(Node(pos,r,v)).first;
-}
-
-inline void assign(ll l,ll r,bool v)
-{
-	Iter itr=split(r+1),itl=split(l);
-	s.erase(itl,itr);
-	s.insert(Node(l,r,v));
-}
-
-inline void reverse(ll l,ll r)
-{
-	Iter itr=split(r+1),itl=split(l);
-	for(Iter it=itl;it!=itr;it++)
-		it-&gt;v^=1;
-}
-
-inline ll query()
-{
-	for(Iter it=s.begin();it!=s.end();it++)
-		if(it-&gt;v==0)return it-&gt;l;
-	return -1;
-}
-
-int main()
-{
-	read(n);
-	s.insert(Node(1,1e18,0)); // 先插入一个 1e18 的区间
-	while(n--)
-	{
-		ll opt,l,r;
-		read(opt),read(l),read(r);
-		if(opt==1)assign(l,r,1);
-		if(opt==2)assign(l,r,0);
-		if(opt==3)reverse(l,r);
-		printf(&quot;%lld\n&quot;,query());
 	}
 	return 0;
 }

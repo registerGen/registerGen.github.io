@@ -7,7 +7,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="解析几何大法吼！">
 <meta name="theme-color" content="#000">
-<title>题解 luogu P2161 【[SHOI2009]会场预约】 | registerGen</title>
+<title>题解 CF323C 【Two permutations】 | registerGen</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1593762562030">
 <link rel="stylesheet" href="/styles/main.css">
 <link rel="stylesheet" href="/media/css/gemini.css">
@@ -27,8 +27,8 @@
 
 
 
-    <meta name="description" content="题解 luogu P2161 【[SHOI2009]会场预约】" />
-    <meta name="keywords" content="STL,DS,题解" />
+    <meta name="description" content="题解 CF323C 【Two permutations】" />
+    <meta name="keywords" content="主席树,DS,题解" />
   </head>
   <body>
     <div class="head-top-line"></div>
@@ -475,8 +475,8 @@ window.addEventListener('load', function() {
             <div class="section bg-color post post-page">
               <header class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://registerGen.github.io/post/solution-luogu-p2161/">
-      题解 luogu P2161 【[SHOI2009]会场预约】
+    <a class="post-title-link" href="https://registerGen.github.io/post/solution-cf323c/">
+      题解 CF323C 【Two permutations】
     </a>
   </h1>
   <div class="post-meta">
@@ -484,7 +484,7 @@ window.addEventListener('load', function() {
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span>发布于</span>
-      <span>2020-06-20</span>
+      <span>2020-07-03</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -493,8 +493,8 @@ window.addEventListener('load', function() {
         <span class="pc-show">分类于</span>
         
           
-            <a href="https://registerGen.github.io/tag/RoNyUK2F2/">
-              <span>STL</span>
+            <a href="https://registerGen.github.io/tag/wxvf0YHTo/">
+              <span>主席树</span>
             </a>、
           
         
@@ -515,84 +515,110 @@ window.addEventListener('load', function() {
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>2分钟</span>
+      <span>3分钟</span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>368<span class="pc-show">字数</span></span>
+      <span>482<span class="pc-show">字数</span></span>
     </span>
     
   </div>
 </header>
               <div class="post-body next-md-body" id="post_body">
-                <p>STL 大法吼！</p>
+                <p>半年没敲主席树却一遍写对，祭之。</p>
 <!--more-->
 <h1 id="solution">Solution</h1>
-<p>这题一看就是平衡树，但是我不想写平衡树，怎么办？</p>
-<p>我们把每段区间用一个 <code>struct Node</code> 封装起来。</p>
-<p>然后考虑如何重载 <code>&lt;</code>。</p>
-<p>众所周知 <code>std::set</code> 可以去重，于是我们想办法让相交的线段变成一个线段。</p>
-<p>这么干：</p>
-<pre><code class="language-cpp">struct Node
-{
-	int l,r;
-
-	Node(int _l=0,int _r=0):l(_l),r(_r){}
-};
-
-inline bool operator&lt;(Node x,Node y)
-{
-	return x.r&lt;y.l;
-};
-</code></pre>
-<p>对于两个 <code>Node</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo separator="true">,</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x,y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>，如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&lt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&lt;y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&lt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>，则 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 完全在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 左边，如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>&gt;</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x&gt;y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span>，则 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 完全在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 的右边，那么当 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi><mo>=</mo><mi>y</mi></mrow><annotation encoding="application/x-tex">x=y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 时，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 和 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>y</mi></mrow><annotation encoding="application/x-tex">y</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span></span></span></span> 就相交了。</p>
-<p>操作 <code>A</code> 就是一个一个地 <code>find(Node(l,r))</code>，并一个一个地删掉，最后插入 <code>Node(l,r)</code>。</p>
-<p>操作 <code>B</code> 就是输出 <code>std::set</code> 的大小了。</p>
+<p>同时出现的数的 <strong>个数</strong>？主席树！</p>
+<p>转化是比较巧妙的。</p>
+<p>可以记录 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中出现的位置，用主席树维护这个数组。</p>
+<p>那么询问就是求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>l</mi><mn>2</mn></msub><mo>∼</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_2\sim r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 内有多少个数的值在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msub><mi>l</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>r</mi><mn>1</mn></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">[l_1,r_1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> 之间。</p>
+<p><s>强制在线真鬼畜。</s> 注意 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">lstans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span> 在询问后一定要加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。。。</p>
 <h1 id="code">Code</h1>
-<p>超级短。用我这种码风写代码，长度还不到 1K 呢。</p>
 <pre><code class="language-cpp">#include&lt;cstdio&gt;
 #include&lt;algorithm&gt;
-#include&lt;set&gt;
+
+const int N=1e6;
 
 struct Node
 {
-	int l,r;
-
-	Node(int _l=0,int _r=0):l(_l),r(_r){}
+	int v,ls,rs;
 };
 
-inline bool operator&lt;(Node x,Node y)
+Node t[N&lt;&lt;5];
+int a[N+10],b[N+10],rt[N+10],cnt;
+int n,m,lstans;
+
+#define SIZ 1000000
+
+inline char gc()
 {
-	return x.r&lt;y.l;
-};
+#ifndef ONLINE_JUDGE
+	return char(getchar());
+#else
+	static char buf[SIZ],*p1=buf,*p2=buf;
+	return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,SIZ,stdin),p1==p2)?EOF:*p1++;
+#endif
+}
 
-std::set&lt;Node&gt; s;
+#undef SIZ
+
+inline int read()
+{
+	int x=0,f=0;char c=gc();
+	while(c&lt;'0'||c&gt;'9')f|=c=='-',c=gc();
+	while(c&gt;='0'&amp;&amp;c&lt;='9')x=x*10+c-48,c=gc();
+	return f?-x:x;
+}
+
+inline int f(int x)
+{
+	return (x-1+lstans)%n+1;
+}
+
+#define ls(x) (t[x].ls)
+#define rs(x) (t[x].rs)
+
+void modify(int&amp; i,int j,int l,int r,int pos)
+{
+	i=++cnt;
+	ls(i)=ls(j),rs(i)=rs(j),t[i].v=t[j].v+1;
+	if(l==r)return;
+	int mid=(l+r)&gt;&gt;1;
+	if(pos&lt;=mid)modify(ls(i),ls(j),l,mid,pos);
+	else modify(rs(i),rs(j),mid+1,r,pos);
+}
+
+int query(int i,int l,int r,int ql,int qr)
+{
+	if(ql&lt;=l&amp;&amp;r&lt;=qr)return t[i].v;
+	int mid=(l+r)&gt;&gt;1;
+	int res=0;
+	if(ql&lt;=mid)res+=query(ls(i),l,mid,ql,qr);
+	if(qr&gt;mid) res+=query(rs(i),mid+1,r,ql,qr);
+	return res;
+}
+
+#undef ls
+#undef rs
 
 int main()
 {
-	int n;
-	scanf(&quot;%d&quot;,&amp;n);
-	while(n--)
+	n=read();
+	for(int i=1;i&lt;=n;i++)
+		b[read()]=i;
+	for(int i=1;i&lt;=n;i++)
+		a[i]=b[read()];
+	for(int i=1;i&lt;=n;i++)
+		modify(rt[i],rt[i-1],1,n,a[i]);
+	m=read();
+	while(m--)
 	{
-		char opt[5];
-		int l,r;
-		scanf(&quot;%s&quot;,opt);
-		if(opt[0]=='A')
-		{
-			scanf(&quot;%d%d&quot;,&amp;l,&amp;r);
-			Node tmp=Node(l,r);
-			std::set&lt;Node&gt;::iterator it=s.find(tmp);
-			int ans=0;
-			while(it!=s.end())
-			{
-				ans++,s.erase(it);
-				it=s.find(tmp);
-			}
-			s.insert(tmp);
-			printf(&quot;%d\n&quot;,ans);
-		}
-		else printf(&quot;%d\n&quot;,int(s.size()));
+		int l1=f(read()),r1=f(read()),l2=f(read()),r2=f(read());
+		if(l1&gt;r1)std::swap(l1,r1);
+		if(l2&gt;r2)std::swap(l2,r2);
+		printf(&quot;%d\n&quot;,lstans=query(rt[r2],1,n,l1,r1)-query(rt[l2-1],1,n,l1,r1));
+		lstans++;
 	}
 	return 0;
 }
@@ -607,7 +633,7 @@ int main()
     </li>
     <li class="post-copyright-link">
       <strong>本文链接：</strong>
-      <a href="https://registerGen.github.io/post/solution-luogu-p2161/" title="题解 luogu P2161 【[SHOI2009]会场预约】">题解 luogu P2161 【[SHOI2009]会场预约】</a>
+      <a href="https://registerGen.github.io/post/solution-cf323c/" title="题解 CF323C 【Two permutations】">题解 CF323C 【Two permutations】</a>
     </li>
     <li class="post-copyright-license">
       <strong>版权声明： </strong>
@@ -616,7 +642,7 @@ int main()
   </ul>
   <div class="tags">
     
-      <a href="https://registerGen.github.io/tag/RoNyUK2F2/"># STL</a>
+      <a href="https://registerGen.github.io/tag/wxvf0YHTo/"># 主席树</a>
     
       <a href="https://registerGen.github.io/tag/uN23CaFuw/"># DS</a>
     
@@ -626,15 +652,11 @@ int main()
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="题解 luogu P3950 【部落冲突】" href="https://registerGen.github.io/post/solution-luogu-p3950/">题解 luogu P3950 【部落冲突】</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="题解 luogu P3950 【部落冲突】" href="https://registerGen.github.io/post/solution-luogu-p3950/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 CF817F 【MEX Queries】" href="https://registerGen.github.io/post/solution-cf817f/">题解 CF817F 【MEX Queries】</a>
-        <a class="nav-mobile-next" title="题解 CF817F 【MEX Queries】" href="https://registerGen.github.io/post/solution-cf817f/">下一篇</a>
+        <a class="nav-pc-next" title="题解 luogu P1306 【斐波那契公约数】" href="https://registerGen.github.io/post/solution-luogu-p1306/">题解 luogu P1306 【斐波那契公约数】</a>
+        <a class="nav-mobile-next" title="题解 luogu P1306 【斐波那契公约数】" href="https://registerGen.github.io/post/solution-luogu-p1306/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
