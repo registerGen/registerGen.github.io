@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen</title>
-    <updated>2020-07-07T09:29:07.209Z</updated>
+    <updated>2020-07-08T00:45:37.031Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -10,6 +10,51 @@
     <logo>https://registerGen.github.io/images/avatar.png</logo>
     <icon>https://registerGen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, registerGen</rights>
+    <entry>
+        <title type="html"><![CDATA[题解 luogu P3605 【[USACO17JAN]Promotion Counting P】]]></title>
+        <id>https://registerGen.github.io/post/solution-luogu-p3605/</id>
+        <link href="https://registerGen.github.io/post/solution-luogu-p3605/">
+        </link>
+        <updated>2020-07-07T23:50:19.000Z</updated>
+        <summary type="html"><![CDATA[<p>学到了一个 trick：如果问题是在树上，<strong>允许离线</strong>，让你统计 <strong>子树</strong> 的某种满足 <strong>可减性</strong> 的东西时，可以这样做：</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>学到了一个 trick：如果问题是在树上，<strong>允许离线</strong>，让你统计 <strong>子树</strong> 的某种满足 <strong>可减性</strong> 的东西时，可以这样做：</p>
+<!--more-->
+<h1 id="solution">Solution</h1>
+<p>对整棵树进行 DFS，在开始遍历节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 时记录一个答案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">cnt_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，在遍历完 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的子树时记录一个答案 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">cnt_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。那么 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的子树的答案为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>2</mn></msub><mo>−</mo><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">cnt_2-cnt_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<p>手动模拟一下 DFS 的过程，你会发现，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">cnt_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 比 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">cnt_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 刚好多出了 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的子树的答案。</p>
+<p>对于本题，首先肯定要离散化，然后用 BIT 维护比 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>p</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">p_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 大的数的数量。</p>
+<p>然后用上面的 trick 即可。</p>
+<h1 id="code">Code</h1>
+<p>第一次压行，纪念一下。</p>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+const int N=1e5;
+struct Edge{int to,nxt;}e[N+10];int head[N+10],tote;
+int n,a[N+10],b[N+10],c[N+10],ans[N+10];
+inline void addEdge(int u,int v){e[++tote].to=v,e[tote].nxt=head[u];head[u]=tote;}
+inline int lowbit(int x){return x&amp;(-x);}
+inline void modify(int i,int x){for(;i&lt;=n;i+=lowbit(i))c[i]+=x;}
+inline int query(int i){int res=0;for(;i;i-=lowbit(i))res+=c[i];return res;}
+void DFS(int u){
+	ans[u]=-(query(n)-query(a[u]));
+	for(int i=head[u];i;i=e[i].nxt)DFS(e[i].to);
+	ans[u]+=(query(n)-query(a[u]));
+	modify(a[u],1);
+}
+int main(){
+	scanf(&quot;%d&quot;,&amp;n);
+	for(int i=1;i&lt;=n;i++)scanf(&quot;%d&quot;,a+i),b[i]=a[i];
+	std::sort(b+1,b+n+1);
+	for(int i=1;i&lt;=n;i++)a[i]=std::lower_bound(b+1,b+n+1,a[i])-b;
+	for(int u,i=2;i&lt;=n;i++)scanf(&quot;%d&quot;,&amp;u),addEdge(u,i);
+	DFS(1);
+	for(int i=1;i&lt;=n;i++)printf(&quot;%d\n&quot;,ans[i]);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[7 月水题选做]]></title>
         <id>https://registerGen.github.io/post/problems-in-july/</id>
@@ -143,6 +188,8 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p><a href="https://www.luogu.com.cn/problem/CF61E"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mtext mathvariant="sans-serif">CF61E</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\textsf{CF61E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:green;"><span class="mord textsf" style="color:green;">CF61E</span></span></span></span></span></a></p>
 <p>开两个 BIT，一个维护比 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 小的数的个数（记作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">cnt_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>），一个维护比 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 大的数的个数（记作 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">cnt_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>）。</p>
 <p>根据乘法原理，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 对答案的奉献为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>1</mn></msub><mo>×</mo><mi>c</mi><mi>n</mi><msub><mi>t</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">cnt_1\times cnt_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">×</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。</p>
+<p><a href="https://www.luogu.com.cn/problem/P3605"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mtext mathvariant="sans-serif">P3605</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\textsf{P3605}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:red;"><span class="mord textsf" style="color:red;">P3605</span></span></span></span></span></a></p>
+<p><a href="/post/solution-luogu-p3605">题解</a></p>
 ]]></content>
     </entry>
     <entry>
@@ -1173,173 +1220,6 @@ int main()
 		ans=ans*4LL+4LL;
 		tot=1LL*(n*2+1)*(m*2+1)-1;
 		printf(&quot;%.7lf\n&quot;,1.0*ans/tot);
-	}
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 luogu P3950 【部落冲突】]]></title>
-        <id>https://registerGen.github.io/post/solution-luogu-p3950/</id>
-        <link href="https://registerGen.github.io/post/solution-luogu-p3950/">
-        </link>
-        <updated>2020-06-21T04:46:53.000Z</updated>
-        <summary type="html"><![CDATA[<p>LCT。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>LCT。</p>
-<!--more-->
-<h1 id="solution">Solution</h1>
-<p>板子题。</p>
-<p>战争开始就 <code>cut</code>，结束就 <code>link</code>，询问就判连通性。</p>
-<h1 id="code">Code</h1>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-
-const int N=3e5;
-
-struct Node
-{
-	int ch[2],fa;
-	int rev;
-};
-
-Node t[N+10];
-int n,m,U[N+10],V[N+10],tot;
-
-#define fa(x) (t[x].fa)
-#define ls(x) (t[x].ch[0])
-#define rs(x) (t[x].ch[1])
-
-inline bool isRoot(int x)
-{
-	return ls(fa(x))!=x&amp;&amp;rs(fa(x))!=x;
-}
-
-inline int son(int x)
-{
-	return rs(fa(x))==x;
-}
-
-inline void pushR(int x)
-{
-	std::swap(ls(x),rs(x));
-	t[x].rev^=1;
-}
-
-inline void pushDown(int i)
-{
-	if(t[i].rev)
-	{
-		if(ls(i))pushR(ls(i));
-		if(rs(i))pushR(rs(i));
-		t[i].rev=0;
-	}
-}
-
-void clearTag(int i)
-{
-	if(isRoot(i))
-	{
-		pushDown(i);
-		return;
-	}
-	clearTag(fa(i));
-	pushDown(i);
-}
-
-inline void rotate(int x)
-{
-	int y=fa(x),z=fa(y),b=son(x),c=son(y),a=t[x].ch[!b];
-	if(!isRoot(y))t[z].ch[c]=x;fa(x)=z;
-	if(a)fa(a)=y;t[y].ch[b]=a;
-	t[x].ch[!b]=y,fa(y)=x;
-}
-
-inline void splay(int x)
-{
-	clearTag(x);
-	while(!isRoot(x))
-	{
-		int y=fa(x);
-		if(isRoot(y))rotate(x);
-		else if(son(x)==son(y))rotate(y),rotate(x);
-		else rotate(x),rotate(x);
-	}
-}
-
-inline void access(int x)
-{
-	int y=0,tmp=x;
-	while(x)
-	{
-		splay(x);
-		rs(x)=y;
-		y=x;
-		x=fa(x);
-	}
-	splay(tmp);
-}
-
-inline void makeRoot(int x)
-{
-	access(x);
-	pushR(x);
-}
-
-inline int findRoot(int x)
-{
-	access(x);
-	while(ls(x))pushDown(x),x=ls(x);
-	splay(x);
-	return x;
-}
-
-inline void link(int u,int v)
-{
-	makeRoot(u);
-	if(findRoot(v)!=u)fa(u)=v;
-}
-
-inline void cut(int u,int v)
-{
-	makeRoot(u);
-	if(findRoot(v)==u&amp;&amp;fa(v)==u&amp;&amp;!ls(v))
-		fa(v)=rs(u)=0;
-}
-
-int main()
-{
-	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
-	for(int i=1;i&lt;n;i++)
-	{
-		int u,v;
-		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-		link(u,v);
-	}
-	while(m--)
-	{
-		char opt[5];
-		int u,v;
-		scanf(&quot;%s&quot;,opt);
-		if(opt[0]=='Q')
-		{
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-			if(findRoot(u)==findRoot(v))puts(&quot;Yes&quot;);
-			else puts(&quot;No&quot;);
-		}
-		if(opt[0]=='C')
-		{
-			scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
-			U[++tot]=u;
-			V[tot]=v;
-			cut(u,v);
-		}
-		if(opt[0]=='U')
-		{
-			scanf(&quot;%d&quot;,&amp;u);
-			link(U[u],V[u]);
-		}
 	}
 	return 0;
 }
