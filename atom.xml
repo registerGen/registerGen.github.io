@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen</title>
-    <updated>2020-07-15T15:10:09.322Z</updated>
+    <updated>2020-07-15T15:18:17.945Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -389,7 +389,7 @@ f_{i-1}+|a_i-a_{i-1}|&amp;(a_i&gt;a_{i-1}\land a_{i-1}&gt;a_{i-2})\lor (a_i&lt;a
 <p><a href="https://www.luogu.com.cn/problem/CF339D"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mtext mathvariant="sans-serif">CF339D</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\textsf{CF339D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:green;"><span class="mord textsf" style="color:green;">CF339D</span></span></span></span></span></a></p>
 <p>线段树记录区间答案和节点的深度（由上往下第一层为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>，第二层为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">n-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，以此类推）。</p>
 <p>若节点深度为奇数，则这个节点的值应为左右儿子的值或起来，否则就是左右儿子异或起来。</p>
-<p>然后就是一个简单的单点查询了。</p>
+<p>然后就是一个简单的单点修改了。</p>
 ]]></content>
     </entry>
     <entry>
