@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-07-19T09:16:43.027Z</updated>
+    <updated>2020-07-19T15:26:15.696Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -612,6 +612,9 @@ c_i&amp;j=1\\
 <p><a href="https://www.luogu.com.cn/blog/_post/225013">题解（by Flandre_495）</a></p>
 <p><a href="https://www.luogu.com.cn/problem/CF515E"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mtext mathvariant="sans-serif">CF515E</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\textsf{CF515E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:green;"><span class="mord textsf" style="color:green;">CF515E</span></span></span></span></span></a></p>
 <p>断环为链，然后就是道傻逼题了。</p>
+<p><a href="https://www.luogu.com.cn/problem/CF1385E"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mtext mathvariant="sans-serif">CF1385E</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\textsf{CF1385E}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:red;"><span class="mord textsf" style="color:red;">CF1385E</span></span></span></span></span></a></p>
+<p>这题是让你构造 DAG。自然想到拓扑序，然后就是一波神奇的操作。</p>
+<p><a href="https://www.luogu.com.cn/blog/_post/251497">题解（by Sapphire6575737973）</a></p>
 ]]></content>
     </entry>
     <entry>
