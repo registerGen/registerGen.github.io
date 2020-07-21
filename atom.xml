@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-07-21T03:37:52.627Z</updated>
+    <updated>2020-07-21T04:58:26.785Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -640,6 +640,8 @@ c_i&amp;j=1\\
 s-235,486,-235,486c-2.7,4.7,-9,7,-19,7c-6,0,-10,-1,-12,-3s-194,-422,-194,-422
 s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.23972em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，开了 O2 跑得飞快。</p>
 <p>不知道为什么我写的值域分块会 T。。。</p>
+<p><a href="https://www.luogu.com.cn/problem/P4867"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mtext mathvariant="sans-serif">P4867</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\textsf{P4867}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:green;"><span class="mord textsf" style="color:green;">P4867</span></span></span></span></span></a></p>
+<p>上一题的双倍经验，但特别卡空间，建议开 O3，不要开 O2。</p>
 ]]></content>
     </entry>
     <entry>
