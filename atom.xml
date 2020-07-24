@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-07-23T15:04:03.983Z</updated>
+    <updated>2020-07-24T02:42:59.558Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -668,6 +668,10 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>算是经典题了。</p>
 <p>难点是想到 <code>pushUp</code> <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal O(\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 化。</p>
 <p><a href="https://www.luogu.com.cn/blog/_post/80217">题解（by Nemlit）</a></p>
+<h1 id="0724">07/24</h1>
+<p><a href="https://www.luogu.com.cn/problem/CF911D"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mtext mathvariant="sans-serif">CF911D</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\textsf{CF911D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:green;"><span class="mord textsf" style="color:green;">CF911D</span></span></span></span></span></a></p>
+<p>区间翻转后逆序对数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span> 区间数对个数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo></mrow><annotation encoding="application/x-tex">-</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66666em;vertical-align:-0.08333em;"></span><span class="mord">−</span></span></span></span> 翻转前逆序对个数。</p>
+<p>然后就完了。</p>
 ]]></content>
     </entry>
     <entry>
@@ -1282,7 +1286,14 @@ int main()
 <p>听说我们学校的初二学生被拉回去补 whk 了。。。</p>
 <p>原因是他们 9 月份有地理生物中考。。。</p>
 <p>哈哈哈，身为初一学生的我嘛。。。</p>
-<p>哈哈哈哈哈哈哈哈哈哈！！！！</p>
+<p>哈哈哈哈哈哈哈哈哈哈！！！</p>
+<h1 id="wc-day-9">WC Day -9</h1>
+<p>彩排，好像没干啥。</p>
+<p>不过又收集到 dmy 语录（感谢 henrytb 的截图）：</p>
+<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2020/07/24/v2ZHiszLRoVnjOU.jpg" alt="" loading="lazy"></figure>
+<h1 id="wc-day-8">WC Day -8</h1>
+<p>MO 课上完了。</p>
+<p>飞往极乐世界.jpg</p>
 ]]></content>
     </entry>
     <entry>
