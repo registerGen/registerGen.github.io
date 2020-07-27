@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-07-27T15:27:30.382Z</updated>
+    <updated>2020-07-27T15:28:40.919Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -1068,6 +1068,7 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p>如果没有环，那么可以。</p>
 <p>如果有环，但环边边权的乘积为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，那么可以。</p>
 <p>否则不行。</p>
+<p>DFS 瞎搜，完事。</p>
 ]]></content>
     </entry>
     <entry>
