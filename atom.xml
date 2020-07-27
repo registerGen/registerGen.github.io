@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-07-27T05:47:56.851Z</updated>
+    <updated>2020-07-27T10:28:35.468Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -10,6 +10,138 @@
     <logo>https://registerGen.github.io/images/avatar.png</logo>
     <icon>https://registerGen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, registerGen&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[题解 CF1120D 【Power Tree】]]></title>
+        <id>https://registerGen.github.io/post/solution-cf1120d/</id>
+        <link href="https://registerGen.github.io/post/solution-cf1120d/">
+        </link>
+        <updated>2020-07-27T09:55:02.000Z</updated>
+        <summary type="html"><![CDATA[<p>好题。</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>好题。</p>
+<!--more-->
+<h1 id="solution">Solution</h1>
+<p>先把这道题通过 DFS 序搬到序列上。设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的子树对应的区间为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msub><mi>L</mi><mi>u</mi></msub><mo separator="true">,</mo><msub><mi>R</mi><mi>u</mi></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">[L_u,R_u]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span>。</p>
+<p>那么我们的每一次操作就相当于任选一个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi></mrow><annotation encoding="application/x-tex">i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，将 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mi>i</mi></msub><mo>∼</mo><msub><mi>R</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">L_i\sim R_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 加上任意一个数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>。</p>
+<p>然后，我们就想到了 <strong>差分</strong>。</p>
+<p><strong>如果原序列的值相同，则差分序列全为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</strong></p>
+<p>所以，对于每个 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>，我们连一条 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mi>u</mi></msub><mo>↔</mo><msub><mi>R</mi><mi>u</mi></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">L_u\leftrightarrow R_u+1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">↔</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>，边权为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>w</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">w_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的边，于是可以在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>L</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">L_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">L</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 上加一个数，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>R</mi><mi>u</mi></msub></mrow><annotation encoding="application/x-tex">R_u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.00773em;">R</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:-0.00773em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 上减一个相同的数。</p>
+<p>如果这个图是联通的，那么肯定存在一种合法方案。于是只需求出原图的 MST。</p>
+<h1 id="code">Code</h1>
+<pre><code class="language-cpp">#include&lt;cstdio&gt;
+#include&lt;algorithm&gt;
+#include&lt;cstring&gt;
+
+typedef long long ll;
+
+const int N=2e5;
+
+struct Edge
+{
+	int to,nxt;
+};
+
+struct Edge1
+{
+	int u,v,w,id;
+
+	Edge1(int _u=0,int _v=0,int _w=0,int _id=0):u(_u),v(_v),w(_w),id(_id){}
+};
+
+inline bool operator&lt;(Edge1 x,Edge1 y)
+{
+	return x.w&lt;y.w;
+}
+
+Edge e[(N&lt;&lt;1)+10];
+Edge1 qwq[(N&lt;&lt;1)+10];
+int head[N+10],tote;
+int n,m,a[N+10];
+int L[N+10],R[N+10],siz[N+10],cnt;
+int fa[N+10];
+int ok[N+10],sum;
+
+inline void addEdge(int u,int v)
+{
+	e[++tote].to=v;
+	e[tote].nxt=head[u];
+	head[u]=tote;
+}
+
+void DFS(int u,int _fa)
+{
+	siz[u]=1;
+	for(int i=head[u];i;i=e[i].nxt)
+	{
+		int v=e[i].to;
+		if(v==_fa)continue;
+		DFS(v,u);
+		siz[u]+=siz[v];
+		L[u]=std::min(L[u],L[v]);
+		R[u]=std::max(R[u],R[v]);
+	}
+	if(siz[u]==1)L[u]=R[u]=++cnt;
+	qwq[u]=Edge1(L[u],R[u]+1,a[u],u);
+}
+
+int getRt(int u)
+{
+	return fa[u]==u?u:fa[u]=getRt(fa[u]);
+}
+
+inline ll Kruskal()
+{
+	std::sort(qwq+1,qwq+n+1);
+	for(int i=1;i&lt;=n+5;i++)
+		fa[i]=i;
+	int l=1,r;
+	ll res=0;
+	for(;l&lt;=n;l=r+1)
+	{
+		r=l;
+		while(qwq[l].w==qwq[r+1].w&amp;&amp;r&lt;n)r++;
+		for(int i=l;i&lt;=r;i++)
+		{
+			int u=qwq[i].u,v=qwq[i].v;
+			if(getRt(u)!=getRt(v))ok[qwq[i].id]=1,sum++;
+		}
+		for(int i=l;i&lt;=r;i++)
+		{
+			int u=qwq[i].u,v=qwq[i].v;
+			if(getRt(u)!=getRt(v))
+			{
+				res+=qwq[i].w;
+				fa[getRt(u)]=getRt(v);
+			}
+		}
+	}
+	return res;
+}
+
+int main()
+{
+	scanf(&quot;%d&quot;,&amp;n);
+	for(int i=1;i&lt;=n;i++)
+		scanf(&quot;%d&quot;,a+i);
+	for(int i=1;i&lt;n;i++)
+	{
+		int u,v;
+		scanf(&quot;%d%d&quot;,&amp;u,&amp;v);
+		addEdge(u,v);
+		addEdge(v,u);
+	}
+	memset(L,0x3f,sizeof(L));
+	DFS(1,0);
+	printf(&quot;%lld &quot;,Kruskal());
+	printf(&quot;%d\n&quot;,sum);
+	for(int i=1;i&lt;=n;i++)
+		if(ok[i])printf(&quot;%d &quot;,i);
+	puts(&quot;&quot;);
+	return 0;
+}
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 luogu P4878 【[USACO05DEC]Layout G】]]></title>
         <id>https://registerGen.github.io/post/solution-luogu-p4878/</id>
@@ -929,6 +1061,8 @@ s-65,47,-65,47z M834 80H400000v40H845z'/></svg></span></span></span><span class=
 <p><a href="https://www.luogu.com.cn/problem/CF733F"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mtext mathvariant="sans-serif">CF733F</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\textsf{CF733F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:red;"><span class="mord textsf" style="color:red;">CF733F</span></span></span></span></span></a></p>
 <p>贪心：我们一定要把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 只用在一条边上。</p>
 <p>先求出原图 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span> 的 MST <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>，然后枚举每一条边 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span> 使得 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi><mo>∈</mo><mi>G</mi><mo>∧</mo><mi>e</mi><mi mathvariant="normal">∉</mi><mi>T</mi></mrow><annotation encoding="application/x-tex">e\in G\land e\notin T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">e</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel"><span class="mord"><span class="mrel">∈</span></span><span class="mord"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.75em;"><span style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="llap"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="inner"><span class="mord"><span class="mord">/</span><span class="mspace" style="margin-right:0.05555555555555555em;"></span></span></span><span class="fix"></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.25em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span>（即非树边）。如果我们把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>e</mi></mrow><annotation encoding="application/x-tex">e</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">e</span></span></span></span> 加入答案，把 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo>↔</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u\leftrightarrow v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">↔</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi></mrow><annotation encoding="application/x-tex">T</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">T</span></span></span></span> 中的路径上的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span> 最大的边（这个可以倍增去做）踢掉，则答案可能更优。</p>
+<p><a href="https://www.luogu.com.cn/problem/CF1120D"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mtext mathvariant="sans-serif">CF1120D</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\textsf{CF1120D}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:red;"><span class="mord textsf" style="color:red;">CF1120D</span></span></span></span></span></a></p>
+<p><a href="/post/solution-cf1120d">题解</a></p>
 ]]></content>
     </entry>
     <entry>
@@ -1517,40 +1651,6 @@ int main()
 	return 0;
 }
 </code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[如何丢人地在 WC & APIO 2020 中爆零]]></title>
-        <id>https://registerGen.github.io/post/wc-apio-2020/</id>
-        <link href="https://registerGen.github.io/post/wc-apio-2020/">
-        </link>
-        <updated>2020-07-03T04:20:16.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="wc-day-23">WC Day -23</h1>
-<p>草草草我 WC 过审了？？？？</p>
-<h1 id="wc-day-20">WC Day -20</h1>
-<p>学校集训的具体安排出来了，还发了个什么 OIer 调查问卷。</p>
-<p>然后呢。。</p>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/07/11/M3HfdBsPKriQ7w1.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2020/07/11/w6MvjohpDVWiXbu.png" alt="" loading="lazy"></figure>
-<figure data-type="image" tabindex="3"><img src="https://i.loli.net/2020/07/11/dGsloRmA39cpPyF.png" alt="" loading="lazy"></figure>
-<p>哎，怎么净是些**玩意啊。。</p>
-<p>就算我去上提高组，时间也是 8/7 到 8/14，上个*！</p>
-<p>然后去填问卷。</p>
-<figure data-type="image" tabindex="4"><img src="https://i.loli.net/2020/07/11/gKwxZamJq5Wo9k8.png" alt="" loading="lazy"></figure>
-<p>当我们是**吗！！</p>
-<p>心态爆炸。。</p>
-<h1 id="wc-day-10">WC Day -10</h1>
-<p>听说我们学校的初二学生被拉回去补 whk 了。。。</p>
-<p>原因是他们 9 月份有地理生物中考。。。</p>
-<p>哈哈哈，身为初一学生的我嘛。。。</p>
-<p>哈哈哈哈哈哈哈哈哈哈！！！</p>
-<h1 id="wc-day-9">WC Day -9</h1>
-<p>彩排，好像没干啥。</p>
-<p>不过又收集到 dmy 语录（感谢 henrytb 的截图）：</p>
-<figure data-type="image" tabindex="5"><img src="https://i.loli.net/2020/07/24/v2ZHiszLRoVnjOU.jpg" alt="" loading="lazy"></figure>
-<h1 id="wc-day-7">WC Day -7</h1>
-<p>MO 课上完了。</p>
-<p>飞往极乐世界.jpg</p>
 ]]></content>
     </entry>
 </feed>
