@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-07-31T09:21:09.182Z</updated>
+    <updated>2020-08-01T05:58:28.821Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -1343,6 +1343,8 @@ ans=&amp;\sum_{i=l}^r a_i(i-l+1)^k\\
 <p><a href="https://www.luogu.com.cn/problem/P2515"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mtext mathvariant="sans-serif">P2515</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\textsf{P2515}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:red;"><span class="mord textsf" style="color:red;">P2515</span></span></span></span></span></a></p>
 <p>缩点 + 树形 dp。</p>
 <p><a href="https://www.luogu.com.cn/blog/_post/12660">题解（by xyz32768）</a></p>
+<p><a href="https://www.luogu.com.cn/problem/CF486B"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mtext mathvariant="sans-serif">CF486B</mtext></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\textsf{CF486B}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord text" style="color:green;"><span class="mord textsf" style="color:green;">CF486B</span></span></span></span></span></a></p>
+<p>2-SAT 水题。</p>
 ]]></content>
     </entry>
     <entry>
