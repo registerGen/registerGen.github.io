@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-08-01T05:58:28.821Z</updated>
+    <updated>2020-08-01T09:48:26.694Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -10,6 +10,25 @@
     <logo>https://registerGen.github.io/images/avatar.png</logo>
     <icon>https://registerGen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, registerGen&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[2020 年 8 月水题选做]]></title>
+        <id>https://registerGen.github.io/post/problems-in-august-2020/</id>
+        <link href="https://registerGen.github.io/post/problems-in-august-2020/">
+        </link>
+        <updated>2020-08-01T08:57:33.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="0801">08/01</h1>
+<p><a href="https://www.luogu.com.cn/problem/P5490"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">5490</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\sf{P5490}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:red;"><span class="mord" style="color:red;"><span class="mord mathsf" style="color:red;">P</span><span class="mord mathsf" style="color:red;">5</span><span class="mord mathsf" style="color:red;">4</span><span class="mord mathsf" style="color:red;">9</span><span class="mord mathsf" style="color:red;">0</span></span></span></span></span></span></a></p>
+<p>扫描线板题。（面积）</p>
+<p>记几个自己容易忘的点：</p>
+<ol>
+<li>线段树维护 <strong>两个</strong> 值：覆盖次数，长度。</li>
+<li>离散化。</li>
+</ol>
+<p><a href="https://www.luogu.com.cn/problem/P5490"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">5490</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\sf{P5490}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:red;"><span class="mord" style="color:red;"><span class="mord mathsf" style="color:red;">P</span><span class="mord mathsf" style="color:red;">5</span><span class="mord mathsf" style="color:red;">4</span><span class="mord mathsf" style="color:red;">9</span><span class="mord mathsf" style="color:red;">0</span></span></span></span></span></span></a></p>
+<p>扫描线板题。（周长）</p>
+<p><a href="https://www.luogu.com.cn/blog/_post/36981">题解（by wucstdio）</a></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[线段树优化建图学习笔记]]></title>
         <id>https://registerGen.github.io/post/build-graph-with-segment-tree/</id>
@@ -67,7 +86,7 @@ inline bool operator&lt;(const Node&amp; x,const Node&amp; y)
 	return x.dis&gt;y.dis;
 }
 
-// tIn[] 存 2 类边在图中的编号，tOut[] 存 3 类边在图中的编号
+// tIn[] 存 2 类边的点在图中的编号，tOut[] 存 3 类边的点在图中的编号
 int n,m,s,tIn[N*4+10],tOut[N*4+10],cnt;
 std::vector&lt;std::pair&lt;int,ll&gt; &gt; G[N*20+10]; // 建出来的图
 ll dis[N*20+10];
@@ -1492,113 +1511,6 @@ int main()
 			scanf(&quot;%d&quot;,&amp;v);
 			modify(1,1,n,l,r,v);
 		}
-	}
-	return 0;
-}
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 CF323C 【Two permutations】]]></title>
-        <id>https://registerGen.github.io/post/solution-cf323c/</id>
-        <link href="https://registerGen.github.io/post/solution-cf323c/">
-        </link>
-        <updated>2020-07-03T07:37:54.000Z</updated>
-        <summary type="html"><![CDATA[<p>半年没敲主席树却一遍写对，祭之。</p>
-]]></summary>
-        <content type="html"><![CDATA[<p>半年没敲主席树却一遍写对，祭之。</p>
-<!--more-->
-<h1 id="solution">Solution</h1>
-<p>同时出现的数的 <strong>个数</strong>？主席树！</p>
-<p>转化是比较巧妙的。</p>
-<p>可以记录 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>b</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">b_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">b</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 中出现的位置，用主席树维护这个数组。</p>
-<p>那么询问就是求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>l</mi><mn>2</mn></msub><mo>∼</mo><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">l_2\sim r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 内有多少个数在 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msub><mi>l</mi><mn>1</mn></msub><mo separator="true">,</mo><msub><mi>r</mi><mn>1</mn></msub><mo>]</mo></mrow><annotation encoding="application/x-tex">[l_1,r_1]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> 之间。用第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>r</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">r_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02778em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 个根的答案减一下第 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>l</mi><mn>2</mn></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">l_2-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.01968em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span> 个根的答案就行了。</p>
-<p><s>强制在线真鬼畜。</s> 注意 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>l</mi><mi>s</mi><mi>t</mi><mi>a</mi><mi>n</mi><mi>s</mi></mrow><annotation encoding="application/x-tex">lstans</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">s</span><span class="mord mathdefault">t</span><span class="mord mathdefault">a</span><span class="mord mathdefault">n</span><span class="mord mathdefault">s</span></span></span></span> 在询问后一定要加 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn></mrow><annotation encoding="application/x-tex">1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>。。。</p>
-<h1 id="code">Code</h1>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-
-const int N=1e6;
-
-struct Node
-{
-	int v,ls,rs;
-};
-
-Node t[N&lt;&lt;5];
-int a[N+10],b[N+10],rt[N+10],cnt;
-int n,m,lstans;
-
-#define SIZ 1000000
-
-inline char gc()
-{
-#ifndef ONLINE_JUDGE
-	return char(getchar());
-#else
-	static char buf[SIZ],*p1=buf,*p2=buf;
-	return p1==p2&amp;&amp;(p2=(p1=buf)+fread(buf,1,SIZ,stdin),p1==p2)?EOF:*p1++;
-#endif
-}
-
-#undef SIZ
-
-inline int read()
-{
-	int x=0,f=0;char c=gc();
-	while(c&lt;'0'||c&gt;'9')f|=c=='-',c=gc();
-	while(c&gt;='0'&amp;&amp;c&lt;='9')x=x*10+c-48,c=gc();
-	return f?-x:x;
-}
-
-inline int f(int x)
-{
-	return (x-1+lstans)%n+1;
-}
-
-#define ls(x) (t[x].ls)
-#define rs(x) (t[x].rs)
-
-void modify(int&amp; i,int j,int l,int r,int pos)
-{
-	i=++cnt;
-	ls(i)=ls(j),rs(i)=rs(j),t[i].v=t[j].v+1;
-	if(l==r)return;
-	int mid=(l+r)&gt;&gt;1;
-	if(pos&lt;=mid)modify(ls(i),ls(j),l,mid,pos);
-	else modify(rs(i),rs(j),mid+1,r,pos);
-}
-
-int query(int i,int l,int r,int ql,int qr)
-{
-	if(ql&lt;=l&amp;&amp;r&lt;=qr)return t[i].v;
-	int mid=(l+r)&gt;&gt;1;
-	int res=0;
-	if(ql&lt;=mid)res+=query(ls(i),l,mid,ql,qr);
-	if(qr&gt;mid) res+=query(rs(i),mid+1,r,ql,qr);
-	return res;
-}
-
-#undef ls
-#undef rs
-
-int main()
-{
-	n=read();
-	for(int i=1;i&lt;=n;i++)
-		b[read()]=i;
-	for(int i=1;i&lt;=n;i++)
-		a[i]=b[read()];
-	for(int i=1;i&lt;=n;i++)
-		modify(rt[i],rt[i-1],1,n,a[i]);
-	m=read();
-	while(m--)
-	{
-		int l1=f(read()),r1=f(read()),l2=f(read()),r2=f(read());
-		if(l1&gt;r1)std::swap(l1,r1);
-		if(l2&gt;r2)std::swap(l2,r2);
-		printf(&quot;%d\n&quot;,lstans=query(rt[r2],1,n,l1,r1)-query(rt[l2-1],1,n,l1,r1));
-		lstans++;
 	}
 	return 0;
 }
