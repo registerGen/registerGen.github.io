@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-08-02T05:23:05.322Z</updated>
+    <updated>2020-08-02T15:15:03.881Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -46,6 +46,135 @@
 <li>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><mi>i</mi><msub><mi>s</mi><mi>u</mi></msub><mo>=</mo><mi>w</mi><mo>∧</mo><mi>c</mi><mi>n</mi><msub><mi>t</mi><mi>u</mi></msub><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dis_u=w\land cnt_u&gt;1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.84444em;vertical-align:-0.15em;"></span><span class="mord mathdefault">d</span><span class="mord mathdefault">i</span><span class="mord"><span class="mord mathdefault">s</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.55556em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∧</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>（即 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>↔</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">1\leftrightarrow u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">↔</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 的最短路不止一条），则可以删，同时还要让 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><msub><mi>t</mi><mi>u</mi></msub><mo>←</mo><mi>c</mi><mi>n</mi><msub><mi>t</mi><mi>u</mi></msub><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">cnt_u\gets cnt_u-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">←</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.76508em;vertical-align:-0.15em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord"><span class="mord mathdefault">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.151392em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">u</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span>（因为已经用掉了一条最短路）；</li>
 <li>否则不行。</li>
 </ul>
+<p><a href="https://www.luogu.com.cn/problem/UVA11990"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">U</mi><mi mathvariant="sans-serif">V</mi><mi mathvariant="sans-serif">A</mi><mn mathvariant="sans-serif">11990</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{UVA11990}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">U</span><span class="mord mathsf" style="margin-right:0.01389em;color:green;">V</span><span class="mord mathsf" style="color:green;">A</span><span class="mord mathsf" style="color:green;">1</span><span class="mord mathsf" style="color:green;">1</span><span class="mord mathsf" style="color:green;">9</span><span class="mord mathsf" style="color:green;">9</span><span class="mord mathsf" style="color:green;">0</span></span></span></span></span></span></a></p>
+<p>动态逆序对 那题的双倍经验。</p>
+<p><a href="https://www.luogu.com.cn/problem/SP9577"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">S</mi><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">9577</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{SP9577}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">S</span><span class="mord mathsf" style="color:green;">P</span><span class="mord mathsf" style="color:green;">9</span><span class="mord mathsf" style="color:green;">5</span><span class="mord mathsf" style="color:green;">7</span><span class="mord mathsf" style="color:green;">7</span></span></span></span></span></span></a></p>
+<p>洞穴勘测 那题的双倍经验。</p>
+<p><a href="https://www.luogu.com.cn/problem/P3332"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">3332</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\sf{P3332}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:red;"><span class="mord" style="color:red;"><span class="mord mathsf" style="color:red;">P</span><span class="mord mathsf" style="color:red;">3</span><span class="mord mathsf" style="color:red;">3</span><span class="mord mathsf" style="color:red;">3</span><span class="mord mathsf" style="color:red;">2</span></span></span></span></span></span></a></p>
+<p>练了一下整体二分。</p>
+<h2 id="abc-174-solution">ABC 174 Solution</h2>
+<p>体验到了最后 7min rush 掉 C 题并 AK 的感觉.jpg</p>
+<h3 id="a">A</h3>
+<p>傻逼题，随便做。</p>
+<pre><code class="language-cpp">inline void main()
+{
+	int x;
+	scanf(&quot;%d&quot;,&amp;x);
+	if(x&gt;=30)puts(&quot;Yes&quot;);
+	else puts(&quot;No&quot;);
+}
+</code></pre>
+<h3 id="b">B</h3>
+<p>傻逼题，随便做。</p>
+<pre><code class="language-cpp">inline void main()
+{
+	int n,d,ans=0;
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;d);
+	for(int i=1;i&lt;=n;i++)
+	{
+		double x,y;
+		scanf(&quot;%lf%lf&quot;,&amp;x,&amp;y);
+		double dis=sqrt(x*x+y*y);
+		if(dis&lt;=d*1.0)ans++;
+	}
+	printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+<h3 id="c">C</h3>
+<p>如果 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn><mi mathvariant="normal">∣</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">2|k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span>，直接输出 <code>-1</code>。</p>
+<p>否则暴力枚举 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>k</mi></mrow><annotation encoding="application/x-tex">k</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03148em;">k</span></span></span></span> 的倍数，如果找到循环节（而且还没找到解），输出 <code>-1</code>；如果找到解，输出当前解即可。</p>
+<pre><code class="language-cpp">inline void main()
+{
+	int k;
+	scanf(&quot;%d&quot;,&amp;k);
+	if(!(k%2))return puts(&quot;-1&quot;),void();
+	int ans=0,now=0;
+	while(1)
+	{
+		now=(now*10+7)%k;
+		if(vis[now])return puts(&quot;-1&quot;),void();
+		vis[now]=1;
+		ans++;
+		if(now==0)break;
+	}
+	printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+<h3 id="d">D</h3>
+<p>只需让所有 <code>R</code> 在前面，其余的在后面即可。</p>
+<p>贪心，先求出字符串中 <code>W</code> 的个数 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span>，然后统计字符串的后 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span> 个字符中有多少个 <code>R</code> 即可。这样我们只需把后 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>c</mi><mi>n</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">cnt</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.61508em;vertical-align:0em;"></span><span class="mord mathdefault">c</span><span class="mord mathdefault">n</span><span class="mord mathdefault">t</span></span></span></span> 个字符中的 <code>R</code> 与前面的 <code>W</code> 交换即可。</p>
+<pre><code class="language-cpp">inline void main()
+{
+	scanf(&quot;%d%s&quot;,&amp;n,str+1);
+	int cnt=0,ans=0;;
+	for(int i=1;i&lt;=n;i++)
+		if(str[i]=='W')cnt++;
+	for(int i=n;i&gt;=n-cnt+1;i--)
+		if(str[i]=='R')ans++;
+	printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+<h3 id="e">E</h3>
+<p>套路二分答案。<strong>题目中的 rounding up 是 <em>上取整</em> 的意思！！</strong></p>
+<pre><code class="language-cpp">inline bool check(double x)
+{
+	int res=0;
+	for(int i=1;i&lt;=n;i++)
+	{
+		double tmp=1.0*a[i]/x;
+		if(double(tmp-int(tmp))==0.0)res+=int(tmp)-1; // 即 x 整除 a[i] 的时候要 -1，为什么？
+		else res+=int(tmp);
+	}
+	return res&lt;=m;
+}
+
+inline void main()
+{
+	scanf(&quot;%d%d&quot;,&amp;n,&amp;m);
+	for(int i=1;i&lt;=n;i++)
+		scanf(&quot;%d&quot;,a+i);
+	int l=1,r=0x3f3f3f3f,ans=0; // 注意二分左边界，设成 0 就 WA。
+//	for(int i=1;i&lt;=n;i++)
+//		ans=std::max(ans,a[i]);
+	while(l&lt;=r)
+	{
+		int mid=(l+r)&gt;&gt;1;
+		if(check(mid))ans=mid,r=mid-1;
+		else l=mid+1;
+	}
+	printf(&quot;%d\n&quot;,ans);
+}
+</code></pre>
+<h3 id="f">F</h3>
+<p>草这不就是 HH 的项链吗！！？？</p>
+<pre><code class="language-cpp">int main()
+{
+	read(n);read(m);
+	for(int i=1;i&lt;=n;i++)
+		read(a[i]);
+	for(int i=1;i&lt;=n;i++)
+	{
+		pre[i]=pos[a[i]];
+		pos[a[i]]=i;
+	}
+	for(int i=1;i&lt;=m;i++)
+		read(q[i].l),read(q[i].r),q[i].id=i; // q[i] 存放每个询问
+	std::sort(q+1,q+m+1); // 按右端点排序
+	int j=1;
+	for(int i=1;i&lt;=m;i++)
+	{
+		for(;j&lt;=q[i].r;j++)
+		{
+			modify(pre[j],-1); // BIT 修改，注意特判 pre[j] = 0。
+			modify(j,1);
+		}
+		Ans[q[i].id]=query(q[i].r)-query(q[i].l-1);
+	}
+	for(int i=1;i&lt;=m;i++)
+		printf(&quot;%d\n&quot;,Ans[i]);
+	return 0;
+}
+</code></pre>
 ]]></content>
     </entry>
     <entry>
