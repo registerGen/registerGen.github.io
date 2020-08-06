@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-08-06T03:29:47.621Z</updated>
+    <updated>2020-08-06T11:35:54.276Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -246,6 +246,13 @@ inline void main()
 <p><a href="https://www.luogu.com.cn/problem/P3313"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">3313</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{P3313}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">P</span><span class="mord mathsf" style="color:green;">3</span><span class="mord mathsf" style="color:green;">3</span><span class="mord mathsf" style="color:green;">1</span><span class="mord mathsf" style="color:green;">3</span></span></span></span></span></span></a></p>
 <p>对每一个宗教建一棵线段树，然后用树剖上树。</p>
 <p>直接建树显然要爆空间，动态开点即可解决问题。</p>
+<h1 id="0806">08/06</h1>
+<p><a href="https://www.luogu.com.cn/problem/P2042"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">2042</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{P2042}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">P</span><span class="mord mathsf" style="color:green;">2</span><span class="mord mathsf" style="color:green;">0</span><span class="mord mathsf" style="color:green;">4</span><span class="mord mathsf" style="color:green;">2</span></span></span></span></span></span></a></p>
+<p>适合颓废的题。</p>
+<p>最好用 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 建树，否则常数大一点就要 T。</p>
+<p>另外这个题要「回收空间」，否则会爆空间。</p>
+<p><a href="https://www.luogu.com.cn/problem/P2042"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">2042</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{P2042}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">P</span><span class="mord mathsf" style="color:green;">2</span><span class="mord mathsf" style="color:green;">0</span><span class="mord mathsf" style="color:green;">4</span><span class="mord mathsf" style="color:green;">2</span></span></span></span></span></span></a></p>
+<p>上一题的双倍经验。</p>
 ]]></content>
     </entry>
     <entry>
