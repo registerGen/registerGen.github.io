@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-08-12T02:56:22.745Z</updated>
+    <updated>2020-08-12T03:24:59.465Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -487,6 +487,9 @@ int query(int i,int j,int l,int r,int k) // 查询 a_l 到 a_r 中 &lt;= k 的�
 </code></pre>
 <p><a href="https://www.luogu.com.cn/problem/SP3266"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">S</mi><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">3266</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{SP3266}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">S</span><span class="mord mathsf" style="color:green;">P</span><span class="mord mathsf" style="color:green;">3</span><span class="mord mathsf" style="color:green;">2</span><span class="mord mathsf" style="color:green;">6</span><span class="mord mathsf" style="color:green;">6</span></span></span></span></span></span></a></p>
 <p>上一题的双倍经验。</p>
+<p><a href="https://www.luogu.com.cn/problem/P4054"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="green"><mrow><mi mathvariant="sans-serif">P</mi><mn mathvariant="sans-serif">4054</mn></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{green}\sf{P4054}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:green;"><span class="mord" style="color:green;"><span class="mord mathsf" style="color:green;">P</span><span class="mord mathsf" style="color:green;">4</span><span class="mord mathsf" style="color:green;">0</span><span class="mord mathsf" style="color:green;">5</span><span class="mord mathsf" style="color:green;">4</span></span></span></span></span></span></a></p>
+<p>傻逼题。</p>
+<p>值域特别小，开 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn></mrow><annotation encoding="application/x-tex">100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span> 个二维 BIT 维护即可。</p>
 ]]></content>
     </entry>
     <entry>
