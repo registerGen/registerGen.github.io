@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-11-30T15:07:21.652Z</updated>
+    <updated>2020-12-02T14:03:04.207Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -338,7 +338,7 @@ int main(){
 }
 </code></pre>
 <h3 id="summary-2">Summary</h3>
-<p>无。</p>
+<p>感觉没啥好说的。</p>
 <h2 id="t3-能量项链">T3 能量项链</h2>
 <h3 id="description-3">Description</h3>
 <ul>
@@ -416,13 +416,14 @@ inline int calc(int st){
 		res+=tmp[i].w;
 		dsu.merge(u,v);
 	}
+    // 以下代码判断图是否连通
 	int cnt[N+10]={0};
 	for(int i=1;i&lt;=totn;i++)
 		cnt[dsu.getRt(nodes[i])]++;
 	int cntt=0;
 	for(int i=1;i&lt;=N;i++)
 		cntt+=bool(cnt[i]);
-	return cntt==1?res:inf;
+	return cntt==1?res:inf; // 如果不连通，则令它的权值为 +inf
 }
 
 int main(){
@@ -454,6 +455,8 @@ int main(){
 	return 0;
 }
 </code></pre>
+<h3 id="summary-3">Summary</h3>
+<p>思路还是挺正常的，顺着求解子问题的思路就行了。</p>
 ]]></content>
     </entry>
     <entry>

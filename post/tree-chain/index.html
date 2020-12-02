@@ -9,7 +9,7 @@
 <meta name="description" content="解析几何大法吼！">
 <meta name="theme-color" content="#000">
 <title>树链剖分学习笔记 | registerGen&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1606748814324">
+<link rel="shortcut icon" href="/favicon.ico?v=1606917600691">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -2233,7 +2233,7 @@ int main(){
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;summary-2&#34;&gt;Summary&lt;/h3&gt;
-&lt;p&gt;无。&lt;/p&gt;
+&lt;p&gt;感觉没啥好说的。&lt;/p&gt;
 &lt;h2 id=&#34;t3-能量项链&#34;&gt;T3 能量项链&lt;/h2&gt;
 &lt;h3 id=&#34;description-3&#34;&gt;Description&lt;/h3&gt;
 &lt;ul&gt;
@@ -2311,13 +2311,14 @@ inline int calc(int st){
 		res+=tmp[i].w;
 		dsu.merge(u,v);
 	}
+    // 以下代码判断图是否连通
 	int cnt[N+10]={0};
 	for(int i=1;i&amp;lt;=totn;i++)
 		cnt[dsu.getRt(nodes[i])]++;
 	int cntt=0;
 	for(int i=1;i&amp;lt;=N;i++)
 		cntt+=bool(cnt[i]);
-	return cntt==1?res:inf;
+	return cntt==1?res:inf; // 如果不连通，则令它的权值为 +inf
 }
 
 int main(){
@@ -2349,6 +2350,8 @@ int main(){
 	return 0;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;summary-3&#34;&gt;Summary&lt;/h3&gt;
+&lt;p&gt;思路还是挺正常的，顺着求解子问题的思路就行了。&lt;/p&gt;
 ">NOIp 2020 前的学校模拟赛总结</a>
       </div>
       
