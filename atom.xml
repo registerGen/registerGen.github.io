@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2020-12-02T14:06:31.090Z</updated>
+    <updated>2020-12-06T10:39:19.181Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -10,6 +10,110 @@
     <logo>https://registerGen.github.io/images/avatar.png</logo>
     <icon>https://registerGen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, registerGen&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[NOIp 2020 游记]]></title>
+        <id>https://registerGen.github.io/post/noip-2020/</id>
+        <link href="https://registerGen.github.io/post/noip-2020/">
+        </link>
+        <updated>2020-12-06T08:52:47.000Z</updated>
+        <summary type="html"><![CDATA[<p>CSP 2020 炸了，registerGen 能翻盘吗？</p>
+]]></summary>
+        <content type="html"><![CDATA[<p>CSP 2020 炸了，registerGen 能翻盘吗？</p>
+<!--more-->
+<h1 id="day-0">Day 0</h1>
+<p>晚上就做了一点地理作业，然后就去打了个 hash，又打了个 fhq-treap。</p>
+<p>rp++。</p>
+<h1 id="day-1">Day 1</h1>
+<p>精神还好，rp++。</p>
+<p>跑进了首师大附中，然后到了考场，欸？tmd 怎么没有我啊？</p>
+<p>然后一看准考证，发现走错楼了。。</p>
+<p>rp--。</p>
+<hr>
+<p>发题了。</p>
+<p>一看，T1 傻逼拓扑排序；T2 字符串题，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi><mo>≤</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">n\le 1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span> 有 48pts，但感觉不好打，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span> 中只包含一种字符的 8pts 应该可以想想；T3 神仙构造，正解应该是搜索（？）；T4 更神仙了，然而 30pts 岂不是有手就能拿到？</p>
+<p>于是决定了开题顺序：T1 100pts <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> T4 30pts <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> T2 48pts <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> T3 ???pts <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>→</mo></mrow><annotation encoding="application/x-tex">\to</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">→</span></span></span></span> T2 8pts。</p>
+<hr>
+<p>开始考试了。</p>
+<p>T1 这个分数怎么弄啊？哦哦开个 <code>struct</code> 封装一下就行了。</p>
+<p>咦这个 浮点数例外 是 smg 啊？哦哦原来是除以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span> 了，长见识了。</p>
+<p>25min 就过了大样例。</p>
+<p>然后是 T4。</p>
+<p>码码码，越码越复杂（100+ 行），还写出了以下滑稽的代码：</p>
+<pre><code class="language-cpp">if(k==1){
+    for(int p1=1;p1&lt;=w[1];p1++){
+        tmp[1]=p1;
+        solve(tmp);
+    }
+}
+if(k==2){
+    for(int p1=1;p1&lt;=w[1];p1++)
+        for(int p2=1;p2&lt;=w[2];p2++){
+            tmp[1]=p1,tmp[2]=p2;
+            solve(tmp);
+        }
+}
+if(k==3){
+    for(int p1=1;p1&lt;=w[1];p1++)
+        for(int p2=1;p2&lt;=w[2];p2++)
+            for(int p3=1;p3&lt;=w[3];p3++){
+                tmp[1]=p1,tmp[2]=p2,tmp[3]=p3;
+                solve(tmp);
+            }
+}
+if(k==4){
+    for(int p1=1;p1&lt;=w[1];p1++)
+        for(int p2=1;p2&lt;=w[2];p2++)
+            for(int p3=1;p3&lt;=w[3];p3++)
+                for(int p4=1;p4&lt;=w[4];p4++){
+                    tmp[1]=p1,tmp[2]=p2,tmp[3]=p3,tmp[4]=p4;
+                    solve(tmp);
+                }
+}
+if(k==5){
+    for(int p1=1;p1&lt;=w[1];p1++)
+        for(int p2=1;p2&lt;=w[2];p2++)
+            for(int p3=1;p3&lt;=w[3];p3++)
+                for(int p4=1;p4&lt;=w[4];p4++)
+                    for(int p5=1;p5&lt;=w[5];p5++){
+                        tmp[1]=p1,tmp[2]=p2,tmp[3]=p3,tmp[4]=p4,tmp[5]=p5;
+                        solve(tmp);
+                    }
+}
+</code></pre>
+<p><s>欢迎收录（bushi</s></p>
+<p>终于过了样例 1，然后样例 2 输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>？！？！</p>
+<p>然后发现我 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span> 的情况搞错了？！？！</p>
+<p>然后删了一些代码，过了。此时大约是 9:40。</p>
+<p>接着开 T2。</p>
+<p>应该要用 hash？我昨天刚复习过了的啊！</p>
+<p>但是为了保险我测试了一下我的 hash 有没有写错。</p>
+<p>还好没有，要是有错我就完了 /kk</p>
+<p>开始日常码码码，调调调，过了前两个样例，然后第三个样例 T 了？！</p>
+<p>用 <code>strlen</code> 搞了一下发现 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∣</mi><mi>S</mi><mi mathvariant="normal">∣</mi><mo>=</mo><mn>1000</mn></mrow><annotation encoding="application/x-tex">|S|=1000</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="mord">∣</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mord">0</span></span></span></span>。</p>
+<p>然后备份了一份代码，并思考能不能优化。</p>
+<p>过了一会发现我统计字符个数的代码可以用很 sb 的前缀和优化。。。</p>
+<p>用 <code>time</code> 测了一下，600+ms，应该稳了。</p>
+<p>接着码 T3。</p>
+<p>码了一会发现不对劲，果断放弃。</p>
+<p>我还是太菜了 /dk</p>
+<p>T2 的 8pts 很好推，一会就搞定了。此时大约是 11:50。</p>
+<p>然后就是调 T3 + 自闭。。。</p>
+<hr>
+<p>考后估分：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mo>+</mo><mn>56</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>30</mn><mo>=</mo><mn>186</mn></mrow><annotation encoding="application/x-tex">100+56+0+30=186</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord">6</span></span></span></span>。</p>
+<p>hjy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mo>+</mo><mn>48</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>40</mn><mo>=</mo><mn>188</mn></mrow><annotation encoding="application/x-tex">100+48+0+40=188</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord">8</span></span></span></span>，8 pts 没交上去，可惜。</p>
+<p>smy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mo>+</mo><mn>56</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>40</mn><mo>=</mo><mn>206</mn></mrow><annotation encoding="application/x-tex">100+56+10+40=206</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mord">6</span></span></span></span> orz。</p>
+<p>cqy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>≈</mo><mn>150</mn></mrow><annotation encoding="application/x-tex">\approx 150</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.48312em;vertical-align:0em;"></span><span class="mrel">≈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">0</span></span></span></span>，貌似炸了。</p>
+<p>听说 T1 要开高精，完了。</p>
+<h1 id="day-2">Day 2</h1>
+<p>拿到代码了。</p>
+<p>lg = oitiku = <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>90</mn><mo>+</mo><mn>56</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>30</mn><mo>=</mo><mn>176</mn></mrow><annotation encoding="application/x-tex">90+56+0+30=176</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">5</span><span class="mord">6</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">7</span><span class="mord">6</span></span></span></span>，1= 应该稳了。</p>
+<p>hjy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>90</mn><mo>+</mo><mn>48</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>30</mn><mo>=</mo><mn>168</mn></mrow><annotation encoding="application/x-tex">90+48+0+30=168</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">6</span><span class="mord">8</span></span></span></span>。</p>
+<p>smy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>90</mn><mo>+</mo><mo>(</mo><mn>8</mn><mo>∼</mo><mn>56</mn><mo>)</mo><mo>+</mo><mn>10</mn><mo>+</mo><mn>30</mn><mo>=</mo><mn>138</mn><mo>∼</mo><mn>186</mn></mrow><annotation encoding="application/x-tex">90+(8\sim 56)+10+30=138\sim 186</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">5</span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">3</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">8</span><span class="mord">6</span></span></span></span>，T2 多测没清空，惨。</p>
+<p>cqy <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>90</mn><mo>+</mo><mo>(</mo><mn>32</mn><mo>∼</mo><mn>36</mn><mo>)</mo><mo>+</mo><mn>0</mn><mo>+</mo><mn>30</mn><mo>=</mo><mn>152</mn><mo>∼</mo><mn>156</mn></mrow><annotation encoding="application/x-tex">90+(32\sim 36)+0+30=152\sim 156</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">3</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mord">6</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">2</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∼</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">5</span><span class="mord">6</span></span></span></span>。</p>
+<p>zl <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>90</mn><mo>+</mo><mn>48</mn><mo>+</mo><mn>10</mn><mo>+</mo><mn>0</mn><mo>=</mo><mn>148</mn></mrow><annotation encoding="application/x-tex">90+48+10+0=148</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">9</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">4</span><span class="mord">8</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">4</span><span class="mord">8</span></span></span></span>，为什么不去做 T4 呢。。</p>
+<p>等着出成绩吧。</p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 CF519E 【A and B and Lecture Rooms】]]></title>
         <id>https://registerGen.github.io/post/solution-cf519e/</id>
@@ -1826,167 +1930,6 @@ for(int i=1;i&lt;=n;i++)
 <p><a href="https://www.luogu.com.cn/problem/CF1401F"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mstyle mathcolor="red"><mrow><mi mathvariant="sans-serif">C</mi><mi mathvariant="sans-serif">F</mi><mn mathvariant="sans-serif">1401</mn><mi mathvariant="sans-serif">F</mi></mrow></mstyle></mrow><annotation encoding="application/x-tex">\color{red}\sf{CF1401F}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord" style="color:red;"><span class="mord" style="color:red;"><span class="mord mathsf" style="color:red;">C</span><span class="mord mathsf" style="color:red;">F</span><span class="mord mathsf" style="color:red;">1</span><span class="mord mathsf" style="color:red;">4</span><span class="mord mathsf" style="color:red;">0</span><span class="mord mathsf" style="color:red;">1</span><span class="mord mathsf" style="color:red;">F</span></span></span></span></span></span></a></p>
 <p>挺妙的一道题。</p>
 <p><a href="https://www.luogu.com.cn/blog/_post/263492">题解（by syk）</a></p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[线段树优化建图学习笔记]]></title>
-        <id>https://registerGen.github.io/post/build-graph-with-segment-tree/</id>
-        <link href="https://registerGen.github.io/post/build-graph-with-segment-tree/">
-        </link>
-        <updated>2020-07-29T12:04:18.000Z</updated>
-        <content type="html"><![CDATA[<p>线段树优化建图的核心不是线段树，而是建图。</p>
-<h1 id="cf786b-legacy">CF786B Legacy</h1>
-<p><a href="https://www.luogu.com.cn/problem/CF786B">https://www.luogu.com.cn/problem/CF786B</a></p>
-<p>我们将以本题为例介绍线段树优化建图。</p>
-<h2 id="description">Description</h2>
-<p>给定 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span> 个点的有向图，有 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span> 种边：</p>
-<ol>
-<li><code>1 u v w</code>：从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo>→</mo><mi>v</mi></mrow><annotation encoding="application/x-tex">u\to v</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">v</span></span></span></span> 的权值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span> 的边；</li>
-<li><code>2 u l r w</code>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∀</mi><mi>i</mi><mo>∈</mo><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">\forall i\in [l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span>，都有一条 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi><mo>→</mo><mi>i</mi></mrow><annotation encoding="application/x-tex">u\to i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span></span></span></span>，权值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span> 的边；</li>
-<li><code>3 u l r w</code>：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">∀</mi><mi>i</mi><mo>∈</mo><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">\forall i\in [l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.73354em;vertical-align:-0.0391em;"></span><span class="mord">∀</span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">∈</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span>，都有一条 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>i</mi><mo>→</mo><mi>u</mi></mrow><annotation encoding="application/x-tex">i\to u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.65952em;vertical-align:0em;"></span><span class="mord mathdefault">i</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span>，权值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span> 的边。</li>
-</ol>
-<p>再给定 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span>，求 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi></mrow><annotation encoding="application/x-tex">s</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span></span></span></span> 到其他点的最短路，不存在路径则输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。</p>
-<h2 id="solution">Solution</h2>
-<p>最朴素的做法是直接暴力连边，显然这样做边太多了，考虑如何减少连边。</p>
-<p>以 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 类边为例：</p>
-<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/07/29/oErZeiqCM4LKylc.png" alt="" loading="lazy"></figure>
-<p>显然，黑色部分是一棵线段树，<strong>但是，它不维护任何东西，我们所建出来的图的节点 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>=</mo></mrow><annotation encoding="application/x-tex">=</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.36687em;vertical-align:0em;"></span><span class="mrel">=</span></span></span></span> 线段树的 <em>所有</em> 节点。</strong></p>
-<p>线段树的每个节点都往它的左右儿子各连一条 <strong>权值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span></strong> 的边。</p>
-<p>则在线段树上进行递归，当到达一个满足 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msup><mi>l</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><msup><mi>r</mi><mo mathvariant="normal">′</mo></msup><mo>]</mo><mo>⊆</mo><mo>[</mo><mi>l</mi><mo separator="true">,</mo><mi>r</mi><mo>]</mo></mrow><annotation encoding="application/x-tex">[l&#x27;,r&#x27;]\subseteq [l,r]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">]</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊆</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="mclose">]</span></span></span></span> 的区间 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msup><mi>l</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><msup><mi>r</mi><mo mathvariant="normal">′</mo></msup><mo>]</mo></mrow><annotation encoding="application/x-tex">[l&#x27;,r&#x27;]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> 上时，就从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>u</mi></mrow><annotation encoding="application/x-tex">u</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">u</span></span></span></span> 往 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>[</mo><msup><mi>l</mi><mo mathvariant="normal">′</mo></msup><mo separator="true">,</mo><msup><mi>r</mi><mo mathvariant="normal">′</mo></msup><mo>]</mo></mrow><annotation encoding="application/x-tex">[l&#x27;,r&#x27;]</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.001892em;vertical-align:-0.25em;"></span><span class="mopen">[</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02778em;">r</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.751892em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">′</span></span></span></span></span></span></span></span></span><span class="mclose">]</span></span></span></span> 表示的节点连一条权值为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>w</mi></mrow><annotation encoding="application/x-tex">w</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02691em;">w</span></span></span></span> 的边。</p>
-<p>为什么是对的？用上图举个例子。</p>
-<p>我们发现，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>→</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">1\to 2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span></span></span></span> 有一条直接的边；<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">1\to 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> 虽然没有直接的边，但恰好有一条路径 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>→</mo><mn>6</mn><mo>→</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">1\to 6\to 3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">6</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span>，边权和为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>5</mn></mrow><annotation encoding="application/x-tex">5</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span></span></span></span>（不要忘记黑边的边权为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>0</mn></mrow><annotation encoding="application/x-tex">0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>）；<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>1</mn><mo>→</mo><mn>4</mn></mrow><annotation encoding="application/x-tex">1\to 4</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">4</span></span></span></span> 同理。</p>
-<p>同理，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn></mrow><annotation encoding="application/x-tex">3</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">3</span></span></span></span> 类边的线段树为 节点的左右儿子 往 节点 连边。</p>
-<p>这样，由于建出来的图的点数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 级别的，边数为 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>n</mi><mo>+</mo><mi>m</mi><mi>log</mi><mo>⁡</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal O(n+m\log n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">m</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span> 级别的，所以总复杂度是正确的！</p>
-<h2 id="code">Code</h2>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-#include&lt;vector&gt;
-#include&lt;queue&gt;
-#include&lt;cstring&gt;
-
-#define pb push_back
-#define mp std::make_pair
-
-typedef long long ll;
-
-const int N=1e5;
-const ll inf=0x3f3f3f3f3f3f3f3fLL;
-
-struct Node
-{
-	int u;
-	ll dis;
-
-	Node(int _u=0,ll _dis=0):u(_u),dis(_dis){}
-};
-
-inline bool operator&lt;(const Node&amp; x,const Node&amp; y)
-{
-	return x.dis&gt;y.dis;
-}
-
-// tIn[] 存 2 类边的点在图中的编号，tOut[] 存 3 类边的点在图中的编号
-int n,m,s,tIn[N*4+10],tOut[N*4+10],cnt;
-std::vector&lt;std::pair&lt;int,ll&gt; &gt; G[N*20+10]; // 建出来的图
-ll dis[N*20+10];
-bool vis[N*20+10];
-
-#define ls(x) (x&lt;&lt;1)
-#define rs(x) (x&lt;&lt;1|1)
-
-void build(int i,int l,int r)
-{
-	if(l==r)
-	{
-		tIn[i]=tOut[i]=l;
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1;
-	build(ls(i),l,mid);
-	build(rs(i),mid+1,r);
-	tIn[i]=++cnt;
-	tOut[i]=++cnt;
-	G[tIn[i]].pb(mp(tIn[ls(i)],0));
-	G[tIn[i]].pb(mp(tIn[rs(i)],0));
-	G[tOut[ls(i)]].pb(mp(tOut[i],0));
-	G[tOut[rs(i)]].pb(mp(tOut[i],0));
-}
-
-// 2 类边
-void modifyIn(int i,int l,int r,int ql,int qr,int u,ll w)
-{
-	if(ql&lt;=l&amp;&amp;r&lt;=qr)
-	{
-		G[u].pb(mp(tIn[i],w));
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1;
-	if(ql&lt;=mid)modifyIn(ls(i),l,mid,ql,qr,u,w);
-	if(qr&gt;mid) modifyIn(rs(i),mid+1,r,ql,qr,u,w);
-}
-
-// 3 类边
-void modifyOut(int i,int l,int r,int ql,int qr,int u,ll w)
-{
-	if(ql&lt;=l&amp;&amp;r&lt;=qr)
-	{
-		G[tOut[i]].pb(mp(u,w));
-		return;
-	}
-	int mid=(l+r)&gt;&gt;1;
-	if(ql&lt;=mid)modifyOut(ls(i),l,mid,ql,qr,u,w);
-	if(qr&gt;mid) modifyOut(rs(i),mid+1,r,ql,qr,u,w);
-}
-
-#undef ls
-#undef rs
-
-// 最短路
-inline void Dijkstra()
-{
-	memset(dis,0x3f,sizeof(dis));
-	dis[s]=0;
-	std::priority_queue&lt;Node&gt; q;
-	q.push(Node(s,0));
-	while(!q.empty())
-	{
-		int u=q.top().u;
-		q.pop();
-		if(vis[u])continue;
-		vis[u]=1;
-		for(int i=0;i&lt;int(G[u].size());i++)
-		{
-			int v=G[u][i].first;
-			if(dis[v]&gt;dis[u]+G[u][i].second)
-			{
-				dis[v]=dis[u]+G[u][i].second;
-				q.push(Node(v,dis[v]));
-			}
-		}
-	}
-}
-
-int main()
-{
-	scanf(&quot;%d%d%d&quot;,&amp;n,&amp;m,&amp;s);
-	cnt=n; // 叶子节点的编号为 1 到 n，所以非叶子节点的编号应从 n + 1 开始
-	build(1,1,n);
-	for(int i=1;i&lt;=m;i++)
-	{
-		int opt,u,l,r;
-		ll w;
-		scanf(&quot;%d%d&quot;,&amp;opt,&amp;u);
-		if(opt==1)scanf(&quot;%d%lld&quot;,&amp;l,&amp;w),G[u].pb(mp(l,w)); // 1 类边直接连即可
-		if(opt==2)scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;w),modifyIn(1,1,n,l,r,u,w);
-		if(opt==3)scanf(&quot;%d%d%lld&quot;,&amp;l,&amp;r,&amp;w),modifyOut(1,1,n,l,r,u,w);
-	}
-	Dijkstra();
-	for(int i=1;i&lt;=n;i++)
-		printf(&quot;%lld &quot;,dis[i]==inf?-1:dis[i]);
-	puts(&quot;&quot;);
-	return 0;
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
