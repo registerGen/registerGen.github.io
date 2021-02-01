@@ -8,7 +8,7 @@
 <meta name="keywords" content="Gridea静态个人博客">
 <meta name="description" content="解析几何大法吼！">
 <meta name="theme-color" content="#000">
-<title>题解 CF91B 【Queue】 | registerGen&#39;s blog</title>
+<title>题解 CF1476D 【Journey】 | registerGen&#39;s blog</title>
 <link rel="shortcut icon" href="/favicon.ico?v=1612167946114">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
@@ -52,7 +52,7 @@
 
 
 
-  <meta name="description" content="题解 CF91B 【Queue】" />
+  <meta name="description" content="题解 CF1476D 【Journey】" />
   <meta name="keywords" content="数据结构,题解" />
 </head>
 
@@ -532,8 +532,8 @@
           <div class="section bg-color post post-page">
             <section class="post-header">
   <h1 class="post-title">
-    <a class="post-title-link" href="https://registerGen.github.io/post/solution-cf91b/">
-      题解 CF91B 【Queue】
+    <a class="post-title-link" href="https://registerGen.github.io/post/solution-cf1476d/">
+      题解 CF1476D 【Journey】
     </a>
   </h1>
   <div class="post-meta">
@@ -541,7 +541,7 @@
     <span class="meta-item pc-show">
       <i class="fa fa-calendar-o"></i>
       <span class="language" data-lan="publish">发布于</span>
-      <span class="publish-time" data-t="2020-10-18 18:44:49">2020-10-18</span>
+      <span class="publish-time" data-t="2021-02-01 15:49:38">2021-02-01</span>
       <span class="post-meta-divider pc-show">|</span>
     </span>
     
@@ -566,17 +566,17 @@
     
     <span class="meta-item">
       <i class="fa fa-clock-o"></i>
-      <span>3<span class="language" data-lan="minute">分钟</span></span>
+      <span>2<span class="language" data-lan="minute">分钟</span></span>
     </span>
     <span class="meta-item">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-file-word-o"></i>
-      <span>415<span class="pc-show language" data-lan="words">字数</span></span>
+      <span>268<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
     
     
-    <span id="/post/solution-cf91b/" data-flag-title="题解 CF91B 【Queue】" class="meta-item pc-show leancloud_visitors">
+    <span id="/post/solution-cf1476d/" data-flag-title="题解 CF1476D 【Journey】" class="meta-item pc-show leancloud_visitors">
       <span class="post-meta-divider">|</span>
       <i class="fa fa-eye"></i>
       <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
@@ -585,81 +585,32 @@
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
-              <h1 id="solution">Solution</h1>
-<p>标准的线段树上跑二分。</p>
-<p>建出一棵维护 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>min</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66786em;vertical-align:0em;"></span><span class="mop">min</span></span></span></span> 的线段树。</p>
-<p>对于每次查询，我们一定是尽可能往右子树跑。</p>
-<p>具体细节见代码。</p>
-<h1 id="code">Code</h1>
-<p>核心部分：</p>
-<pre><code class="language-cpp">int query(int i,int l,int r,int ql,int qr,int x){
-	if(t[i].minn&gt;=x)return -1; // 说明整个区间都没有小于 x 的数，返回 -1
-	if(l==r)return l;
-	int mid=(l+r)&gt;&gt;1;
-	int res;
-	if(qr&gt;mid){ // 优先往右子树跑
-		res=query(rs(i),mid+1,r,ql,qr,x);
-		if(res!=-1)return res; // 如果有答案，则返回它
-	}
-	if(ql&lt;=mid)return query(ls(i),l,mid,ql,qr,x); // 如果右子树没有答案，则往左子树跑
-	return res;
-}
-</code></pre>
-<p>完整代码：</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-
-const int N=1e5;
-
-struct Node{
-	int minn;
+              <p>这道题充分的说明：我数据结构学傻了（</p>
+<!--more-->
+<h1 id="solution">Solution</h1>
+<p>首先，一个人如果能从 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 走到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span>，则他一定在到达 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>b</mi></mrow><annotation encoding="application/x-tex">b</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault">b</span></span></span></span> 的时候立即掉头然后走回 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span>。（为什么？）</p>
+<p>所以只需求出这个人往左走能走多远，往右走能走多远，然后加起来即可。</p>
+<p>如果一个人能在一个串上一直走下去，则这个串必须是 <code>LRLRLR...</code> 或者 <code>RLRLRL...</code>。</p>
+<p>然后我用了二分 + 线段树（</p>
+<pre><code class="language-cpp">struct Node{
+    char l,r; // 这个区间左右端点的字符
+    bool ok; // 一个人是否能在这个区间表示的子串上一直走下去
 };
 
-int n,a[N+10];
-Node t[N*4+10];
-
-#define ls(x) (x&lt;&lt;1)
-#define rs(x) (x&lt;&lt;1|1)
-
-inline void pushUp(int i){t[i].minn=std::min(t[ls(i)].minn,t[rs(i)].minn);}
-void build(int i,int l,int r){
-	if(l==r)return t[i].minn=a[l],void();
-	int mid=(l+r)&gt;&gt;1;
-	build(ls(i),l,mid);
-	build(rs(i),mid+1,r);
-	pushUp(i);
-}
-
-int query(int i,int l,int r,int ql,int qr,int x){
-	if(t[i].minn&gt;=x)return -1;
-	if(l==r)return l;
-	int mid=(l+r)&gt;&gt;1;
-	int res;
-	if(qr&gt;mid){
-		res=query(rs(i),mid+1,r,ql,qr,x);
-		if(res!=-1)return res;
-	}
-	if(ql&lt;=mid)return query(ls(i),l,mid,ql,qr,x);
+inline Node pushUp(Node L,Node R){
+	Node res;
+	res.l=L.l;
+	res.r=R.r;
+	res.ok=L.ok&amp;&amp;R.ok&amp;&amp;((L.r=='L'&amp;&amp;R.l=='R')||(L.r=='R'&amp;&amp;R.l=='L'));
 	return res;
 }
-
-#undef ls
-#undef rs
-
-int main(){
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=1;i&lt;=n;i++)
-		scanf(&quot;%d&quot;,a+i);
-	build(1,1,n);
-	for(int i=1;i&lt;n;i++){
-		int res=query(1,1,n,i+1,n,a[i]);
-		if(res==-1)printf(&quot;-1 &quot;);
-		else printf(&quot;%d &quot;,res-i-1);
-	}
-	puts(&quot;-1&quot;);
-	return 0;
-}
 </code></pre>
+<p>这棵线段树可以判断一个区间是否“合法”。</p>
+<p>然后就可以二分了。</p>
+<p>时间复杂度 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="script">O</mi><mo>(</mo><mi>n</mi><msup><mi>log</mi><mo>⁡</mo><mn>2</mn></msup><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">\mathcal O(n\log^2 n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.148448em;vertical-align:-0.25em;"></span><span class="mord mathcal" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop"><span class="mop">lo<span style="margin-right:0.01389em;">g</span></span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8984479999999999em;"><span style="top:-3.1473400000000002em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，可能需要卡常才能过。</p>
+<h1 id="code">Code</h1>
+<p>细节比较多。</p>
+<p><a href="https://codeforces.com/contest/1476/submission/105930535">https://codeforces.com/contest/1476/submission/105930535</a></p>
 
             </div>
             
@@ -672,7 +623,7 @@ int main(){
     </li>
     <li class="post-copyright-link">
       <strong class="language" data-lan="link">本文链接：</strong>
-      <a href="https://registerGen.github.io/post/solution-cf91b/" title="题解 CF91B 【Queue】">https://registerGen.github.io/post/solution-cf91b/</a>
+      <a href="https://registerGen.github.io/post/solution-cf1476d/" title="题解 CF1476D 【Journey】">https://registerGen.github.io/post/solution-cf1476d/</a>
     </li>
     <li class="post-copyright-license">
       <strong class="language" data-lan="copyright">版权声明： </strong>
@@ -689,15 +640,11 @@ int main(){
   <div class="nav">
     <div class="nav-prev">
       
-        <i class="fa fa-chevron-left"></i>
-        <a class="nav-pc-next" title="CSP-S 2020 游记" href="https://registerGen.github.io/post/csp-s-2020/">CSP-S 2020 游记</a class="nav-pc-next">
-        <a class="nav-mobile-prev" title="CSP-S 2020 游记" href="https://registerGen.github.io/post/csp-s-2020/">上一篇</a>
-      
     </div>
     <div class="nav-next">
       
-        <a class="nav-pc-next" title="题解 CF27D 【Ring Road 2】" href="https://registerGen.github.io/post/solution-cf27d/">题解 CF27D 【Ring Road 2】</a>
-        <a class="nav-mobile-next" title="题解 CF27D 【Ring Road 2】" href="https://registerGen.github.io/post/solution-cf27d/">下一篇</a>
+        <a class="nav-pc-next" title="KMP + AC 自动机做题记录" href="https://registerGen.github.io/post/problems-of-kmp-and-ac-automaton/">KMP + AC 自动机做题记录</a>
+        <a class="nav-mobile-next" title="KMP + AC 自动机做题记录" href="https://registerGen.github.io/post/problems-of-kmp-and-ac-automaton/">下一篇</a>
         <i class="fa fa-chevron-right"></i>
       
     </div>
