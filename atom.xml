@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2021-02-01T11:58:23.585Z</updated>
+    <updated>2021-02-06T11:33:34.480Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -10,6 +10,21 @@
     <logo>https://registerGen.github.io/images/avatar.png</logo>
     <icon>https://registerGen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, registerGen&apos;s blog</rights>
+    <entry>
+        <title type="html"><![CDATA[关于我 WC2021 Fe 这个事]]></title>
+        <id>https://registerGen.github.io/post/wc-2021/</id>
+        <link href="https://registerGen.github.io/post/wc-2021/">
+        </link>
+        <updated>2021-02-06T11:26:56.000Z</updated>
+        <content type="html"><![CDATA[<p>本文章长期置顶。</p>
+<p><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>20</mn><mo>+</mo><mn>0</mn><mo>+</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">20+0+20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">2</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span></span></span></span>。</p>
+<p>T2 CE 了，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>50</mn><mo>→</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">50\to 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">5</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</p>
+<p>唉。</p>
+<p>用了 <code>memset</code> 没加 <code>#include&lt;cstring&gt;</code>，然后你懂的。</p>
+<p>但是本题的 Windows g++ 9.2.0 能过编译，因为我 <code>#include&lt;string&gt;</code> 了。</p>
+<p>教训：<strong>CCF 的线上比赛一定要在 NOI Linux 下打！</strong></p>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[题解 CF1476C  【Longest Simple Cycle】]]></title>
         <id>https://registerGen.github.io/post/solution-cf1476c/</id>
@@ -876,89 +891,6 @@ int main(){
 <li>sto sqrt_7 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>100</mn><mo>+</mo><mn>100</mn><mo>+</mo><mn>100</mn><mo>+</mo><mn>100</mn></mrow><annotation encoding="application/x-tex">100+100+100+100</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span><span class="mord">0</span><span class="mord">0</span></span></span></span></li>
 <li>sto ...</li>
 </ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[题解 CF91B 【Queue】]]></title>
-        <id>https://registerGen.github.io/post/solution-cf91b/</id>
-        <link href="https://registerGen.github.io/post/solution-cf91b/">
-        </link>
-        <updated>2020-10-18T10:44:49.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="solution">Solution</h1>
-<p>标准的线段树上跑二分。</p>
-<p>建出一棵维护 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>a</mi></mrow><annotation encoding="application/x-tex">a</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">a</span></span></span></span> 的 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>min</mi><mo>⁡</mo></mrow><annotation encoding="application/x-tex">\min</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.66786em;vertical-align:0em;"></span><span class="mop">min</span></span></span></span> 的线段树。</p>
-<p>对于每次查询，我们一定是尽可能往右子树跑。</p>
-<p>具体细节见代码。</p>
-<h1 id="code">Code</h1>
-<p>核心部分：</p>
-<pre><code class="language-cpp">int query(int i,int l,int r,int ql,int qr,int x){
-	if(t[i].minn&gt;=x)return -1; // 说明整个区间都没有小于 x 的数，返回 -1
-	if(l==r)return l;
-	int mid=(l+r)&gt;&gt;1;
-	int res;
-	if(qr&gt;mid){ // 优先往右子树跑
-		res=query(rs(i),mid+1,r,ql,qr,x);
-		if(res!=-1)return res; // 如果有答案，则返回它
-	}
-	if(ql&lt;=mid)return query(ls(i),l,mid,ql,qr,x); // 如果右子树没有答案，则往左子树跑
-	return res;
-}
-</code></pre>
-<p>完整代码：</p>
-<pre><code class="language-cpp">#include&lt;cstdio&gt;
-#include&lt;algorithm&gt;
-
-const int N=1e5;
-
-struct Node{
-	int minn;
-};
-
-int n,a[N+10];
-Node t[N*4+10];
-
-#define ls(x) (x&lt;&lt;1)
-#define rs(x) (x&lt;&lt;1|1)
-
-inline void pushUp(int i){t[i].minn=std::min(t[ls(i)].minn,t[rs(i)].minn);}
-void build(int i,int l,int r){
-	if(l==r)return t[i].minn=a[l],void();
-	int mid=(l+r)&gt;&gt;1;
-	build(ls(i),l,mid);
-	build(rs(i),mid+1,r);
-	pushUp(i);
-}
-
-int query(int i,int l,int r,int ql,int qr,int x){
-	if(t[i].minn&gt;=x)return -1;
-	if(l==r)return l;
-	int mid=(l+r)&gt;&gt;1;
-	int res;
-	if(qr&gt;mid){
-		res=query(rs(i),mid+1,r,ql,qr,x);
-		if(res!=-1)return res;
-	}
-	if(ql&lt;=mid)return query(ls(i),l,mid,ql,qr,x);
-	return res;
-}
-
-#undef ls
-#undef rs
-
-int main(){
-	scanf(&quot;%d&quot;,&amp;n);
-	for(int i=1;i&lt;=n;i++)
-		scanf(&quot;%d&quot;,a+i);
-	build(1,1,n);
-	for(int i=1;i&lt;n;i++){
-		int res=query(1,1,n,i+1,n,a[i]);
-		if(res==-1)printf(&quot;-1 &quot;);
-		else printf(&quot;%d &quot;,res-i-1);
-	}
-	puts(&quot;-1&quot;);
-	return 0;
-}
-</code></pre>
 ]]></content>
     </entry>
 </feed>
