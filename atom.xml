@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2021-02-17T06:44:35.627Z</updated>
+    <updated>2021-02-17T07:23:33.104Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -17,6 +17,9 @@
         </link>
         <updated>2021-02-17T05:13:28.000Z</updated>
         <content type="html"><![CDATA[<p>（这里没有 G 的题解）</p>
+<p>首先，让我们一起膜拜一位巨佬：</p>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/02/17/VukzcFMJaI1fleK.png" alt="" loading="lazy"></figure>
+<p>henrytb AK div3！！！</p>
 <h1 id="a">A</h1>
 <p>由于 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>a</mi><mi>i</mi></msub></mrow><annotation encoding="application/x-tex">a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.58056em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的范围很小，所以我们暴力插入就 ok 了。</p>
 <p>具体细节见代码。</p>
@@ -92,8 +95,8 @@ void work(int l,int r){
 		if(a[i]&gt;maxx)maxx=a[i],tmp=i;
 	for(int i=l;i&lt;=r;i++)
 		if(a[i]!=maxx)anss[i]++; // 如果不是子树的根，则深度 +1
-	work(l,tmp-1);
-	work(tmp+1,r);
+	work(l,tmp-1); // 处理左子树
+	work(tmp+1,r); // 处理右子树
 }
  
 void solve(){

@@ -9,7 +9,7 @@
 <meta name="description" content="解析几何大法吼！">
 <meta name="theme-color" content="#000">
 <title>题解 luogu P2193 【HXY和序列】 | registerGen&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1613544252754">
+<link rel="shortcut icon" href="/favicon.ico?v=1613546592186">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -1195,6 +1195,9 @@ int main()
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://registerGen.github.io/post/solution-codeforces-round-702-div-3/"" data-c="
           &lt;p&gt;（这里没有 G 的题解）&lt;/p&gt;
+&lt;p&gt;首先，让我们一起膜拜一位巨佬：&lt;/p&gt;
+&lt;figure data-type=&#34;image&#34; tabindex=&#34;1&#34;&gt;&lt;img src=&#34;https://i.loli.net/2021/02/17/VukzcFMJaI1fleK.png&#34; alt=&#34;&#34; loading=&#34;lazy&#34;&gt;&lt;/figure&gt;
+&lt;p&gt;henrytb AK div3！！！&lt;/p&gt;
 &lt;h1 id=&#34;a&#34;&gt;A&lt;/h1&gt;
 &lt;p&gt;由于 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a_i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.58056em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 的范围很小，所以我们暴力插入就 ok 了。&lt;/p&gt;
 &lt;p&gt;具体细节见代码。&lt;/p&gt;
@@ -1270,8 +1273,8 @@ void work(int l,int r){
 		if(a[i]&amp;gt;maxx)maxx=a[i],tmp=i;
 	for(int i=l;i&amp;lt;=r;i++)
 		if(a[i]!=maxx)anss[i]++; // 如果不是子树的根，则深度 +1
-	work(l,tmp-1);
-	work(tmp+1,r);
+	work(l,tmp-1); // 处理左子树
+	work(tmp+1,r); // 处理右子树
 }
  
 void solve(){
