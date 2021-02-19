@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2021-02-17T12:42:29.830Z</updated>
+    <updated>2021-02-19T14:15:27.409Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -16,7 +16,7 @@
         <link href="https://registerGen.github.io/post/solution-codeforces-round-702-div-3/">
         </link>
         <updated>2021-02-17T05:13:28.000Z</updated>
-        <content type="html"><![CDATA[<p>（这里没有 G 的题解）</p>
+        <content type="html"><![CDATA[<p>Upd on 2020-02-19：更新了 G 的题解。</p>
 <p>首先，让我们一起膜拜一位巨佬：</p>
 <figure data-type="image" tabindex="1"><img src="https://i.loli.net/2021/02/17/VukzcFMJaI1fleK.png" alt="" loading="lazy"></figure>
 <p>henrytb AK div3！！！</p>
@@ -185,6 +185,42 @@ void solve(){
 		ans=std::min(ans,psum[i-1]+ssum[i+1]-i*ssum2[i+1]);
 	}
 	printf(&quot;%lld\n&quot;,ans);
+}
+</code></pre>
+<h1 id="g">G</h1>
+<p>复述一遍 <a href="https://blog.henrytb.ml/2021/02/%E8%AE%B0%E4%B8%80%E6%AC%A1-Div3-AK/#G">henrytb 的题解</a>。</p>
+<p>首先预处理一个 <code>std::map</code>，表示只爬一轮的情况下爬到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 最少要多少次。那么反过来查询就是一个 <code>lower_bound</code> 的事情了。</p>
+<p>先查一下第一轮能不能到，如果能就直接输出。</p>
+<p>否则设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><mstyle scriptlevel="0" displaystyle="true"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>a</mi><mi>i</mi></msub></mstyle></mrow><annotation encoding="application/x-tex">s=\displaystyle\sum_{i=1}^n a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，即爬完一轮后移动的距离。</p>
+<p>分类讨论：</p>
+<ol>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>≤</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s\le 0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7719400000000001em;vertical-align:-0.13597em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，则输出 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72777em;vertical-align:-0.08333em;"></span><span class="mord">−</span><span class="mord">1</span></span></span></span>。</li>
+<li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">s&gt;0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5782em;vertical-align:-0.0391em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">&gt;</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>，则先求出蜗牛会爬几个整轮，剩下的在 <code>map</code> 里查就 ok 了。</li>
+</ol>
+<pre><code class="language-cpp">int n,a[N+10],m;
+ll sum[N+10];
+ 
+void solve(){
+	n=ri(),m=ri();
+	std::map&lt;ll,int&gt; mmp;
+	ll maxx=0;
+	rep(i,1,n)a[i]=ri(),sum[i]=sum[i-1]+a[i];
+	rep(i,1,n)if(sum[i]&gt;maxx){
+		maxx=sum[i]; // 爬一轮最多向前移多少距离（注意这不是爬完一轮后移动的距离）
+		mmp[maxx]=i;
+	}
+	while(m--){
+		int x=ri();
+		auto it=mmp.lower_bound(x);
+		if(it==mmp.end()&amp;&amp;sum[n]&lt;=0)printf(&quot;-1 &quot;);
+		else if(it!=mmp.end())printf(&quot;%d &quot;,it-&gt;second-1);
+		else{
+			int times=int((x-maxx+sum[n]-1)/sum[n]); // 蜗牛会爬的整轮个数
+			x=x-sum[n]*times;
+			printf(&quot;%lld &quot;,1LL*n*times+mmp.lower_bound(x)-&gt;second-1);
+		}
+	}
+	puts(&quot;&quot;);
 }
 </code></pre>
 ]]></content>
