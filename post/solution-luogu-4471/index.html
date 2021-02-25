@@ -9,7 +9,7 @@
 <meta name="description" content="Vim yyds">
 <meta name="theme-color" content="#000">
 <title>题解 luogu 4471 【[BJWC2018]词韵】 | registerGen&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1613744103616">
+<link rel="shortcut icon" href="/favicon.ico?v=1614262104286">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -222,7 +222,7 @@
     <div class="sidebar-item-box">
       <a href="/archives/">
         
-        <span class="site-item-stat-count">47</span>
+        <span class="site-item-stat-count">48</span>
         <span class="site-item-stat-name language" data-lan="article">文章</span>
       </a>
     </div>
@@ -1216,6 +1216,188 @@ int main(){
       <hr>
     </div>
     <div class="result" id="result">
+      
+      <div class="item">
+        <a class="result-title" style="opacity: 0;" href="https://registerGen.github.io/post/solution-luogu-5478/"" data-c="
+          &lt;p&gt;震惊！我省省选竟然出板题！&lt;/p&gt;
+&lt;!--more--&gt;
+&lt;h1 id=&#34;solution&#34;&gt;Solution&lt;/h1&gt;
+&lt;p&gt;容易想到，直接维护区间最大的 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;k&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;k&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.69444em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34; style=&#34;margin-right:0.03148em;&#34;&gt;k&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 个数即可。pushup 就直接暴力。&lt;/p&gt;
+&lt;p&gt;为了方便，我们开 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;n&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 个 &lt;code&gt;std::vector&lt;/code&gt; &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，&lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a_i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.58056em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 表示居住在第 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.65952em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 个城市的人的集合。显然，我们要根据 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a_i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.58056em;vertical-align:-0.15em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 来构建叶子结点。&lt;/p&gt;
+&lt;p&gt;修改就暴力重构叶子结点。但是我们不能暴力在 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 中找到想改的东西。于是我们把 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;a&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 换成 &lt;code&gt;std::multiset&lt;/code&gt; 即可。&lt;/p&gt;
+&lt;p&gt;当然，因为这个题是在树上搞事，所以我们要用树剖。&lt;/p&gt;
+&lt;h1 id=&#34;code&#34;&gt;Code&lt;/h1&gt;
+&lt;pre&gt;&lt;code class=&#34;language-cpp&#34;&gt;#include&amp;lt;cstdio&amp;gt;
+#include&amp;lt;algorithm&amp;gt;
+#include&amp;lt;cstring&amp;gt;
+#include&amp;lt;functional&amp;gt; // for std::greater
+#include&amp;lt;set&amp;gt;
+
+const int N=4e4;
+
+struct Edge{int to,nxt;}e[N*2+10];int head[N+10],tote=1;
+inline void addEdge(int u,int v){e[++tote].to=v;e[tote].nxt=head[u];head[u]=tote;}
+
+int n,m,q,k,f[N+10],p[N+10]; // 含义同题面
+std::multiset&amp;lt;int,std::greater&amp;lt;int&amp;gt; &amp;gt; a[N+10];
+int fa[N+10],siz[N+10],son[N+10],dep[N+10],dfn[N+10],rk[N+10],top[N+10],cnt; // 用于树剖的 8 个变量
+
+// segment tree
+struct SegTree{
+	struct Node{
+		int res[25];
+		Node(){memset(res,0,sizeof(res));}
+		inline int&amp;amp; operator[](int i){return res[i];}
+	};
+
+	Node t[N*4+10];
+
+#define ls(x) (x&amp;lt;&amp;lt;1)
+#define rs(x) (x&amp;lt;&amp;lt;1|1)
+
+    // pushup（暴力合并）
+	inline Node pushUp(Node L,Node R){
+		Node res;
+		int tmp[45]={0},tott=0;
+		for(int i=1;i&amp;lt;=k;i++)
+			tmp[++tott]=L[i],tmp[++tott]=R[i];
+		std::sort(tmp+1,tmp+tott+1,std::greater&amp;lt;int&amp;gt;());
+		for(int i=1;i&amp;lt;=k;i++)
+			res[i]=tmp[i];
+		return res;
+	}
+
+    // 建树
+	void build(int i,int l,int r){
+		if(l==r){
+			int cnt=0;
+            // 暴力取 std::multiset 中最大的 k 个数 
+			for(std::multiset&amp;lt;int,std::greater&amp;lt;int&amp;gt; &amp;gt;::iterator it=a[rk[l]].begin();it!=a[rk[l]].end()&amp;amp;&amp;amp;cnt&amp;lt;k;it++)
+				t[i][++cnt]=*it;
+			return;
+		}
+		int mid=(l+r)&amp;gt;&amp;gt;1;
+		build(ls(i),l,mid);
+		build(rs(i),mid+1,r);
+		t[i]=pushUp(t[ls(i)],t[rs(i)]);
+	}
+
+    // 将第 rk[pos] 个城市的武力值为 x 的人的武力值改为 y
+    // 注意：只能改一个
+    // x = -1 时表示增加一个武力值为 y 的人
+    // y = -1 时表示减少一个武力值为 x 的人
+	void modify(int i,int l,int r,int pos,int x,int y){
+		if(l==r){
+			if(x!=-1)a[rk[pos]].erase(a[rk[pos]].find(x)); // 注意是 rk[pos] 不是 pos！
+			if(y!=-1)a[rk[pos]].insert(y);
+			t[i]=Node();
+			int cnt=0;
+            // 暴力重构
+			for(std::multiset&amp;lt;int,std::greater&amp;lt;int&amp;gt; &amp;gt;::iterator it=a[rk[pos]].begin();it!=a[rk[pos]].end()&amp;amp;&amp;amp;cnt&amp;lt;k;it++)
+				t[i][++cnt]=*it;
+			return;
+		}
+		int mid=(l+r)&amp;gt;&amp;gt;1;
+		if(pos&amp;lt;=mid)modify(ls(i),l,mid,pos,x,y);
+		if(pos&amp;gt;mid) modify(rs(i),mid+1,r,pos,x,y);
+		t[i]=pushUp(t[ls(i)],t[rs(i)]);
+	}
+
+    // 查询前 k 大
+	Node query(int i,int l,int r,int ql,int qr){
+		if(ql&amp;lt;=l&amp;amp;&amp;amp;r&amp;lt;=qr)return t[i];
+		int mid=(l+r)&amp;gt;&amp;gt;1;
+		if(qr&amp;lt;=mid)return query(ls(i),l,mid,ql,qr);
+		if(ql&amp;gt;mid) return query(rs(i),mid+1,r,ql,qr);
+		return pushUp(query(ls(i),l,mid,ql,qr),query(rs(i),mid+1,r,ql,qr));
+	}
+
+#undef ls
+#undef rs
+
+}t;
+
+// 树剖基本操作 1
+void DFS1(int u,int _fa){
+	fa[u]=_fa;
+	dep[u]=dep[_fa]+1;
+	siz[u]=1;
+	for(int i=head[u];i;i=e[i].nxt){
+		int v=e[i].to;
+		if(v==_fa)continue;
+		DFS1(v,u);
+		siz[u]+=siz[v];
+		if(siz[v]&amp;gt;siz[son[u]])son[u]=v;
+	}
+}
+
+// 树剖基本操作 2
+void DFS2(int u,int _fa,int _top){
+	dfn[u]=++cnt;
+	rk[cnt]=u;
+	top[u]=_top;
+	if(son[u])DFS2(son[u],u,_top);
+	for(int i=head[u];i;i=e[i].nxt){
+		int v=e[i].to;
+		if(v==_fa||v==son[u])continue;
+		DFS2(v,u,v);
+	}
+}
+
+// 树剖基本操作 3（树上查询）
+SegTree::Node query(int u,int v){
+	SegTree::Node res;
+	while(top[u]!=top[v]){
+		if(dep[top[u]]&amp;lt;dep[top[v]])std::swap(u,v);
+		res=t.pushUp(res,t.query(1,1,n,dfn[top[u]],dfn[u]));
+		u=fa[top[u]];
+	}
+	if(dfn[u]&amp;gt;dfn[v])std::swap(u,v);
+	res=t.pushUp(res,t.query(1,1,n,dfn[u],dfn[v]));
+	return res;
+}
+
+int main(){
+	scanf(&amp;quot;%d&amp;quot;,&amp;amp;n);
+	for(int i=1;i&amp;lt;n;i++){
+		int u,v;scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;u,&amp;amp;v);
+		addEdge(u,v);addEdge(v,u);
+	}
+	scanf(&amp;quot;%d&amp;quot;,&amp;amp;m);
+	for(int i=1;i&amp;lt;=m;i++){
+		scanf(&amp;quot;%d%d&amp;quot;,f+i,p+i);
+		a[p[i]].insert(f[i]);
+	}
+	scanf(&amp;quot;%d%d&amp;quot;,&amp;amp;q,&amp;amp;k);
+	DFS1(1,0),DFS2(1,0,0),t.build(1,1,n);
+	while(q--){
+		int opt,x,y;
+		scanf(&amp;quot;%d%d%d&amp;quot;,&amp;amp;opt,&amp;amp;x,&amp;amp;y);
+		if(opt==1){
+			SegTree::Node res=query(x,y);
+			int ans[25]={0},tota=0;
+			for(int i=1;i&amp;lt;=k;i++)
+				if(res[i])ans[++tota]=res[i];
+			if(tota==0){puts(&amp;quot;-1&amp;quot;);continue;}
+			std::sort(ans+1,ans+tota+1,std::greater&amp;lt;int&amp;gt;());
+			for(int i=1;i&amp;lt;=tota;i++)
+				printf(&amp;quot;%d%c&amp;quot;,ans[i],&amp;quot; \n&amp;quot;[i==tota]);
+		}
+		if(opt==2){
+			t.modify(1,1,n,dfn[p[x]],f[x],-1);
+			p[x]=y; // 别忘了改这个
+			t.modify(1,1,n,dfn[p[x]],-1,f[x]);
+		}
+		if(opt==3){
+			t.modify(1,1,n,dfn[p[x]],f[x],y);
+			f[x]=y; // 别忘了改这个
+		}
+	}
+	return 0;
+}
+&lt;/code&gt;&lt;/pre&gt;
+">题解 luogu 5478 【[BJOI2015]骑士的旅行】</a>
+      </div>
       
       <div class="item">
         <a class="result-title" style="opacity: 0;" href="https://registerGen.github.io/post/solution-codeforces-round-702-div-3/"" data-c="
