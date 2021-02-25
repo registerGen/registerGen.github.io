@@ -9,7 +9,7 @@
 <meta name="description" content="Vim yyds">
 <meta name="theme-color" content="#000">
 <title>题解 CF792D 【Paths in a Complete Binary Tree】 | registerGen&#39;s blog</title>
-<link rel="shortcut icon" href="/favicon.ico?v=1614262104286">
+<link rel="shortcut icon" href="/favicon.ico?v=1614265353346">
 <link rel="stylesheet" href="/media/css/gemini.css">
 <link rel="stylesheet" href="/media/fonts/font-awesome.css">
 <link
@@ -79,7 +79,7 @@
           
         </div>
         
-          <p class="subtitle">解析几何大法吼！</p>
+          <p class="subtitle">Vim yyds</p>
         
       </div>
       <nav class="site-nav" id="site_nav">
@@ -213,7 +213,7 @@
     
     <div class="site-description right-motion">
       
-        <p id="binft">解析几何大法吼！</p>
+        <p id="binft">Vim yyds</p>
       
     </div>
     
@@ -574,14 +574,6 @@
       <span>558<span class="pc-show language" data-lan="words">字数</span></span>
     </span>
     
-    
-    
-    <span id="/post/solution-cf792d/" data-flag-title="题解 CF792D 【Paths in a Complete Binary Tree】" class="meta-item pc-show leancloud_visitors">
-      <span class="post-meta-divider">|</span>
-      <i class="fa fa-eye"></i>
-      <span><span class="language" data-lan="view">浏览量</span>：<span class="leancloud-visitors-count"></span></span>
-    </span>
-    
   </div>
 </section>
             <div class="post-body next-md-body" id="post_body">
@@ -703,54 +695,28 @@ int main(){
 </div>
             
             
-  <script src="https://cdn.jsdelivr.net/npm/valine@1.4.14/dist/Valine.min.js"></script>
-<div id="vcomments" style="padding: 10px 0px 0px 0px"></div>
+  
+    
+      <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-<style>
-  .v .veditor {
-    min-height: 10rem;
-    background-image: url('');
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
-    background-color: rgba(255, 255, 255, 0);
-    resize: none;
-  }
+<div id="gitalk-container"></div>
 
-  .v .vwrap {
-    border: 1px solid #000 !important;
-  }
-
-  .v .vbtn {
-    padding: .4rem 1.2rem !important;
-    border-color: #fff !important;
-    background-color: #49b1f5 !important;
-    color: #fff !important;
-    font-size: .7rem !important;
-  }
-
-  .v .vcards .vcard .vh .vmeta .vat {
-    padding: 0 .8rem !important;
-    border: 1px solid #00c4b6 !important;
-    border-radius: 5px !important;
-    color: #00c4b6 !important;
-  }
-</style>
 <script>
-  new Valine({
-    el: '#vcomments',
-    appId: 'HxqgSzyesJfOSnenWpNuGcnc-gzGzoHsz',
-    appKey: 'sHc4At4Q5CP5qymmHbkXzEhy',
-    avatar: '',
-    placeholder: '',
-    pageSize: '',
-    lang: 'zh-cn',
-    enableQQ: 'true' === 'false',
-    visitor: 'true' === 'true',
-    highlight: 'true' === 'true',
-    avatarForce: 'true' === 'false',
-  });
+  var gitalk = new Gitalk({
+    clientID: '3ab186907e7a2fbaa379',
+    clientSecret: '4144b46651fb39d898808470ddbfa26e8fe2fe2c',
+    repo: 'blog-comment',
+    owner: 'registerGen',
+    admin: ['registerGen'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+  gitalk.render('gitalk-container')
 </script>
+    
+    
+  
 
           </div>
         </div>
@@ -780,7 +746,7 @@ int main(){
   
   
   <div class="bg-img">
-    <img src="\media\images\custom-bgImg.png" />
+    <img src="/media/images/background.jpg" />
   </div>
   
   
@@ -1249,7 +1215,7 @@ struct SegTree{
 #define ls(x) (x&amp;lt;&amp;lt;1)
 #define rs(x) (x&amp;lt;&amp;lt;1|1)
 
-    // pushup（暴力合并）
+	// pushup（暴力合并）
 	inline Node pushUp(Node L,Node R){
 		Node res;
 		int tmp[45]={0},tott=0;
@@ -1261,11 +1227,11 @@ struct SegTree{
 		return res;
 	}
 
-    // 建树
+	// 建树
 	void build(int i,int l,int r){
 		if(l==r){
 			int cnt=0;
-            // 暴力取 std::multiset 中最大的 k 个数 
+			// 暴力取 std::multiset 中最大的 k 个数 
 			for(std::multiset&amp;lt;int,std::greater&amp;lt;int&amp;gt; &amp;gt;::iterator it=a[rk[l]].begin();it!=a[rk[l]].end()&amp;amp;&amp;amp;cnt&amp;lt;k;it++)
 				t[i][++cnt]=*it;
 			return;
@@ -1276,17 +1242,17 @@ struct SegTree{
 		t[i]=pushUp(t[ls(i)],t[rs(i)]);
 	}
 
-    // 将第 rk[pos] 个城市的武力值为 x 的人的武力值改为 y
-    // 注意：只能改一个
-    // x = -1 时表示增加一个武力值为 y 的人
-    // y = -1 时表示减少一个武力值为 x 的人
+	// 将第 rk[pos] 个城市的武力值为 x 的人的武力值改为 y
+	// 注意：只能改一个
+	// x = -1 时表示增加一个武力值为 y 的人
+	// y = -1 时表示减少一个武力值为 x 的人
 	void modify(int i,int l,int r,int pos,int x,int y){
 		if(l==r){
 			if(x!=-1)a[rk[pos]].erase(a[rk[pos]].find(x)); // 注意是 rk[pos] 不是 pos！
 			if(y!=-1)a[rk[pos]].insert(y);
 			t[i]=Node();
 			int cnt=0;
-            // 暴力重构
+			// 暴力重构
 			for(std::multiset&amp;lt;int,std::greater&amp;lt;int&amp;gt; &amp;gt;::iterator it=a[rk[pos]].begin();it!=a[rk[pos]].end()&amp;amp;&amp;amp;cnt&amp;lt;k;it++)
 				t[i][++cnt]=*it;
 			return;
@@ -1297,7 +1263,7 @@ struct SegTree{
 		t[i]=pushUp(t[ls(i)],t[rs(i)]);
 	}
 
-    // 查询前 k 大
+	// 查询前 k 大
 	Node query(int i,int l,int r,int ql,int qr){
 		if(ql&amp;lt;=l&amp;amp;&amp;amp;r&amp;lt;=qr)return t[i];
 		int mid=(l+r)&amp;gt;&amp;gt;1;
@@ -1567,7 +1533,7 @@ void solve(){
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;g&#34;&gt;G&lt;/h1&gt;
-&lt;p&gt;复述一遍 &lt;a href=&#34;https://blog.henrytb.ml/2021/02/%E8%AE%B0%E4%B8%80%E6%AC%A1-Div3-AK/#G&#34;&gt;henrytb 的题解&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;复述一遍 &lt;a href=&#34;https://henrytbtrue.github.io/2021/02/%E8%AE%B0%E4%B8%80%E6%AC%A1-Div3-AK/#G&#34;&gt;henrytb 的题解&lt;/a&gt;。&lt;/p&gt;
 &lt;p&gt;首先预处理一个 &lt;code&gt;std::map&lt;/code&gt;，表示只爬一轮的情况下爬到 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;x&lt;/mi&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;x&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;x&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt; 最少要多少次。那么反过来查询就是一个 &lt;code&gt;lower_bound&lt;/code&gt; 的事情了。&lt;/p&gt;
 &lt;p&gt;先查一下第一轮能不能到，如果能就直接输出。&lt;/p&gt;
 &lt;p&gt;否则设 &lt;span class=&#34;katex&#34;&gt;&lt;span class=&#34;katex-mathml&#34;&gt;&lt;math&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;mi&gt;s&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mstyle scriptlevel=&#34;0&#34; displaystyle=&#34;true&#34;&gt;&lt;munderover&gt;&lt;mo&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/munderover&gt;&lt;msub&gt;&lt;mi&gt;a&lt;/mi&gt;&lt;mi&gt;i&lt;/mi&gt;&lt;/msub&gt;&lt;/mstyle&gt;&lt;/mrow&gt;&lt;annotation encoding=&#34;application/x-tex&#34;&gt;s=\displaystyle\sum_{i=1}^n a_i&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;&lt;/span&gt;&lt;span class=&#34;katex-html&#34; aria-hidden=&#34;true&#34;&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:0.43056em;vertical-align:0em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;s&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mrel&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.2777777777777778em;&#34;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;base&#34;&gt;&lt;span class=&#34;strut&#34; style=&#34;height:2.929066em;vertical-align:-1.277669em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mop op-limits&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:1.6513970000000002em;&#34;&gt;&lt;span style=&#34;top:-1.872331em;margin-left:0em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3.05em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;span class=&#34;mrel mtight&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;mord mtight&#34;&gt;1&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-3.050005em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3.05em;&#34;&gt;&lt;/span&gt;&lt;span&gt;&lt;span class=&#34;mop op-symbol large-op&#34;&gt;∑&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;top:-4.3000050000000005em;margin-left:0em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:3.05em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;n&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:1.277669em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;mspace&#34; style=&#34;margin-right:0.16666666666666666em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;mord&#34;&gt;&lt;span class=&#34;mord mathdefault&#34;&gt;a&lt;/span&gt;&lt;span class=&#34;msupsub&#34;&gt;&lt;span class=&#34;vlist-t vlist-t2&#34;&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.31166399999999994em;&#34;&gt;&lt;span style=&#34;top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;&#34;&gt;&lt;span class=&#34;pstrut&#34; style=&#34;height:2.7em;&#34;&gt;&lt;/span&gt;&lt;span class=&#34;sizing reset-size6 size3 mtight&#34;&gt;&lt;span class=&#34;mord mathdefault mtight&#34;&gt;i&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-s&#34;&gt;​&lt;/span&gt;&lt;/span&gt;&lt;span class=&#34;vlist-r&#34;&gt;&lt;span class=&#34;vlist&#34; style=&#34;height:0.15em;&#34;&gt;&lt;span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;，即爬完一轮后移动的距离。&lt;/p&gt;

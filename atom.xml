@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://registerGen.github.io</id>
     <title>registerGen&apos;s blog</title>
-    <updated>2021-02-25T14:08:48.443Z</updated>
+    <updated>2021-02-25T15:02:54.516Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://registerGen.github.io"/>
     <link rel="self" href="https://registerGen.github.io/atom.xml"/>
@@ -54,7 +54,7 @@ struct SegTree{
 #define ls(x) (x&lt;&lt;1)
 #define rs(x) (x&lt;&lt;1|1)
 
-    // pushup（暴力合并）
+	// pushup（暴力合并）
 	inline Node pushUp(Node L,Node R){
 		Node res;
 		int tmp[45]={0},tott=0;
@@ -66,11 +66,11 @@ struct SegTree{
 		return res;
 	}
 
-    // 建树
+	// 建树
 	void build(int i,int l,int r){
 		if(l==r){
 			int cnt=0;
-            // 暴力取 std::multiset 中最大的 k 个数 
+			// 暴力取 std::multiset 中最大的 k 个数 
 			for(std::multiset&lt;int,std::greater&lt;int&gt; &gt;::iterator it=a[rk[l]].begin();it!=a[rk[l]].end()&amp;&amp;cnt&lt;k;it++)
 				t[i][++cnt]=*it;
 			return;
@@ -81,17 +81,17 @@ struct SegTree{
 		t[i]=pushUp(t[ls(i)],t[rs(i)]);
 	}
 
-    // 将第 rk[pos] 个城市的武力值为 x 的人的武力值改为 y
-    // 注意：只能改一个
-    // x = -1 时表示增加一个武力值为 y 的人
-    // y = -1 时表示减少一个武力值为 x 的人
+	// 将第 rk[pos] 个城市的武力值为 x 的人的武力值改为 y
+	// 注意：只能改一个
+	// x = -1 时表示增加一个武力值为 y 的人
+	// y = -1 时表示减少一个武力值为 x 的人
 	void modify(int i,int l,int r,int pos,int x,int y){
 		if(l==r){
 			if(x!=-1)a[rk[pos]].erase(a[rk[pos]].find(x)); // 注意是 rk[pos] 不是 pos！
 			if(y!=-1)a[rk[pos]].insert(y);
 			t[i]=Node();
 			int cnt=0;
-            // 暴力重构
+			// 暴力重构
 			for(std::multiset&lt;int,std::greater&lt;int&gt; &gt;::iterator it=a[rk[pos]].begin();it!=a[rk[pos]].end()&amp;&amp;cnt&lt;k;it++)
 				t[i][++cnt]=*it;
 			return;
@@ -102,7 +102,7 @@ struct SegTree{
 		t[i]=pushUp(t[ls(i)],t[rs(i)]);
 	}
 
-    // 查询前 k 大
+	// 查询前 k 大
 	Node query(int i,int l,int r,int ql,int qr){
 		if(ql&lt;=l&amp;&amp;r&lt;=qr)return t[i];
 		int mid=(l+r)&gt;&gt;1;
@@ -375,7 +375,7 @@ void solve(){
 }
 </code></pre>
 <h1 id="g">G</h1>
-<p>复述一遍 <a href="https://blog.henrytb.ml/2021/02/%E8%AE%B0%E4%B8%80%E6%AC%A1-Div3-AK/#G">henrytb 的题解</a>。</p>
+<p>复述一遍 <a href="https://henrytbtrue.github.io/2021/02/%E8%AE%B0%E4%B8%80%E6%AC%A1-Div3-AK/#G">henrytb 的题解</a>。</p>
 <p>首先预处理一个 <code>std::map</code>，表示只爬一轮的情况下爬到 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span> 最少要多少次。那么反过来查询就是一个 <code>lower_bound</code> 的事情了。</p>
 <p>先查一下第一轮能不能到，如果能就直接输出。</p>
 <p>否则设 <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>s</mi><mo>=</mo><mstyle scriptlevel="0" displaystyle="true"><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><msub><mi>a</mi><mi>i</mi></msub></mstyle></mrow><annotation encoding="application/x-tex">s=\displaystyle\sum_{i=1}^n a_i</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">s</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">a</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，即爬完一轮后移动的距离。</p>
